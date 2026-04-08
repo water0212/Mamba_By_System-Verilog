@@ -9,16 +9,19 @@ args = ModelArgs(
     d_state=16,      # 狀態維度 (N)
     expand=2         # 擴展係數
 )
-
+torch.manual_seed(0)  # 固定隨機種子，確保每次執行結果一致 
 # 2. 初始化模型
 model = Mamba(args)
 model.eval() # 設定為推論模式
+
+
 
 # 3. 準備測試輸入資料
 batch_size = 1
 seq_len = 4  # 序列長度 (測試先用 4 個 Token)
 # 隨機產生輸入的 Token ID
-input_ids = torch.randint(0, args.vocab_size, (batch_size, seq_len))
+# input_ids = torch.randint(0, args.vocab_size, (batch_size, seq_len))
+input_ids = torch.tensor([[1, 2, 3, 4]], dtype=torch.long)  # 固定輸入，方便觀察輸出結果
 
 print(f"輸入的 Token IDs: \n{input_ids}\n")
 
