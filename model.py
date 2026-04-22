@@ -281,7 +281,7 @@ class MambaBlock(nn.Module):
         This is the classic discrete state space formula:
             x(t + 1) = Ax(t) + Bu(t)
             y(t)     = Cx(t) + Du(t)
-        except B and C (and the step size delta, which is used for discretization) are dependent on the input x(t).
+        except B and C (and the ste p size delta, which is used for discretization) are dependent on the input x(t).
     
         Args:
             u: shape (b, l, d_in)    (See Glossary at top for definitions of b, l, d_in, n...)
