@@ -1,10 +1,10 @@
 module Discretization
 	#(
-		parameter A_size = 16
-		parameter B_size = 16
-		parameter delta_size = 16
-		parameter L = 4
-		parameter D_IN = 32
+		parameter A_size = 16,
+		parameter B_size = 16,
+		parameter delta_size = 16,
+		parameter L = 4,
+		parameter D_IN = 32,
 		parameter N = 16
 	)
 	(	
@@ -14,9 +14,9 @@ module Discretization
 		input logic [0:15] data,
 		
 		// output等等寫
-		output logic 
+		output logic finish
 		
-	)
+	);
 	//////////////////////////////////////////////////////  INPUT
 	
 	// A
@@ -95,42 +95,46 @@ module Discretization
 		start_a			= 0;
 		start_b			= 0;
 		start_delta		= 0;
+		finish			= 0;
 		in_ns 			= in_ps;
 		
-		IDLE:	begin
-			in_ns = START;
-		end
-		START: begin
-			if (start) begin
-				data_cnt_rst = 1;
-				in_ns = A;
+		case (in_ps)
+			IDLE:	begin
+				in_ns = START;
 			end
-		end
-		A: begin
-			start_a = 1;
-			if (data_cnt >= D_IN*N) begin
-				data_cnt_rst = 1;
-				in_ns = B;
+			START: begin
+				if (start) begin
+					data_cnt_rst = 1;
+					in_ns = A;
+				end
 			end
-		end
-		B: begin
-			start_b = 1;
-			if (data_cnt >= L*N) begin
-				data_cnt_rst = 1;
-				in_ns = DELTA;
+			A: begin
+				start_a = 1;
+				if (data_cnt >= D_IN*N) begin
+					data_cnt_rst = 1;
+					in_ns = B;
+				end
 			end
-		end
-		DELTA: begin
-			start_delta = 1;
-			if (data_cnt >= L*D_IN) begin
-				data_cnt_rst = 1;
-				in_ns = FINISH;
+			B: begin
+				start_b = 1;
+				if (data_cnt >= L*N) begin
+					data_cnt_rst = 1;
+					in_ns = DELTA;
+				end
 			end
-			
-		end
-		FINISH: begin
-			in_ns = IDLE;
-		end
+			DELTA: begin
+				start_delta = 1;
+				if (data_cnt >= L*D_IN) begin
+					data_cnt_rst = 1;
+					in_ns = FINISH;
+				end
+				
+			end
+			FINISH: begin
+				finish = 1;
+				in_ns = IDLE;
+			end
+		endcase
 		
 	end
 	//////////////////////////////////////////////////////
