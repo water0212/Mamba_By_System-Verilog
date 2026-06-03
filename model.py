@@ -323,21 +323,28 @@ class MambaBlock(nn.Module):
             # 轉回 float32 讓 PyTorch 能繼續做後續的 einsum
             return y_int.to(torch.float32)
         # 輔助函數：將 Tensor 匯出為純文字檔 (Testbench 格式)
-        def export_tensor_to_txt(tensor, filename, is_int=False):
+        # 輔助函數：將 Tensor 匯出為純文字檔 (Testbench 格式)
+        def export_tensor_to_txt(tensor, filename, is_int=False, is_hex=False, bit_width=8):
             # 將 tensor 轉為 numpy，並確保它在 CPU 上
             np_arr = tensor.detach().cpu().numpy()
             
-            # 如果是整數，強制轉型以便輸出時不要有小數點
-            if is_int:
-                np_arr = np_arr.astype(np.int32)
-                
             # 將多維陣列攤平成一維
             flat_arr = np_arr.flatten()
             
-            # 寫入檔案，每個數值佔一行 (Verilog $readmemh 或 $readmemb 常用格式)
-            # 你也可以修改為 np.savetxt(filename, flat_arr, fmt='%d', newline=' ') 來變成同一行
-            fmt = '%d' if is_int else '%.6f'
-            np.savetxt(filename, flat_arr, fmt=fmt)
+            if is_hex:
+                # 處理 16 進位與 2 的補數轉換
+                mask = (1 << bit_width) - 1
+                hex_digits = bit_width // 4
+                with open(filename, 'w') as f:
+                    for val in flat_arr:
+                        hex_val = int(val) & mask
+                        f.write(f"{hex_val:0{hex_digits}X}\n")
+            else:
+                # 處理傳統的 10 進位整數或浮點數
+                if is_int:
+                    flat_arr = flat_arr.astype(np.int32)
+                fmt = '%d' if is_int else '%.6f'
+                np.savetxt(filename, flat_arr, fmt=fmt)
             # print(f"[硬體除錯] 已匯出 {tensor.shape} 的資料至 {filename}")
 
         # ======================================================================
@@ -354,12 +361,15 @@ class MambaBlock(nn.Module):
         
         # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
         # B 是我們量化過後的整數，所以用 is_int=True 匯出乾淨的整數格式
-        export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_int=True)
-        export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_int=True)
+        # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
+        # 加入 is_hex=True 並設定硬體記憶體的位元寬度 (預設為 8-bit)
+        # 注意：如果你的硬體對應暫存器是 16 或 32 bit，請把 bit_width 改成 16 或 32
+        export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_hex=True, bit_width=8)
+        export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_hex=True, bit_width=8)
         
         # 如果需要，你也可以匯出 delta 和 u 作為 testbench 輸入
         delta_int_tensor = torch.round(delta * BIT_WIDTH_SCALE).to(torch.int32)
-        export_tensor_to_txt(delta_int_tensor, "delta_testbench.txt", is_int=True)
+        export_tensor_to_txt(delta_int_tensor, "delta_testbench.txt", is_hex=True, bit_width=8)
         delta_float_tensor = delta_int_tensor.to(torch.float32)
         B_int = B_int_tensor.to(torch.float32)
         # ======================================================================
@@ -367,24 +377,29 @@ class MambaBlock(nn.Module):
         # 離散化連續參數
         deltaAnonE = einsum(delta_float_tensor, A_int, 'b l d_in, d_in n -> b l d_in n')
         deltaAnonE_float = einsum(delta, A_int, 'b l d_in, d_in n -> b l d_in n')
-        export_tensor_to_txt(deltaAnonE, "deltaA_nonE.txt", is_int=True)
+        
+        # [修改] 中間乘積結果，建議使用 32-bit 匯出 (對應硬體的 Accumulator)
+        export_tensor_to_txt(deltaAnonE, "deltaA_nonE.txt", is_hex=True, bit_width=32)
         
         deltaA_int = hardware_exp_approx(deltaAnonE, scale=BIT_WIDTH_SCALE)
         deltaA_float = torch.exp(deltaAnonE_float)
         
         deltaB = einsum(delta_float_tensor, B_int, 'b l d_in, b l n -> b l d_in n') 
- 
-        
         
         # 匯出硬體運算的標準答案 (Golden Answer)
-        # deltaA 目前還是浮點數，所以用浮點數格式印出
+        
+        # [保留] 浮點數版本通常是給軟體驗證演算法 (Algorithm Debug) 用的，不轉 Hex
         export_tensor_to_txt(deltaA_float, "A_answer_exp_float.txt", is_int=False)
-        export_tensor_to_txt(deltaA_int, "A_answer_exp_int.txt", is_int=True)
-        export_tensor_to_txt(deltaB, "B_answer.txt", is_int=True)
+        
+        # [修改] 整數標準答案轉為 Hex (同樣建議用 32-bit 對齊硬體暫存器寬度)
+        export_tensor_to_txt(deltaA_int, "A_answer_exp_int.txt", is_hex=True, bit_width=32)
+        export_tensor_to_txt(deltaB, "B_answer.txt", is_hex=True, bit_width=32)
+        
         deltaB_u_Quantization = torch.round(deltaB / BIT_WIDTH_SCALE)
         deltaA = deltaA_int / BIT_WIDTH_SCALE
-        export_tensor_to_txt(deltaA, "A_answer_exp_int_compare_float.txt", is_int=False)
         
+        # [保留] 用來觀察量化誤差的浮點數，保持小數點輸出
+        export_tensor_to_txt(deltaA, "A_answer_exp_int_compare_float.txt", is_int=False)
         # ======================================================================
         delta_B_u = einsum(deltaB_u_Quantization,u, 'b l d_in n, b l d_in -> b l d_in n')
         # 執行選擇性掃描 (Perform selective scan)
