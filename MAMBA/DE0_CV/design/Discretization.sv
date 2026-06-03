@@ -2,7 +2,7 @@ module Discretization
 	#(
 		parameter A_size = 16,
 		parameter B_size = 16,
-		parameter delta_size = 16,
+		parameter Delta_size = 16,
 		parameter L = 4,
 		parameter D_IN = 32,
 		parameter N = 16
@@ -29,7 +29,7 @@ module Discretization
 	
 	//	DELTA
 	logic start_delta;
-	logic [0:delta_size-1] reg_delta [0:L-1][0:D_IN-1];
+	logic [0:Delta_size-1] reg_delta [0:L-1][0:D_IN-1];
 	
 	// COUNTER
 	logic data_cnt_rst;
@@ -64,7 +64,7 @@ module Discretization
 	//**********************
 	always_ff @(posedge clk) begin
 		if (start_b) begin
-			reg_B[data_cnt%L][data_cnt/L] <= data[0:A_size-1];
+			reg_B[data_cnt%L][data_cnt/L] <= data[0:B_size-1];
 		end
 	end
 	
@@ -73,7 +73,7 @@ module Discretization
 	//*************************
 	always_ff @(posedge clk) begin
 		if (start_delta) begin
-			reg_delta[data_cnt%L][data_cnt/L] <= data[0:A_size-1];
+			reg_delta[data_cnt%L][data_cnt/L] <= data[0:Delta_size-1];
 		end
 	end
 	
@@ -137,6 +137,55 @@ module Discretization
 		endcase
 		
 	end
+	//////////////////////////////////////////////////////	MULTIPLIER
+	
+	// delta_A
+	logic [0:Delta_size*A_size] delta_A [0:D_IN-1][0:N-1];
+	
+	//******************
+	//		delta_A
+	//******************
+	always_ff @(posedge clk) begin
+		if (start_delta_A) begin
+			delta_A[][] <= 
+		end
+		
+		
+	end
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//////////////////////////////////////////////////////
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 endmodule
