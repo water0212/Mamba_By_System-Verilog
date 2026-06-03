@@ -17,7 +17,8 @@ module Discretization
 		output logic 
 		
 	)
-
+	//////////////////////////////////////////////////////  INPUT
+	
 	// A
 	logic start_a;
 	logic [0:A_size-1] reg_A [0:D_IN-1][0:N-1];
@@ -132,6 +133,6 @@ module Discretization
 		end
 		
 	end
-	
+	//////////////////////////////////////////////////////
 	
 endmodule
