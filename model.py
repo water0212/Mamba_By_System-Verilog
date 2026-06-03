@@ -273,52 +273,128 @@ class MambaBlock(nn.Module):
 
     
     def selective_scan(self, u, delta, A, B, C, D):
-        """Does selective scan algorithm. See:
-            - Section 2 State Space Models in the Mamba paper [1]
-            - Algorithm 2 in Section 3.2 in the Mamba paper [1]
-            - run_SSM(A, B, C, u) in The Annotated S4 [2]
-
-        This is the classic discrete state space formula:
-            x(t + 1) = Ax(t) + Bu(t)
-            y(t)     = Cx(t) + Du(t)
-        except B and C (and the ste p size delta, which is used for discretization) are dependent on the input x(t).
-    
-        Args:
-            u: shape (b, l, d_in)    (See Glossary at top for definitions of b, l, d_in, n...)
-            delta: shape (b, l, d_in)
-            A: shape (d_in, n)
-            B: shape (b, l, n)
-            C: shape (b, l, n)
-            D: shape (d_in,)
-    
-        Returns:
-            output: shape (b, l, d_in)
-    
-        Official Implementation:
-            selective_scan_ref(), https://github.com/state-spaces/mamba/blob/main/mamba_ssm/ops/selective_scan_interface.py#L86
-            Note: I refactored some parts out of `selective_scan_ref` out, so the functionality doesn't match exactly.
-            
-        """
+        """Does selective scan algorithm."""
+        from einops import einsum  # 確保有引入
+        import numpy as np         # 用於方便地輸出純文字檔案
+        import os
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        os.chdir(current_dir)  # 確保輸出檔案在當前程式碼所在的目錄下
+        
         (b, l, d_in) = u.shape
         n = A.shape[1]
+        def hardware_exp_approx(x_int, scale=256):
+            """
+            實作 MARCA 論文中的 e^x 近似硬體演算法 (純整數與位元運算)
+            x_int: 已經放大 scale 倍的定點數張量 (必須為 32-bit 整數)
+            scale: 放大倍率 (256 代表保留 8-bit 小數)
+            """
+            # 確保是整數型態，才能做位元運算
+            x_int = x_int.to(torch.int32)
+            
+            # 1. 乘以 log2(e) ≒ 1.442695
+            # 在定點數表示中，1.442695 * 256 ≒ 369
+            LOG2E_INT = 369
+            
+            # x_int 乘以 369 後，小數點被放大了兩次 (256 * 256)
+            # 所以我們要 >> 8 (除以 256) 退回一次，維持 8-bit 小數精度
+            x_prime_int = torch.bitwise_right_shift(x_int * LOG2E_INT, 8)
+            
+            # 2. 提取整數 Z 與小數 f
+            # 向右位移 8 bit 抓出整數 (PyTorch 的 >> 會自動處理 2 的補數符號延伸)
+            Z = torch.bitwise_right_shift(x_prime_int, 8)  
+            # 用 Bitwise AND ( & 0xFF ) 抓出低 8 bit 作為小數部分
+            f_int = torch.bitwise_and(x_prime_int, 255)    
+            
+            # 3. 計算 2^f ≒ 1 + f 
+            # 在 8-bit 定點數中，真實世界的數值 1.0，在暫存器裡的值就是 256
+            two_to_f_int = 256 + f_int
+            
+            # 4. 乘以 2^Z
+            # Z 是負數，乘以 2^Z 等同於向右位移 |Z|
+            shift_amount = torch.abs(Z)
+            
+            # (安全機制) 避免位移量超過 31 導致 PyTorch 報錯，最大限制在 31
+            # 在硬體中如果位移超過暫存器寬度，值會直接變成 0，這裡的 clamp 也能達到接近 0 的效果
+            shift_amount = torch.clamp(shift_amount, max=31)
+            
+            # 執行最終的右移
+            y_int = torch.bitwise_right_shift(two_to_f_int, shift_amount)
+            
+            # 轉回 float32 讓 PyTorch 能繼續做後續的 einsum
+            return y_int.to(torch.float32)
+        # 輔助函數：將 Tensor 匯出為純文字檔 (Testbench 格式)
+        def export_tensor_to_txt(tensor, filename, is_int=False):
+            # 將 tensor 轉為 numpy，並確保它在 CPU 上
+            np_arr = tensor.detach().cpu().numpy()
+            
+            # 如果是整數，強制轉型以便輸出時不要有小數點
+            if is_int:
+                np_arr = np_arr.astype(np.int32)
+                
+            # 將多維陣列攤平成一維
+            flat_arr = np_arr.flatten()
+            
+            # 寫入檔案，每個數值佔一行 (Verilog $readmemh 或 $readmemb 常用格式)
+            # 你也可以修改為 np.savetxt(filename, flat_arr, fmt='%d', newline=' ') 來變成同一行
+            fmt = '%d' if is_int else '%.6f'
+            np.savetxt(filename, flat_arr, fmt=fmt)
+            # print(f"[硬體除錯] 已匯出 {tensor.shape} 的資料至 {filename}")
+
+        # ======================================================================
+        # 硬體模擬：將 A 與 B 的內部數值全部轉換為整數（捨棄小數點）
+        # ======================================================================
+        #export_tensor_to_txt(delta, "delta_float.txt", is_int=False)
+        # A 方案一：直接無條件四捨五入轉整數
+        A_int_tensor = torch.round(A).to(torch.int32)
+        A_int = A_int_tensor.to(torch.float32)
         
-        # Discretize continuous parameters (A, B)
-        # - A is discretized using zero-order hold (ZOH) discretization (see Section 2 Equation 4 in the Mamba paper [1])
-        # - B is discretized using a simplified Euler discretization instead of ZOH. From a discussion with authors:
-        #   "A is the more important term and the performance doesn't change much with the simplification on B"
-        deltaA = torch.exp(einsum(delta, A, 'b l d_in, d_in n -> b l d_in n'))
-        deltaB_u = einsum(delta, B, u, 'b l d_in, b l n, b l d_in -> b l d_in n')
+        # B 方案二：硬體定點數量化 (Fixed-point Quantization)
+        BIT_WIDTH_SCALE = 256  
+        B_int_tensor = torch.round(B * BIT_WIDTH_SCALE).to(torch.int32)
         
-        # Perform selective scan (see scan_SSM() in The Annotated S4 [2])
-        # Note that the below is sequential, while the official implementation does a much faster parallel scan that
-        # is additionally hardware-aware (like FlashAttention).
+        # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
+        # B 是我們量化過後的整數，所以用 is_int=True 匯出乾淨的整數格式
+        export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_int=True)
+        export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_int=True)
+        
+        # 如果需要，你也可以匯出 delta 和 u 作為 testbench 輸入
+        delta_int_tensor = torch.round(delta * BIT_WIDTH_SCALE).to(torch.int32)
+        export_tensor_to_txt(delta_int_tensor, "delta_testbench.txt", is_int=True)
+        delta_float_tensor = delta_int_tensor.to(torch.float32)
+        B_int = B_int_tensor.to(torch.float32)
+        # ======================================================================
+        
+        # 離散化連續參數
+        deltaAnonE = einsum(delta_float_tensor, A_int, 'b l d_in, d_in n -> b l d_in n')
+        deltaAnonE_float = einsum(delta, A_int, 'b l d_in, d_in n -> b l d_in n')
+        export_tensor_to_txt(deltaAnonE, "deltaA_nonE.txt", is_int=True)
+        
+        deltaA_int = hardware_exp_approx(deltaAnonE, scale=BIT_WIDTH_SCALE)
+        deltaA_float = torch.exp(deltaAnonE_float)
+        
+        deltaB = einsum(delta_float_tensor, B_int, 'b l d_in, b l n -> b l d_in n') 
+ 
+        
+        
+        # 匯出硬體運算的標準答案 (Golden Answer)
+        # deltaA 目前還是浮點數，所以用浮點數格式印出
+        export_tensor_to_txt(deltaA_float, "A_answer_exp_float.txt", is_int=False)
+        export_tensor_to_txt(deltaA_int, "A_answer_exp_int.txt", is_int=True)
+        export_tensor_to_txt(deltaB, "B_answer.txt", is_int=True)
+        deltaB_u_Quantization = torch.round(deltaB / BIT_WIDTH_SCALE)
+        deltaA = deltaA_int / BIT_WIDTH_SCALE
+        export_tensor_to_txt(deltaA, "A_answer_exp_int_compare_float.txt", is_int=False)
+        
+        # ======================================================================
+        delta_B_u = einsum(deltaB_u_Quantization,u, 'b l d_in n, b l d_in -> b l d_in n')
+        # 執行選擇性掃描 (Perform selective scan)
         x = torch.zeros((b, d_in, n), device=deltaA.device)
         ys = []    
         for i in range(l):
-            x = deltaA[:, i] * x + deltaB_u[:, i]
+            x = deltaA[:, i] * x + delta_B_u[:, i]
             y = einsum(x, C[:, i, :], 'b d_in n, b n -> b d_in')
             ys.append(y)
-        y = torch.stack(ys, dim=1)  # shape (b, l, d_in)
+        y = torch.stack(ys, dim=1) 
         
         y = y + u * D
     
