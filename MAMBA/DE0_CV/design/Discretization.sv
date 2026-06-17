@@ -30,7 +30,7 @@ module Discretization
 	
 	//	DELTA
 	logic start_delta;
-	logic [0:Delta_size-1] reg_delta [0:L-1][0:D_IN-1];
+	logic [0:Delta_size-1] reg_delta [0:D_IN-1][0:-1];
 	
 	// COUNTER
 	logic data_cnt_rst;
@@ -72,11 +72,11 @@ module Discretization
 	end
 	
 	//*************************
-	//			delta_input  (l_d_in)
+	//			delta_input  (d_in,l)
 	//*************************
 	always_ff @(posedge clk) begin
 		if (start_delta) begin
-			reg_delta[data_cnt%L][data_cnt/L] <= data[0:Delta_size-1];
+			reg_delta[data_cnt/L][data_cnt%L] <= data[0:Delta_size-1];
 		end
 	end
 	
@@ -162,8 +162,8 @@ module Discretization
 	
 	
 	// delta_A & delta_B
-	logic [0:DELTA_A_SIZE] delta_A [0:L-1][0:D_IN-1][0:N-1];
-	logic [0:DELTA_B_SIZE] delta_B [0:L-1][0:D_IN-1][0:N-1];
+	logic [0:DELTA_A_SIZE] delta_A [0:L-1][0:D_IN-1][0:N-1];		// delta_A (l,d_in,n)
+	logic [0:DELTA_B_SIZE] delta_B [0:L-1][0:D_IN-1][0:N-1];		// delta_B (l,d_in,n)
 	
 	
 	//********************************
@@ -229,9 +229,9 @@ module Discretization
 			always_ff @(posedge clk) begin
 				if (delta_mul_busy) begin
 					// delta_A
-					delta_A[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt] * reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt];
+					delta_A[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= reg_delta[row_group_cnt*PE_NUM+PE_cnt][token_cnt] * reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt];
 					// delta_B
-					delta_B[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt] * reg_B[row_group_cnt*PE_NUM+PE_cnt][col_cnt];
+					delta_B[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= reg_delta[row_group_cnt*PE_NUM+PE_cnt][token_cnt] * reg_B[token_cnt][col_cnt];
 				end
 				
 			end
@@ -239,21 +239,6 @@ module Discretization
 		
 		
 	endgenerate
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	//////////////////////////////////////////////////////
 	

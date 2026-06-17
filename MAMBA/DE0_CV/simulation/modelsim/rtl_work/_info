@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
 vadder_4bit
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-!s110 1781665473
+!s110 1781667149
 !i10b 1
 !s100 HFKgC;ik<lf^?n8YiP4nJ3
 I75;5=JbbCT[P9=oF^8_bB3
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1781665472.000000
+!s108 1781667149.000000
 !s107 C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design|C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !i113 1
@@ -35,7 +35,7 @@ o-sv -work work
 Z5 tCvgOpt 0
 vDE0_CV
 R1
-Z6 !s110 1781666342
+Z6 !s110 1781668653
 !i10b 1
 !s100 AYSgFb;^maJWHVOKgVgi?2
 IYSKZRJQaDTR_jVc8zO7<N0
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-Z7 !s108 1781666342.000000
+!s108 1781668653.000000
 !s107 ../../design/DE0_CV.sv|
 !s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
@@ -61,13 +61,13 @@ vDiscretization
 R1
 R6
 !i10b 1
-!s100 INVQU0LN;N8nK_4Z<O7lO0
-IFP>4n1Tz?RUlPPD4GVHH11
+!s100 C<P`SR31jHN?OGi0gljJ<0
+IkIZUMWH:=>DMMA^E7Y5lW1
 R2
 !s105 Discretization_sv_unit
 S1
 R0
-w1781666334
+w1781668312
 8../../design/Discretization.sv
 F../../design/Discretization.sv
 L0 1
@@ -75,7 +75,7 @@ R4
 r1
 !s85 0
 31
-R7
+Z7 !s108 1781668652.000000
 !s107 ../../design/Discretization.sv|
 !s90 -reportprogress|300|../../design/Discretization.sv|
 !i113 1
@@ -83,7 +83,7 @@ R5
 n@discretization
 vtestbench
 R1
-R6
+!s110 1781668652
 !i10b 1
 !s100 V<9G;O]`_;h2aZLYBa:WD0
 IKS_`5M9NNkS_O8=@3812^0
