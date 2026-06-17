@@ -12,6 +12,7 @@ module testbench;
     logic clk;
     logic rst;
     logic start;
+    logic start_delta_mul;
     logic finish;
     logic [0:15] data;
 
@@ -19,7 +20,7 @@ module testbench;
     Discretization #(
         .A_size(A_size),
         .B_size(B_size),
-        .delta_size(delta_size),
+        .Delta_size(delta_size),
         .L(L),
         .D_IN(D_IN),
         .N(N)
@@ -29,6 +30,7 @@ module testbench;
         .start(start),
         .data(data),
         // output 你還沒寫，所以這裡先不接
+        .start_delta_mul(start_delta_mul),
         .finish(finish)
     );
 
