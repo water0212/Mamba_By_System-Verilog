@@ -4,7 +4,7 @@
 
 # ------------------------------------------------------------
 vlog ../tb/testbench.sv
-vlog ../../design/Discretization.sv
+vlog ../../design/adder_4bit.sv
 vlog ../../design/DE0_CV.sv
 
 
