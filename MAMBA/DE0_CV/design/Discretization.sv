@@ -132,6 +132,8 @@ module Discretization
 	
 	localparam PE_NUM         = 16;
 	localparam ROW_GROUP      = D_IN / PE_NUM;
+	localparam DELTA_A_SIZE 	= Delta_size + A_size;
+	localparam DELTA_B_SIZE 	= Delta_size + B_size;
 	
 	logic [0:$clog2(L)-1]         token_cnt;
 	logic [0:$clog2(N)-1]         col_cnt;
@@ -140,8 +142,8 @@ module Discretization
 	logic delta_mul_busy;
 	logic delta_mul_done;
 	
-	logic signed [31:0] delta_A [0:L-1][0:D_IN-1][0:N-1];
-	logic signed [31:0] delta_B [0:L-1][0:D_IN-1][0:N-1];
+	logic signed [DELTA_A_SIZE-1:0] delta_A [0:L-1][0:D_IN-1][0:N-1];
+	logic signed [DELTA_B_SIZE-1:0] delta_B [0:L-1][0:D_IN-1][0:N-1];
 	
 	always_ff @(posedge clk) begin
 		if (rst) begin
