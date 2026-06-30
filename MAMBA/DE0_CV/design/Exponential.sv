@@ -22,20 +22,20 @@ module Exponential
     //**********************
     //         >> 8
     //**********************
-    logic [SIZE:0] shift_8_data;
+    logic signed [SIZE:0] shift_8_data;
     assign shift_8_data = data_369 >> 8;
 
     //**********************
     //          Z
     //**********************
-    logic [SIZE-1:0] z;
+    logic signed [SIZE-1:0] z;
     assign z = shift_8_data >> 8;
 
     //**********************
     //          F
     //**********************
     logic [SIZE-1:0] f;
-    assign f = z & 32'h0000FFFF;
+    assign f = z[7:0];
 
     //**********************
     //          2^f
@@ -43,7 +43,25 @@ module Exponential
     logic [SIZE-1:0] pow_2_f;
     assign pow_2_f = 256 + f;
 
-    assign out_data = pow_2_f;
+    //**********************
+    //          OUT
+    //**********************
+    logic [SIZE-1:0] shift_amount;
+    if (z < 0) begin
+       shift_amount = -z; 
+    end else begin
+       shift_amount = z;
+    end
+
+    if (shift_amount > 31) begin
+        shift_amount = 31;
+    end
+
+    if (z < 0) begin
+        assign out_data = pow_2_f >> shift_amount;
+    end else begin
+        assign out_data = pow_2_f << shift_amount;
+    end
 
 endmodule
 
