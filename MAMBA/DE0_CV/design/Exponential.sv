@@ -47,20 +47,22 @@ module Exponential
     //          OUT
     //**********************
     logic [SIZE-1:0] shift_amount;
-    if (z < 0) begin
-       shift_amount = -z; 
-    end else begin
-       shift_amount = z;
-    end
+    always_comb begin
+        if (z < 0) begin
+            shift_amount = -z; 
+        end else begin
+            shift_amount = z;
+        end
 
-    if (shift_amount > 31) begin
-        shift_amount = 31;
-    end
+        if (shift_amount > 31) begin
+            shift_amount = 31;
+        end
 
-    if (z < 0) begin
-        assign out_data = pow_2_f >> shift_amount;
-    end else begin
-        assign out_data = pow_2_f << shift_amount;
+        if (z < 0) begin
+            out_data = pow_2_f >> shift_amount;
+        end else begin
+            out_data = pow_2_f << shift_amount;
+        end
     end
 
 endmodule
