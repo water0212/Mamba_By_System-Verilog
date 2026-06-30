@@ -12,56 +12,56 @@
 # 
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:52:49 on Jun 30,2026
+# Start time: 15:06:52 on Jun 30,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv 
 # -- Compiling module adder_4bit
 # 
 # Top level modules:
 # 	adder_4bit
-# End time: 11:52:49 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:06:52 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:52:49 on Jun 30,2026
+# Start time: 15:06:52 on Jun 30,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 11:52:49 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:06:52 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:52:56 on Jun 30,2026
+# Start time: 15:06:57 on Jun 30,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 11:52:56 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:06:57 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:52:56 on Jun 30,2026
+# Start time: 15:06:57 on Jun 30,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 11:52:56 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:06:57 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:52:56 on Jun 30,2026
+# Start time: 15:06:57 on Jun 30,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 11:52:56 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:06:57 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 11:52:59 on Jun 30,2026
+# Start time: 15:06:59 on Jun 30,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -75,19 +75,13 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftq6hjye".
+#           Attempting to use alternate WLF file "./wlftyha4ja".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftq6hjye
-# ** Error: (vish-4014) No objects found matching '/testbench/a'.
-# Executing ONERROR command at macro ./wave.do line 4
-# ** Error: (vish-4014) No objects found matching '/testbench/b'.
-# Executing ONERROR command at macro ./wave.do line 5
-# ** Error: (vish-4014) No objects found matching '/testbench/s'.
-# Executing ONERROR command at macro ./wave.do line 6
+#           Using alternate file: ./wlftyha4ja
 # ========== Test 0 start ==========
 # Mismatch found:
-#   Output: FFFFFFB5
-#   Answer: FFFFFEB5
+#   Output: 00000195
+#   Answer: 00000237
 # 
 # Files have different lengths.
 # Test 0 FAIL.
@@ -97,54 +91,39 @@ do sim.do
 # ** Note: $stop    : ../tb/testbench.sv(185)
 #    Time: 98820 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at ../tb/testbench.sv line 185
-add wave -position insertpoint  \
-sim:/testbench/dut/clk \
-sim:/testbench/dut/rst \
-sim:/testbench/dut/start \
-sim:/testbench/dut/data \
-sim:/testbench/dut/out_valid \
-sim:/testbench/dut/out_data \
-sim:/testbench/dut/finish \
-sim:/testbench/dut/delta_A \
-sim:/testbench/dut/delta_B
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim/wave.do
-add wave -position insertpoint  \
-sim:/testbench/dut/delta_mul_busy
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim/wave.do
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim/wave.do
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 12:04:57 on Jun 30,2026
+# Start time: 15:10:57 on Jun 30,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 12:04:57 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:10:57 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 12:04:57 on Jun 30,2026
+# Start time: 15:10:57 on Jun 30,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 12:04:57 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:10:57 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 12:04:57 on Jun 30,2026
+# Start time: 15:10:57 on Jun 30,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 12:04:57 on Jun 30,2026, Elapsed time: 0:00:00
+# End time: 15:10:57 on Jun 30,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
-# End time: 12:04:59 on Jun 30,2026, Elapsed time: 0:12:00
-# Errors: 9, Warnings: 6
+# End time: 15:10:59 on Jun 30,2026, Elapsed time: 0:04:00
+# Errors: 0, Warnings: 6
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 12:04:59 on Jun 30,2026
+# Start time: 15:11:00 on Jun 30,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -158,13 +137,13 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftzgf666".
+#           Attempting to use alternate WLF file "./wlft1rmi2b".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftzgf666
+#           Using alternate file: ./wlft1rmi2b
 # ========== Test 0 start ==========
 # Mismatch found:
-#   Output: FFFFFFB5
-#   Answer: FFFFFEB5
+#   Output: 00000195
+#   Answer: 00000237
 # 
 # Files have different lengths.
 # Test 0 FAIL.
@@ -174,6 +153,119 @@ do sim.do
 # ** Note: $stop    : ../tb/testbench.sv(185)
 #    Time: 98820 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at ../tb/testbench.sv line 185
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim/wave.do
-# End time: 12:05:36 on Jun 30,2026, Elapsed time: 0:00:37
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:37:08 on Jun 30,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 15:37:08 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:37:08 on Jun 30,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 15:37:09 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:37:09 on Jun 30,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 15:37:09 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 15:37:10 on Jun 30,2026, Elapsed time: 0:26:10
+# Errors: 0, Warnings: 6
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 15:37:10 on Jun 30,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlft4i76xb".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft4i76xb
+# ========== Test 0 start ==========
+# Test 0 PASS.
+# 
+# 
+# [SUCCESS] All 1 tests passed!
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 98820 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:41:07 on Jun 30,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 15:41:07 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:41:07 on Jun 30,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 15:41:07 on Jun 30,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:41:07 on Jun 30,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 15:41:08 on Jun 30,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 15:41:09 on Jun 30,2026, Elapsed time: 0:03:59
+# Errors: 0, Warnings: 6
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 15:41:09 on Jun 30,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlftrh2e84".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftrh2e84
+# ========== Test 0 start ==========
+# Test 0 PASS.
+# 
+# 
+# [SUCCESS] All 1 tests passed!
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 98820 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+# End time: 15:58:12 on Jun 30,2026, Elapsed time: 0:17:03
 # Errors: 0, Warnings: 6

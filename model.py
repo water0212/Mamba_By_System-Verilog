@@ -364,12 +364,12 @@ class MambaBlock(nn.Module):
         # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
         # 加入 is_hex=True 並設定硬體記憶體的位元寬度 (預設為 8-bit)
         # 注意：如果你的硬體對應暫存器是 16 或 32 bit，請把 bit_width 改成 16 或 32
-        export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_hex=True, bit_width=8)
-        export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_hex=True, bit_width=8)
+        export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_hex=True, bit_width=16)
+        export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_hex=True, bit_width=16)
         
         # 如果需要，你也可以匯出 delta 和 u 作為 testbench 輸入
         delta_int_tensor = torch.round(delta * BIT_WIDTH_SCALE).to(torch.int32)
-        export_tensor_to_txt(delta_int_tensor, "delta_testbench.txt", is_hex=True, bit_width=8)
+        export_tensor_to_txt(delta_int_tensor, "delta_testbench.txt", is_hex=True, bit_width=16)
         delta_float_tensor = delta_int_tensor.to(torch.float32)
         B_int = B_int_tensor.to(torch.float32)
         # ======================================================================

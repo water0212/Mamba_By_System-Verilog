@@ -14,7 +14,7 @@ module Discretization
 		input  logic [15:0] data,   
 		
 		output logic out_valid,
-		output logic [31:0] out_data, // 修正：配合標準答案，改為完整 32-bit 輸出
+		output logic [31:0] out_data, 
 		
 		output logic start_delta_mul,
 		output logic finish
@@ -22,71 +22,61 @@ module Discretization
 
 	//////////////////////////////////////////////////////  INPUT
 	
-	//A
 	logic start_a;
 	logic [A_size-1:0] reg_A [0:D_IN-1][0:N-1];
 	
-	//B
 	logic start_b;
 	logic [B_size-1:0] reg_B [0:L-1][0:N-1];
 	
-	//Delta
 	logic start_delta;
-	logic [Delta_size-1:0] reg_delta [0:D_IN-1][0:L-1];
+	logic [Delta_size-1:0] reg_delta [0:L-1][0:D_IN-1];
 	
-	//Counter
 	logic data_cnt_rst;
 	logic [0:10] data_cnt;
 	
-	//IN_FSM
 	typedef enum {IDLE, START, A, B, DELTA, START_MUL} input_state;
 	input_state in_ps, in_ns;
 	
 	//**********************
-	//			COUNTER
+	// COUNTER
 	//**********************
-	
 	always_ff @(posedge clk) begin
-		if(rst | data_cnt_rst) data_cnt <= 0;
+		if (rst | data_cnt_rst) data_cnt <= 0;
 		else data_cnt <= data_cnt + 1;
 	end
 	
 	//**********************
-	//			A_input  (d_in,n)
+	// A_input (d_in, n)
 	//**********************
-	
 	always_ff @(posedge clk) begin
 		if (start_a) reg_A[data_cnt / N][data_cnt % N] <= data;
 	end
 	
 	//**********************
-	//			B_input  (l,n)
+	// B_input (l, n)
 	//**********************
-	
 	always_ff @(posedge clk) begin
 		if (start_b) reg_B[data_cnt / N][data_cnt % N] <= data;
 	end
 	
 	//*************************
-	//			delta_input  (d_in,l)
+	// delta_input (l, d_in)
 	//*************************
-	
 	always_ff @(posedge clk) begin
-		if (start_delta) reg_delta[data_cnt / L][data_cnt % L] <= data;
+		if (start_delta) begin
+			reg_delta[data_cnt / D_IN][data_cnt % D_IN] <= data;
+		end
 	end
 	
 	//******************
-	//			IN_FSM
+	// IN_FSM
 	//******************
-	
 	always_ff @(posedge clk) begin
-		if (rst) 
-			in_ps <= IDLE;
-		else 
-			in_ps <= in_ns;
+		if (rst) in_ps <= IDLE;
+		else in_ps <= in_ns;
 	end
+	
 	always_comb begin
-	
 		data_cnt_rst    = 0;
 		start_a         = 0;
 		start_b         = 0;
@@ -141,28 +131,17 @@ module Discretization
 	////////////////////////////////////////////////////// MULTIPLIER
 	
 	localparam PE_NUM         = 16;
-	localparam DELTA_A_SIZE   = Delta_size + A_size;
-	localparam DELTA_B_SIZE   = Delta_size + B_size;
 	localparam ROW_GROUP      = D_IN / PE_NUM;
 	
-	// counter
 	logic [0:$clog2(L)-1]         token_cnt;
 	logic [0:$clog2(N)-1]         col_cnt;
 	logic [0:$clog2(ROW_GROUP)-1] row_group_cnt;
 	
-	// PE_STATE
 	logic delta_mul_busy;
 	logic delta_mul_done;
 	
-	
-	//delta_A & delta_B
-	logic signed [DELTA_A_SIZE-1:0] delta_A [0:L-1][0:D_IN-1][0:N-1]; // delta_A (l,d_in,n)
-	logic signed [DELTA_B_SIZE-1:0] delta_B [0:L-1][0:D_IN-1][0:N-1]; // delta_B (l,d_in,n)
-	
-	
-	//********************************
-	//		delta_A & delta_B control
-	//********************************
+	logic signed [31:0] delta_A [0:L-1][0:D_IN-1][0:N-1];
+	logic signed [31:0] delta_B [0:L-1][0:D_IN-1][0:N-1];
 	
 	always_ff @(posedge clk) begin
 		if (rst) begin
@@ -210,10 +189,13 @@ module Discretization
 		for (PE_cnt = 0; PE_cnt < PE_NUM; PE_cnt = PE_cnt + 1) begin : delta_A_generate
 			always_ff @(posedge clk) begin
 				if (delta_mul_busy) begin
+					// 完美對齊 einsum('l d, d n -> l d n')
 					delta_A[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
-						$signed(reg_delta[row_group_cnt*PE_NUM+PE_cnt][token_cnt]) * $signed(reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt]);
+						$signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt]);
+					
+					// 完美對齊 einsum('l d, l n -> l d n')
 					delta_B[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
-						$signed(reg_delta[row_group_cnt*PE_NUM+PE_cnt][token_cnt]) * $signed(reg_B[token_cnt][col_cnt]);
+						$signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_B[token_cnt][col_cnt]);
 				end
 			end
 		end
@@ -231,7 +213,8 @@ module Discretization
 		if (rst) begin
 			out_valid <= 0; out_data  <= 0; finish    <= 0;
 			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
-		end else begin
+		end 
+		else begin
 			if (delta_mul_done) begin
 				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
 				out_valid <= 0; finish    <= 0;
@@ -239,36 +222,41 @@ module Discretization
 			else if (out_busy) begin
 				out_valid <= 1;
 				
-				// 輸出完整 32 位元
 				if (out_is_B == 0) out_data <= delta_A[out_l][out_d][out_n];
 				else               out_data <= delta_B[out_l][out_d][out_n];
 
-				// 修正：標準答案的排序是 n -> l -> d
 				if (out_n == N-1) begin
 					out_n <= 0;
-					if (out_l == L-1) begin
-						out_l <= 0;
-						if (out_d == D_IN-1) begin
-							out_d <= 0;
+					
+					if (out_d == D_IN-1) begin
+						out_d <= 0;
+						
+						if (out_l == L-1) begin
+							out_l <= 0;
 							
 							if (out_is_B == 1) begin
 								out_busy <= 0;   
 								finish   <= 1;   
-							end else begin
+							end 
+							else begin
 								out_is_B <= 1;   
 							end
 							
-						end else begin
-							out_d <= out_d + 1;
+						end 
+						else begin
+							out_l <= out_l + 1;
 						end
-					end else begin
-						out_l <= out_l + 1;
+					end 
+					else begin
+						out_d <= out_d + 1;
 					end
-				end else begin
+				end 
+				else begin
 					out_n <= out_n + 1;
 				end
 				
-			end else begin
+			end 
+			else begin
 				out_valid <= 0; finish <= 0; 
 			end
 		end
