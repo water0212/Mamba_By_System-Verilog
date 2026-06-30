@@ -482,11 +482,11 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name SYSTEMVERILOG_FILE simulation/tb/testbench.sv
 set_global_assignment -name COMMAND_MACRO_FILE simulation/modelsim/wave.do
 set_global_assignment -name COMMAND_MACRO_FILE simulation/modelsim/sim.do
 set_global_assignment -name COMMAND_MACRO_FILE simulation/modelsim/compile.do
 set_global_assignment -name SYSTEMVERILOG_FILE design/Discretization.sv
-set_global_assignment -name SYSTEMVERILOG_FILE simulation/tb/testbench.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/adder_4bit.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/DE0_CV.sv
 set_global_assignment -name SDC_FILE DE0_CV.SDC

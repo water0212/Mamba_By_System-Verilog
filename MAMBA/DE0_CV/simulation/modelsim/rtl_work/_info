@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
 vadder_4bit
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-!s110 1781661795
+!s110 1782791569
 !i10b 1
 !s100 HFKgC;ik<lf^?n8YiP4nJ3
 Ij`0nRcD^oCeT?>ZTUHmiZ3
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1781661795.000000
+!s108 1782791569.000000
 !s107 C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design|C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !i113 1
@@ -35,7 +35,7 @@ o-sv -work work
 Z5 tCvgOpt 0
 vDE0_CV
 R1
-Z6 !s110 1781661832
+Z6 !s110 1782792297
 !i10b 1
 !s100 AYSgFb;^maJWHVOKgVgi?2
 IYSKZRJQaDTR_jVc8zO7<N0
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-Z7 !s108 1781661832.000000
+Z7 !s108 1782792297.000000
 !s107 ../../design/DE0_CV.sv|
 !s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
@@ -61,13 +61,13 @@ vDiscretization
 R1
 R6
 !i10b 1
-!s100 mKVAdm5OW9E@0?;bD=h0j2
-IVIGZMoL1Z4b;iFEcV>>5c2
+!s100 YT4O9Y3LiJ]RJdc^lj^lQ1
+I[biT44JMD[7EZAJHkl]nW2
 R2
 !s105 Discretization_sv_unit
 S1
 R0
-w1781659597
+w1782748588
 8../../design/Discretization.sv
 F../../design/Discretization.sv
 L0 1
@@ -81,50 +81,26 @@ R7
 !i113 1
 R5
 n@discretization
-vtb_Discretization
-R1
-!s110 1781661805
-!i10b 1
-!s100 `cIUDmHEH5BO1QRL_OH>C1
-IdNlAhOk[[d_3[9=hhIjfm0
-R2
-Z8 !s105 testbench_sv_unit
-S1
-R0
-w1781661779
-Z9 8../tb/testbench.sv
-Z10 F../tb/testbench.sv
-L0 3
-R4
-r1
-!s85 0
-31
-!s108 1781661805.000000
-Z11 !s107 ../tb/testbench.sv|
-Z12 !s90 -reportprogress|300|../tb/testbench.sv|
-!i113 1
-R5
-ntb_@discretization
 vtestbench
 R1
 R6
 !i10b 1
-!s100 ?UCa3Fk388PVc;G:bjN4X1
-IgoT=n3YLe;JioaYO5lc>@3
+!s100 NFhBM]kE_lbg:`zQjR>;l3
+IUC97U_7Rb;a@CQ9fUMB?n1
 R2
-R8
+!s105 testbench_sv_unit
 S1
 R0
-w1781661829
-R9
-R10
+w1782740491
+8../tb/testbench.sv
+F../tb/testbench.sv
 L0 3
 R4
 r1
 !s85 0
 31
 R7
-R11
-R12
+!s107 ../tb/testbench.sv|
+!s90 -reportprogress|300|../tb/testbench.sv|
 !i113 1
 R5

@@ -8,181 +8,270 @@ module Discretization
 		parameter N = 16
 	)
 	(	
-		input logic clk,
-		input logic rst,
-		input logic start,
-		input logic [0:15] data,
+		input  logic clk,
+		input  logic rst,
+		input  logic start,
+		input  logic [15:0] data,   
 		
-		// output等等寫
+		output logic out_valid,
+		output logic [31:0] out_data, // 修正：配合標準答案，改為完整 32-bit 輸出
+		
+		output logic start_delta_mul,
 		output logic finish
-		
 	);
+
 	//////////////////////////////////////////////////////  INPUT
 	
-	// A
+	//A
 	logic start_a;
-	logic [0:A_size-1] reg_A [0:D_IN-1][0:N-1];
+	logic [A_size-1:0] reg_A [0:D_IN-1][0:N-1];
 	
-	//	B
+	//B
 	logic start_b;
-	logic [0:B_size-1] reg_B [0:L-1][0:N-1];
+	logic [B_size-1:0] reg_B [0:L-1][0:N-1];
 	
-	//	DELTA
+	//Delta
 	logic start_delta;
-	logic [0:Delta_size-1] reg_delta [0:L-1][0:D_IN-1];
+	logic [Delta_size-1:0] reg_delta [0:D_IN-1][0:L-1];
 	
-	// COUNTER
+	//Counter
 	logic data_cnt_rst;
 	logic [0:10] data_cnt;
 	
-	// IN_FSM
-	typedef enum {IDLE, START, A, B, DELTA, FINISH} input_state;
+	//IN_FSM
+	typedef enum {IDLE, START, A, B, DELTA, START_MUL} input_state;
 	input_state in_ps, in_ns;
 	
 	//**********************
 	//			COUNTER
 	//**********************
+	
 	always_ff @(posedge clk) begin
-		if (rst | data_cnt_rst) begin
-			data_cnt <= 0;
-		end else begin
-			data_cnt <= data_cnt + 1;
-		end
+		if(rst | data_cnt_rst) data_cnt <= 0;
+		else data_cnt <= data_cnt + 1;
 	end
 	
 	//**********************
 	//			A_input  (d_in,n)
 	//**********************
+	
 	always_ff @(posedge clk) begin
-		if (start_a) begin
-			reg_A[data_cnt%D_IN][data_cnt/N] <= data[0:A_size-1];
-		end
+		if (start_a) reg_A[data_cnt / N][data_cnt % N] <= data;
 	end
 	
 	//**********************
 	//			B_input  (l,n)
 	//**********************
+	
 	always_ff @(posedge clk) begin
-		if (start_b) begin
-			reg_B[data_cnt%L][data_cnt/L] <= data[0:B_size-1];
-		end
+		if (start_b) reg_B[data_cnt / N][data_cnt % N] <= data;
 	end
 	
 	//*************************
-	//			delta_input  (l_d_in)
+	//			delta_input  (d_in,l)
 	//*************************
-	always_ff @(posedge clk) begin
-		if (start_delta) begin
-			reg_delta[data_cnt%L][data_cnt/L] <= data[0:Delta_size-1];
-		end
-	end
 	
+	always_ff @(posedge clk) begin
+		if (start_delta) reg_delta[data_cnt / L][data_cnt % L] <= data;
+	end
 	
 	//******************
 	//			IN_FSM
 	//******************
-	always_ff @(posedge clk) begin
-		if (rst) begin
-			in_ps <= IDLE;
-		end else begin
-			in_ps <= in_ns;
-		end
-	end
 	
+	always_ff @(posedge clk) begin
+		if (rst) 
+			in_ps <= IDLE;
+		else 
+			in_ps <= in_ns;
+	end
 	always_comb begin
-		
-		data_cnt_rst	= 0;
-		start_a			= 0;
-		start_b			= 0;
-		start_delta		= 0;
-		finish			= 0;
-		in_ns 			= in_ps;
+	
+		data_cnt_rst    = 0;
+		start_a         = 0;
+		start_b         = 0;
+		start_delta     = 0;
+		start_delta_mul = 0;
+		in_ns           = in_ps;
 		
 		case (in_ps)
-			IDLE:	begin
+			IDLE: 
+			begin
 				in_ns = START;
 			end
-			START: begin
+			START: 
+			begin
 				if (start) begin
 					data_cnt_rst = 1;
 					in_ns = A;
 				end
 			end
-			A: begin
+			A: 
+			begin
 				start_a = 1;
-				if (data_cnt >= D_IN*N) begin
+				if (data_cnt == D_IN*N-1) begin
 					data_cnt_rst = 1;
 					in_ns = B;
 				end
 			end
-			B: begin
+			B: 
+			begin
 				start_b = 1;
-				if (data_cnt >= L*N) begin
+				if (data_cnt == L*N-1) begin
 					data_cnt_rst = 1;
 					in_ns = DELTA;
 				end
 			end
-			DELTA: begin
+			DELTA: 
+			begin
 				start_delta = 1;
-				if (data_cnt >= L*D_IN) begin
+				if (data_cnt == L*D_IN-1) begin
 					data_cnt_rst = 1;
-					in_ns = FINISH;
+					in_ns = START_MUL;
 				end
-				
 			end
-			FINISH: begin
-				finish = 1;
+			START_MUL: 
+			begin
+				start_delta_mul = 1;
 				in_ns = IDLE;
 			end
 		endcase
-		
 	end
-	//////////////////////////////////////////////////////	MULTIPLIER
+
+	////////////////////////////////////////////////////// MULTIPLIER
 	
-	// delta_A
-	logic [0:Delta_size*A_size] delta_A [0:D_IN-1][0:N-1];
+	localparam PE_NUM         = 16;
+	localparam DELTA_A_SIZE   = Delta_size + A_size;
+	localparam DELTA_B_SIZE   = Delta_size + B_size;
+	localparam ROW_GROUP      = D_IN / PE_NUM;
 	
-	//******************
-	//		delta_A
-	//******************
+	// counter
+	logic [0:$clog2(L)-1]         token_cnt;
+	logic [0:$clog2(N)-1]         col_cnt;
+	logic [0:$clog2(ROW_GROUP)-1] row_group_cnt;
 	
-		
-		
-	
-	
-	
-	
-	
-	
-	
+	// PE_STATE
+	logic delta_mul_busy;
+	logic delta_mul_done;
 	
 	
+	//delta_A & delta_B
+	logic signed [DELTA_A_SIZE-1:0] delta_A [0:L-1][0:D_IN-1][0:N-1]; // delta_A (l,d_in,n)
+	logic signed [DELTA_B_SIZE-1:0] delta_B [0:L-1][0:D_IN-1][0:N-1]; // delta_B (l,d_in,n)
 	
 	
+	//********************************
+	//		delta_A & delta_B control
+	//********************************
 	
+	always_ff @(posedge clk) begin
+		if (rst) begin
+			token_cnt      <= 0;
+			col_cnt        <= 0;
+			row_group_cnt  <= 0;
+			delta_mul_busy <= 0;
+			delta_mul_done <= 0;
+		end 
+		else begin					
+			delta_mul_done <= 0;
+			if (start_delta_mul) begin
+				token_cnt      <= 0; 
+				col_cnt        <= 0;
+				row_group_cnt  <= 0;
+				delta_mul_busy <= 1;
+			end 
+			else if (delta_mul_busy) begin
+				if (row_group_cnt == ROW_GROUP-1) begin
+					row_group_cnt <= 0;
+					if (col_cnt == N-1) begin
+						col_cnt <= 0;
+						if (token_cnt == L-1) begin
+							token_cnt      <= 0;
+							delta_mul_busy <= 0;
+							delta_mul_done <= 1;
+						end 
+						else begin
+							token_cnt <= token_cnt + 1;
+						end
+					end 
+					else begin
+						col_cnt <= col_cnt + 1;
+					end
+				end 
+				else begin
+					row_group_cnt <= row_group_cnt + 1;
+				end
+			end
+		end
+	end
 	
+	genvar PE_cnt;
+	generate
+		for (PE_cnt = 0; PE_cnt < PE_NUM; PE_cnt = PE_cnt + 1) begin : delta_A_generate
+			always_ff @(posedge clk) begin
+				if (delta_mul_busy) begin
+					delta_A[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
+						$signed(reg_delta[row_group_cnt*PE_NUM+PE_cnt][token_cnt]) * $signed(reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt]);
+					delta_B[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
+						$signed(reg_delta[row_group_cnt*PE_NUM+PE_cnt][token_cnt]) * $signed(reg_B[token_cnt][col_cnt]);
+				end
+			end
+		end
+	endgenerate
 	
+	////////////////////////////////////////////////////// OUTPUT FSM
 	
-	
-	
-	//////////////////////////////////////////////////////
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	logic out_busy;
+	logic out_is_B;
+	logic [0:$clog2(L)-1]    out_l;
+	logic [0:$clog2(D_IN)-1] out_d;
+	logic [0:$clog2(N)-1]    out_n;
+
+	always_ff @(posedge clk) begin
+		if (rst) begin
+			out_valid <= 0; out_data  <= 0; finish    <= 0;
+			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
+		end else begin
+			if (delta_mul_done) begin
+				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
+				out_valid <= 0; finish    <= 0;
+			end 
+			else if (out_busy) begin
+				out_valid <= 1;
+				
+				// 輸出完整 32 位元
+				if (out_is_B == 0) out_data <= delta_A[out_l][out_d][out_n];
+				else               out_data <= delta_B[out_l][out_d][out_n];
+
+				// 修正：標準答案的排序是 n -> l -> d
+				if (out_n == N-1) begin
+					out_n <= 0;
+					if (out_l == L-1) begin
+						out_l <= 0;
+						if (out_d == D_IN-1) begin
+							out_d <= 0;
+							
+							if (out_is_B == 1) begin
+								out_busy <= 0;   
+								finish   <= 1;   
+							end else begin
+								out_is_B <= 1;   
+							end
+							
+						end else begin
+							out_d <= out_d + 1;
+						end
+					end else begin
+						out_l <= out_l + 1;
+					end
+				end else begin
+					out_n <= out_n + 1;
+				end
+				
+			end else begin
+				out_valid <= 0; finish <= 0; 
+			end
+		end
+	end
+
 endmodule
