@@ -173,7 +173,7 @@ module testbench();
 				test_idx,
 				$sformatf("../tb/test_in_%0d.txt", test_idx),       
 				$sformatf("../tb/test_out_%0d.txt", test_idx),      
-				$sformatf("../tb/answer_input_%0d.txt", test_idx),   
+				$sformatf("../tb/answer_exp_%0d.txt", test_idx),   
 				test_result
 			);
 			all_pass = all_pass && test_result;

@@ -19,6 +19,20 @@ module Discretization
 		output logic start_delta_mul,
 		output logic finish
 	);
+	
+	logic [31:0] exp_in_data;
+	logic        exp_start;
+	logic [31:0] exp_out_data;
+	logic        exp_finish;
+
+	Exponential #(.SIZE(32)) exp_unit (
+		.clk(clk),
+		.rst(rst),
+		.start(exp_start),
+		.data(exp_in_data),
+		.out_data(exp_out_data),
+		.finish(exp_finish)
+	);
 
 	//////////////////////////////////////////////////////  INPUT
 	
@@ -210,51 +224,81 @@ module Discretization
 	logic [0:$clog2(L)-1]    out_l;
 	logic [0:$clog2(D_IN)-1] out_d;
 	logic [0:$clog2(N)-1]    out_n;
+	
+	// 新增：處理 Exponential 的子狀態機
+	typedef enum {INIT, WAIT_EXP, WRITE} substate_t;
+	substate_t sub_state;
 
 	always_ff @(posedge clk) begin
 		if (rst) begin
 			out_valid <= 0; out_data  <= 0; finish    <= 0;
 			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
+			exp_start <= 0; sub_state <= INIT; exp_in_data <= 0;
 		end 
 		else begin
 			if (delta_mul_done) begin
 				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
-				out_valid <= 0; finish    <= 0;
+				out_valid <= 0; finish    <= 0; sub_state <= INIT; exp_start <= 0;
 			end 
 			else if (out_busy) begin
-				out_valid <= 1;
 				
-				if (out_is_B == 0) out_data <= delta_A[out_l][out_d][out_n];
-				else               out_data <= delta_B[out_l][out_d][out_n];
-
-				if (out_n == N-1) begin
-					out_n <= 0;
-					
-					if (out_d == D_IN-1) begin
-						out_d <= 0;
-						
-						if (out_l == L-1) begin
-							out_l <= 0;
-							
-							if (out_is_B == 1) begin
-								out_busy <= 0;   
-								finish   <= 1;   
-							end 
-							else begin
-								out_is_B <= 1;   
-							end
-							
-						end 
-						else begin
-							out_l <= out_l + 1;
+				if (out_is_B == 0) begin
+					// ========== delta_A 經過 Exponential 運算 ==========
+					case (sub_state)
+						INIT: begin
+							// 只處理 delta_A 的資料
+							exp_in_data <= delta_A[out_l][out_d][out_n];
+							exp_start   <= 1;
+							sub_state   <= WAIT_EXP;
 						end
-					end 
-					else begin
-						out_d <= out_d + 1;
-					end
+						
+						WAIT_EXP: begin
+							exp_start <= 0; // 觸發後立刻拉回 0
+							if (exp_finish) begin 
+								out_data  <= exp_out_data;
+								out_valid <= 1;
+								sub_state <= WRITE;
+							end
+						end
+						
+						WRITE: begin
+							out_valid <= 0;
+							
+							// 更新計數器 (A 跑完後切換為 B)
+							if (out_n == N-1) begin
+								out_n <= 0;
+								if (out_d == D_IN-1) begin
+									out_d <= 0;
+									if (out_l == L-1) begin
+										out_l <= 0;
+										out_is_B <= 1;   // delta_A 跑完，切換成 B!
+									end else out_l <= out_l + 1;
+								end else out_d <= out_d + 1;
+							end else out_n <= out_n + 1;
+							
+							sub_state <= INIT; // 回到下一筆資料的 INIT
+						end
+						
+						default: sub_state <= INIT;
+					endcase
 				end 
 				else begin
-					out_n <= out_n + 1;
+					// ========== delta_B 不經過 Exponential，直接輸出 ==========
+					out_valid <= 1;
+					out_data  <= delta_B[out_l][out_d][out_n];
+					
+					// 更新計數器 (B 跑完後結束)
+					if (out_n == N-1) begin
+						out_n <= 0;
+						if (out_d == D_IN-1) begin
+							out_d <= 0;
+							if (out_l == L-1) begin
+								out_l <= 0;
+								out_busy <= 0;   
+								finish   <= 1;   // 全部跑完！
+							end else out_l <= out_l + 1;
+						end else out_d <= out_d + 1;
+					end else out_n <= out_n + 1;
 				end
 				
 			end 

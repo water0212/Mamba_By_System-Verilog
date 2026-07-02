@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
 vadder_4bit
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-!s110 1782803212
+!s110 1782828829
 !i10b 1
 !s100 HFKgC;ik<lf^?n8YiP4nJ3
 Ij`0nRcD^oCeT?>ZTUHmiZ3
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1782803212.000000
+!s108 1782828829.000000
 !s107 C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design|C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !i113 1
@@ -35,7 +35,7 @@ o-sv -work work
 Z5 tCvgOpt 0
 vDE0_CV
 R1
-!s110 1782805268
+Z6 !s110 1782829758
 !i10b 1
 !s100 AYSgFb;^maJWHVOKgVgi?2
 IYSKZRJQaDTR_jVc8zO7<N0
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-Z6 !s108 1782805267.000000
+Z7 !s108 1782829758.000000
 !s107 ../../design/DE0_CV.sv|
 !s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
@@ -59,15 +59,15 @@ R5
 n@d@e0_@c@v
 vDiscretization
 R1
-Z7 !s110 1782805267
+R6
 !i10b 1
-!s100 Do=<dU;<G9eFUCHmJYB@f1
-Ibhbi<IAW=QDJogTh4[be;3
+!s100 ]ImZOlNmHYoCkCV@hz8Xn1
+INoZI0zjfJ3]m0kYMDJC_I1
 R2
 !s105 Discretization_sv_unit
 S1
 R0
-w1782805253
+w1782829752
 8../../design/Discretization.sv
 F../../design/Discretization.sv
 L0 1
@@ -75,23 +75,47 @@ R4
 r1
 !s85 0
 31
-R6
+R7
 !s107 ../../design/Discretization.sv|
 !s90 -reportprogress|300|../../design/Discretization.sv|
 !i113 1
 R5
 n@discretization
+vExponential
+R1
+R6
+!i10b 1
+!s100 CK`V2DEn1nPZiXUbkBUQW0
+I4Z:@]V`X2O1Y6Hm_KVE_H1
+R2
+!s105 Exponential_sv_unit
+S1
+R0
+w1782829503
+8../../design/Exponential.sv
+F../../design/Exponential.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R7
+!s107 ../../design/Exponential.sv|
+!s90 -reportprogress|300|../../design/Exponential.sv|
+!i113 1
+R5
+n@exponential
 vtestbench
 R1
-R7
+!s110 1782829757
 !i10b 1
-!s100 NFhBM]kE_lbg:`zQjR>;l3
-IUC97U_7Rb;a@CQ9fUMB?n1
+!s100 AgOf741>^j>g8OE;iG0ok1
+In@J[1[;dS?QMbmZ:00QE:2
 R2
 !s105 testbench_sv_unit
 S1
 R0
-w1782740491
+w1782828931
 8../tb/testbench.sv
 F../tb/testbench.sv
 L0 3
@@ -99,7 +123,7 @@ R4
 r1
 !s85 0
 31
-R6
+!s108 1782829757.000000
 !s107 ../tb/testbench.sv|
 !s90 -reportprogress|300|../tb/testbench.sv|
 !i113 1
