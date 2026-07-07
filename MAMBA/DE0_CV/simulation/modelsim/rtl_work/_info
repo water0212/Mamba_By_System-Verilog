@@ -10,7 +10,7 @@ cModel Technology
 Z0 dC:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
 vadder_4bit
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-!s110 1783400840
+!s110 1783406767
 !i10b 1
 !s100 HFKgC;ik<lf^?n8YiP4nJ3
 I75;5=JbbCT[P9=oF^8_bB3
@@ -26,7 +26,7 @@ Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1783400840.000000
+!s108 1783406767.000000
 !s107 C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design|C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
 !i113 1
@@ -35,7 +35,7 @@ o-sv -work work
 Z5 tCvgOpt 0
 vDE0_CV
 R1
-Z6 !s110 1783400847
+Z6 !s110 1783406970
 !i10b 1
 !s100 AYSgFb;^maJWHVOKgVgi?2
 IYSKZRJQaDTR_jVc8zO7<N0
@@ -51,7 +51,7 @@ R4
 r1
 !s85 0
 31
-Z7 !s108 1783400847.000000
+Z7 !s108 1783406970.000000
 !s107 ../../design/DE0_CV.sv|
 !s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
@@ -81,17 +81,41 @@ R7
 !i113 1
 R5
 ndelta@a_delta@b
+vdeltaB_u
+R1
+R6
+!i10b 1
+!s100 2lLJD:=f:;W?V4nWn5R303
+I3F33]]]fH_J^m5_DS5z7L2
+R2
+!s105 deltaB_u_sv_unit
+S1
+R0
+w1783406888
+8../../design/deltaB_u.sv
+F../../design/deltaB_u.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R7
+!s107 ../../design/deltaB_u.sv|
+!s90 -reportprogress|300|../../design/deltaB_u.sv|
+!i113 1
+R5
+ndelta@b_u
 vDiscretization
 R1
 R6
 !i10b 1
-!s100 4L7Bc=9ZD;LWNThEz]ZmP1
-I0<GYLfX<EHTQ1GYJBMG]<0
+!s100 e@0o^EJDX=f1`7?AeBSPD3
+I<787PUGa<<niGNFRiNY4d2
 R2
 !s105 Discretization_sv_unit
 S1
 R0
-w1783400823
+w1783406967
 8../../design/Discretization.sv
 F../../design/Discretization.sv
 L0 1

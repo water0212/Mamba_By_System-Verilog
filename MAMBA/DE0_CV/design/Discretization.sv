@@ -3,6 +3,7 @@ module Discretization
 		parameter A_size = 16,
 		parameter B_size = 16,
 		parameter Delta_size = 16,
+		parameter U_size = 16,
 		parameter L = 4,
 		parameter D_IN = 32,
 		parameter N = 16
@@ -36,10 +37,13 @@ module Discretization
 	logic start_delta;
 	logic [Delta_size-1:0] reg_delta [0:L-1][0:D_IN-1];
 	
+	logic start_u;
+	logic signed [U_size	-1:0] reg_u [0:L-1][0:D_IN-1];
+	
 	logic data_cnt_rst;
 	logic [0:10] data_cnt;
 	
-	typedef enum {IDLE, START, A, B, DELTA, START_MUL} input_state;
+	typedef enum {IDLE, START, A, B, DELTA, U, START_MUL} input_state;
 	input_state in_ps, in_ns;
 	
 	//**********************
@@ -73,6 +77,15 @@ module Discretization
 		end
 	end
 	
+	//*************************
+	// U_input (l, d_in)
+	//*************************
+	always_ff @(posedge clk) begin
+		if (start_u) begin
+			reg_u[data_cnt / D_IN][data_cnt % D_IN] <= data;
+		end
+	end
+	
 	//******************
 	// IN_FSM
 	//******************
@@ -82,12 +95,13 @@ module Discretization
 	end
 	
 	always_comb begin
-		data_cnt_rst    = 0;
-		start_a         = 0;
-		start_b         = 0;
-		start_delta     = 0;
-		start_delta_mul = 0;
-		in_ns           = in_ps;
+		data_cnt_rst    	= 0;
+		start_a         	= 0;
+		start_b         	= 0;
+		start_delta     	= 0;
+		start_u				= 0;
+		start_delta_mul 	= 0;
+		in_ns           	= in_ps;
 		
 		case (in_ps)
 			IDLE: 
@@ -122,6 +136,14 @@ module Discretization
 				start_delta = 1;
 				if (data_cnt == L*D_IN-1) begin
 					data_cnt_rst = 1;
+					in_ns = U;
+				end
+			end
+			U:
+			begin
+				start_u = 1;
+				if (data_cnt == L*D_IN-1) begin
+					data_cnt_rst = 1;
 					in_ns = START_MUL;
 				end
 			end
@@ -136,12 +158,14 @@ module Discretization
 	////////////////////////////////////////////////////// MULTIPLIER
 	
 	
-	localparam PE_NUM         = 16;
-	localparam ROW_GROUP      = D_IN / PE_NUM;
+	localparam PE_NUM         	= 16;
+	localparam ROW_GROUP      	= D_IN / PE_NUM;
 	localparam DELTA_A_SIZE 	= Delta_size + A_size;
 	localparam DELTA_B_SIZE 	= Delta_size + B_size;
+	localparam DELTA_BU_SIZE	= 32;
 	
 	logic delta_mul_done; 
+	logic delta_BU_finish;
 	
 	logic signed [DELTA_A_SIZE-1:0] delta_A [0:L-1][0:D_IN-1][0:N-1];
 	logic signed [DELTA_B_SIZE-1:0] delta_B [0:L-1][0:D_IN-1][0:N-1];
@@ -170,13 +194,34 @@ module Discretization
 	);
 	
 	Exponential #(.SIZE(32)) exp_unit (
-		.clk(clk),
-		.rst(rst),
-		.start(exp_start),
-		.data(exp_in_data),
-		.out_data(exp_out_data),
-		.finish(exp_finish)
+		.clk			(clk),
+		.rst			(rst),
+		.start		(exp_start),
+		.data			(exp_in_data),
+		.out_data	(exp_out_data),
+		.finish		(exp_finish)
 	);
+	
+	logic signed [DELTA_BU_SIZE-1:0] delta_BU [0:L-1][0:D_IN-1][0:N-1];
+	
+	deltaB_u
+	#(
+		.L 				(L),
+		.D_IN 			(D_IN),
+		.N					(N),
+		.U_SIZE 			(U_size),
+		.DELTA_B_SIZE	(DELTA_B_SIZE)
+	) deltaBU_mul (
+		.clk			(clk),
+		.rst			(rst),
+		.start		(exp_finish),
+		.delta_B 	(delta_B),
+		.u 			(reg_u),
+		
+		.data_out 	(delta_BU),
+		.finish		(delta_BU_finish)
+	);
+	
 	
 	////////////////////////////////////////////////////// OUTPUT FSM
 	
