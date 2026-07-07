@@ -8,9 +8,8 @@ add wave -noupdate -radix hexadecimal /testbench/dut/data
 add wave -noupdate /testbench/dut/out_valid
 add wave -noupdate -radix hexadecimal /testbench/dut/out_data
 add wave -noupdate /testbench/dut/finish
-add wave -noupdate -subitemconfig {{/testbench/dut/delta_A[0]} -expand} /testbench/dut/delta_A
+add wave -noupdate /testbench/dut/delta_A
 add wave -noupdate /testbench/dut/delta_B
-add wave -noupdate /testbench/dut/delta_mul_busy
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {40732624 ps} 0}
 quietly wave cursor active 1
@@ -28,4 +27,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {103761 ns}
+WaveRestoreZoom {123127050 ps} {226888050 ps}

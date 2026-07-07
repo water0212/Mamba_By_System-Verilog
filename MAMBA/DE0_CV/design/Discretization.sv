@@ -25,15 +25,6 @@ module Discretization
 	logic [31:0] exp_out_data;
 	logic        exp_finish;
 
-	Exponential #(.SIZE(32)) exp_unit (
-		.clk(clk),
-		.rst(rst),
-		.start(exp_start),
-		.data(exp_in_data),
-		.out_data(exp_out_data),
-		.finish(exp_finish)
-	);
-
 	//////////////////////////////////////////////////////  INPUT
 	
 	logic start_a;
@@ -144,78 +135,48 @@ module Discretization
 
 	////////////////////////////////////////////////////// MULTIPLIER
 	
+	
 	localparam PE_NUM         = 16;
 	localparam ROW_GROUP      = D_IN / PE_NUM;
 	localparam DELTA_A_SIZE 	= Delta_size + A_size;
 	localparam DELTA_B_SIZE 	= Delta_size + B_size;
 	
-	logic [0:$clog2(L)-1]         token_cnt;
-	logic [0:$clog2(N)-1]         col_cnt;
-	logic [0:$clog2(ROW_GROUP)-1] row_group_cnt;
-	
-	logic delta_mul_busy;
-	logic delta_mul_done;
+	logic delta_mul_done; 
 	
 	logic signed [DELTA_A_SIZE-1:0] delta_A [0:L-1][0:D_IN-1][0:N-1];
 	logic signed [DELTA_B_SIZE-1:0] delta_B [0:L-1][0:D_IN-1][0:N-1];
 	
-	always_ff @(posedge clk) begin
-		if (rst) begin
-			token_cnt      <= 0;
-			col_cnt        <= 0;
-			row_group_cnt  <= 0;
-			delta_mul_busy <= 0;
-			delta_mul_done <= 0;
-		end 
-		else begin					
-			delta_mul_done <= 0;
-			if (start_delta_mul) begin
-				token_cnt      <= 0; 
-				col_cnt        <= 0;
-				row_group_cnt  <= 0;
-				delta_mul_busy <= 1;
-			end 
-			else if (delta_mul_busy) begin
-				if (row_group_cnt == ROW_GROUP-1) begin
-					row_group_cnt <= 0;
-					if (col_cnt == N-1) begin
-						col_cnt <= 0;
-						if (token_cnt == L-1) begin
-							token_cnt      <= 0;
-							delta_mul_busy <= 0;
-							delta_mul_done <= 1;
-						end 
-						else begin
-							token_cnt <= token_cnt + 1;
-						end
-					end 
-					else begin
-						col_cnt <= col_cnt + 1;
-					end
-				end 
-				else begin
-					row_group_cnt <= row_group_cnt + 1;
-				end
-			end
-		end
-	end
+	deltaA_deltaB 
+	#(
+		.A_size 			(A_size),
+		.B_size			(B_size),
+		.Delta_size 	(Delta_size),
+		.L 				(L),
+		.D_IN				(D_IN),
+		.N					(N),
+		.DELTA_A_SIZE	(DELTA_A_SIZE),
+		.DELTA_B_SIZE	(DELTA_B_SIZE)
+	)	delta_mul (	
+		.clk			(clk),
+		.rst			(rst),
+		.start		(start_delta_mul),
+		.reg_A 		(reg_A),
+		.reg_B 		(reg_B),
+		.reg_delta 	(reg_delta),
+		
+		.delta_A 	(delta_A),
+		.delta_B 	(delta_B),
+		.finish		(delta_mul_done)
+	);
 	
-	genvar PE_cnt;
-	generate
-		for (PE_cnt = 0; PE_cnt < PE_NUM; PE_cnt = PE_cnt + 1) begin : delta_A_generate
-			always_ff @(posedge clk) begin
-				if (delta_mul_busy) begin
-					// 完美對齊 einsum('l d, d n -> l d n')
-					delta_A[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
-						$signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt]);
-					
-					// 完美對齊 einsum('l d, l n -> l d n')
-					delta_B[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
-						$signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_B[token_cnt][col_cnt]);
-				end
-			end
-		end
-	endgenerate
+	Exponential #(.SIZE(32)) exp_unit (
+		.clk(clk),
+		.rst(rst),
+		.start(exp_start),
+		.data(exp_in_data),
+		.out_data(exp_out_data),
+		.finish(exp_finish)
+	);
 	
 	////////////////////////////////////////////////////// OUTPUT FSM
 	
