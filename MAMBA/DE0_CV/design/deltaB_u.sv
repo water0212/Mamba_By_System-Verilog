@@ -32,40 +32,58 @@ module deltaB_u
 			
 			busy 		<= 0;
 			finish 	<= 0;
+			l_cnt		<= 0;
+			d_cnt		<= 0;
+			n_cnt		<= 0;
+			
 		end else begin
-		
-			/************* PE_NUM個乘法器同時算 **************/
 			
-			for (p = 0; p < PE_NUM; p = p+1) begin
-				if ((n_cnt+p) < N) begin
-					data_out[l_cnt][d_cnt][n_cnt+p] <= $signed(delta_B[l_cnt][d_cnt][n_cnt+p]) * $signed(u[l_cnt][d_cnt]);
-				end
-			end
+			if(start) begin
+				busy		<= 1;
+				finish	<= 0;
+				l_cnt		<= 0;
+				d_cnt		<= 0;
+				n_cnt		<= 0;
 			
-			if ((n_cnt+PE_NUM) >= N) begin	// 看這組是否完成
-				n_cnt <= 0;
+			end else if(busy) begin
 				
-				if (d_cnt == D_IN-1) begin		// d 完成
-					d_cnt <= 0;
+		
+				/************* PE_NUM個乘法器同時算 **************/
+				
+				for (p = 0; p < PE_NUM; p = p+1) begin
+					if ((n_cnt+p) < N) begin
+						data_out[l_cnt][d_cnt][n_cnt+p] <= $signed(delta_B[l_cnt][d_cnt][n_cnt+p]) * $signed(u[l_cnt][d_cnt]);
+					end
+				end
+				
+				if ((n_cnt+PE_NUM) >= N) begin	// 看這組是否完成
+					n_cnt <= 0;
 					
-					if (l_cnt == L-1) begin		// l 完成
-						l_cnt 	<= 0;
+					if (d_cnt == D_IN-1) begin		// d 完成
+						d_cnt <= 0;
 						
-						busy		<= 0;
-						finish	<= 1;
+						if (l_cnt == L-1) begin		// l 完成
+							l_cnt 	<= 0;
+							
+							busy		<= 0;
+							finish	<= 1;
+						end else begin
+							l_cnt <= l_cnt + 1;
+						end
+						
+						
 					end else begin
-						l_cnt <= l_cnt + 1;
+						d_cnt <= d_cnt + 1;
 					end
 					
-					
 				end else begin
-					d_cnt <= d_cnt + 1;
-				end
-				
+					n_cnt <= n_cnt + PE_NUM;		// 下一組 n
+				end	
+			
 			end else begin
-				n_cnt <= n_cnt + PE_NUM;		// 下一組 n
+				finish <= 0;
 			end
-		end		
+		end
 	end
 	
 endmodule

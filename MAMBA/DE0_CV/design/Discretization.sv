@@ -231,6 +231,8 @@ module Discretization
 	logic [0:$clog2(D_IN)-1] out_d;
 	logic [0:$clog2(N)-1]    out_n;
 	
+	logic bu_done_flag; // 紀錄 deltaB_u 是否已經運算完畢的旗標
+	
 	// 新增：處理 Exponential 的子狀態機
 	typedef enum {INIT, WAIT_EXP, WRITE} substate_t;
 	substate_t sub_state;
@@ -240,11 +242,16 @@ module Discretization
 			out_valid <= 0; out_data  <= 0; finish    <= 0;
 			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
 			exp_start <= 0; sub_state <= INIT; exp_in_data <= 0;
+			bu_done_flag <= 0;
 		end 
 		else begin
+			// 隨時捕捉 delta_BU_finish 訊號（避免它在處理 A 的時候就拉高而錯過）
+			if (delta_BU_finish) bu_done_flag <= 1;
+
 			if (delta_mul_done) begin
 				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
 				out_valid <= 0; finish    <= 0; sub_state <= INIT; exp_start <= 0;
+				bu_done_flag <= 0; // 新回合開始，重置旗標
 			end 
 			else if (out_busy) begin
 				
@@ -289,22 +296,31 @@ module Discretization
 					endcase
 				end 
 				else begin
-					// ========== delta_B 不經過 Exponential，直接輸出 ==========
-					out_valid <= 1;
-					out_data  <= delta_B[out_l][out_d][out_n];
+					// ========== delta_B 經過 deltaB_u 運算後輸出 ==========
 					
-					// 更新計數器 (B 跑完後結束)
-					if (out_n == N-1) begin
-						out_n <= 0;
-						if (out_d == D_IN-1) begin
-							out_d <= 0;
-							if (out_l == L-1) begin
-								out_l <= 0;
-								out_busy <= 0;   
-								finish   <= 1;   // 全部跑完！
-							end else out_l <= out_l + 1;
-						end else out_d <= out_d + 1;
-					end else out_n <= out_n + 1;
+					// 必須等待 BU 運算完成才開始輸出
+					if (bu_done_flag || delta_BU_finish) begin
+						out_valid <= 1;
+						out_data  <= delta_BU[out_l][out_d][out_n];
+						
+						// 更新計數器 (B 跑完後結束)
+						if (out_n == N-1) begin
+							out_n <= 0;
+							if (out_d == D_IN-1) begin
+								out_d <= 0;
+								if (out_l == L-1) begin
+									out_l <= 0;
+									out_busy <= 0;   
+									finish   <= 1;   // 全部跑完！
+									bu_done_flag <= 0; // 輸出完畢，重置旗標
+								end else out_l <= out_l + 1;
+							end else out_d <= out_d + 1;
+						end else out_n <= out_n + 1;
+					end 
+					else begin
+						// 若 BU 還沒算完，讓 valid 保持 0 等待
+						out_valid <= 0;
+					end
 				end
 				
 			end 

@@ -400,10 +400,10 @@ class MambaBlock(nn.Module):
         # [保留] 用來觀察量化誤差的浮點數，保持小數點輸出
         export_tensor_to_txt(u, "u_shape_float.txt", is_hex=False, bit_width=32,is_int=False)
         u_int_tensor = torch.round(u * BIT_WIDTH_SCALE).to(torch.int32)
-        export_tensor_to_txt(u_int_tensor, "u_shape_int.txt", is_hex=False, bit_width=32)
+        export_tensor_to_txt(u_int_tensor, "u_shape_int.txt", is_hex=True, bit_width=16)
         # ======================================================================
         delta_B_u_int = einsum(deltaB,u_int_tensor, 'b l d_in n, b l d_in -> b l d_in n')
-        export_tensor_to_txt(delta_B_u_int, "delta_B_u_int.txt", is_hex=False, bit_width=32,is_int=False)
+        export_tensor_to_txt(delta_B_u_int, "delta_B_u_int.txt", is_hex=True, bit_width=32,is_int=False)
         # 執行選擇性掃描 (Perform selective scan)
         
         #使數值回歸到原本的浮點數範圍
