@@ -395,14 +395,22 @@ class MambaBlock(nn.Module):
         export_tensor_to_txt(deltaA_int, "A_answer_exp_int.txt", is_hex=True, bit_width=32)
         export_tensor_to_txt(deltaB, "B_answer.txt", is_hex=True, bit_width=32)
         
-        deltaB_u_Quantization = torch.round(deltaB / BIT_WIDTH_SCALE)
+        #export_tensor_to_txt(deltaB_u_Quantization, "B_answer_exp_float.txt", is_int=False)
+        #export_tensor_to_txt(deltaA, "A_answer_exp_int_compare_float.txt", is_int=False)
+        # [保留] 用來觀察量化誤差的浮點數，保持小數點輸出
+        export_tensor_to_txt(u, "u_shape_float.txt", is_hex=False, bit_width=32,is_int=False)
+        u_int_tensor = torch.round(u * BIT_WIDTH_SCALE).to(torch.int32)
+        export_tensor_to_txt(u_int_tensor, "u_shape_int.txt", is_hex=False, bit_width=32)
+        # ======================================================================
+        delta_B_u_int = einsum(deltaB,u_int_tensor, 'b l d_in n, b l d_in -> b l d_in n')
+        export_tensor_to_txt(delta_B_u_int, "delta_B_u_int.txt", is_hex=False, bit_width=32,is_int=False)
+        # 執行選擇性掃描 (Perform selective scan)
+        
+        #使數值回歸到原本的浮點數範圍
+        delta_B_u = torch.round(delta_B_u_int / BIT_WIDTH_SCALE)
         deltaA = deltaA_int / BIT_WIDTH_SCALE
         
-        # [保留] 用來觀察量化誤差的浮點數，保持小數點輸出
-        export_tensor_to_txt(deltaA, "A_answer_exp_int_compare_float.txt", is_int=False)
-        # ======================================================================
-        delta_B_u = einsum(deltaB_u_Quantization,u, 'b l d_in n, b l d_in -> b l d_in n')
-        # 執行選擇性掃描 (Perform selective scan)
+        
         x = torch.zeros((b, d_in, n), device=deltaA.device)
         ys = []    
         for i in range(l):
