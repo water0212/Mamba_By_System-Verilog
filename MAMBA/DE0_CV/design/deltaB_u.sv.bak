@@ -1,0 +1,20 @@
+module deltaB_u
+	#(
+		L = 16,
+		D_IN = 16,
+		N = 16,
+		
+		DELTA_B_SIZE = 32,
+		
+	)
+	(
+		input logic clk,
+		input logic rst,
+		
+		
+	);
+	
+	
+	
+	
+endmodule

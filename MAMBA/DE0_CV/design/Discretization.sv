@@ -3,6 +3,7 @@ module Discretization
 		parameter A_size = 16,
 		parameter B_size = 16,
 		parameter Delta_size = 16,
+		parameter U_size = 16,
 		parameter L = 4,
 		parameter D_IN = 32,
 		parameter N = 16
@@ -36,10 +37,13 @@ module Discretization
 	logic start_delta;
 	logic [Delta_size-1:0] reg_delta [0:L-1][0:D_IN-1];
 	
+	logic start_u;
+	logic signed [U_size	-1:0] reg_u [0:L-1][0:D_IN-1];
+	
 	logic data_cnt_rst;
 	logic [0:10] data_cnt;
 	
-	typedef enum {IDLE, START, A, B, DELTA, START_MUL} input_state;
+	typedef enum {IDLE, START, A, B, DELTA, U, START_MUL} input_state;
 	input_state in_ps, in_ns;
 	
 	//**********************
@@ -73,6 +77,15 @@ module Discretization
 		end
 	end
 	
+	//*************************
+	// U_input (l, d_in)
+	//*************************
+	always_ff @(posedge clk) begin
+		if (start_u) begin
+			reg_u[data_cnt / D_IN][data_cnt % D_IN] <= data;
+		end
+	end
+	
 	//******************
 	// IN_FSM
 	//******************
@@ -82,12 +95,13 @@ module Discretization
 	end
 	
 	always_comb begin
-		data_cnt_rst    = 0;
-		start_a         = 0;
-		start_b         = 0;
-		start_delta     = 0;
-		start_delta_mul = 0;
-		in_ns           = in_ps;
+		data_cnt_rst    	= 0;
+		start_a         	= 0;
+		start_b         	= 0;
+		start_delta     	= 0;
+		start_u				= 0;
+		start_delta_mul 	= 0;
+		in_ns           	= in_ps;
 		
 		case (in_ps)
 			IDLE: 
@@ -122,6 +136,14 @@ module Discretization
 				start_delta = 1;
 				if (data_cnt == L*D_IN-1) begin
 					data_cnt_rst = 1;
+					in_ns = U;
+				end
+			end
+			U:
+			begin
+				start_u = 1;
+				if (data_cnt == L*D_IN-1) begin
+					data_cnt_rst = 1;
 					in_ns = START_MUL;
 				end
 			end
@@ -136,12 +158,14 @@ module Discretization
 	////////////////////////////////////////////////////// MULTIPLIER
 	
 	
-	localparam PE_NUM         = 16;
-	localparam ROW_GROUP      = D_IN / PE_NUM;
+	localparam PE_NUM         	= 16;
+	localparam ROW_GROUP      	= D_IN / PE_NUM;
 	localparam DELTA_A_SIZE 	= Delta_size + A_size;
 	localparam DELTA_B_SIZE 	= Delta_size + B_size;
+	localparam DELTA_BU_SIZE	= 32;
 	
 	logic delta_mul_done; 
+	logic delta_BU_finish;
 	
 	logic signed [DELTA_A_SIZE-1:0] delta_A [0:L-1][0:D_IN-1][0:N-1];
 	logic signed [DELTA_B_SIZE-1:0] delta_B [0:L-1][0:D_IN-1][0:N-1];
@@ -170,13 +194,79 @@ module Discretization
 	);
 	
 	Exponential #(.SIZE(32)) exp_unit (
-		.clk(clk),
-		.rst(rst),
-		.start(exp_start),
-		.data(exp_in_data),
-		.out_data(exp_out_data),
-		.finish(exp_finish)
+		.clk			(clk),
+		.rst			(rst),
+		.start		(exp_start),
+		.data			(exp_in_data),
+		.out_data	(exp_out_data),
+		.finish		(exp_finish)
 	);
+	
+	logic signed [DELTA_BU_SIZE-1:0] delta_BU [0:L-1][0:D_IN-1][0:N-1];
+	
+	deltaB_u
+	#(
+		.L 				(L),
+		.D_IN 			(D_IN),
+		.N					(N),
+		.U_SIZE 			(U_size),
+		.DELTA_B_SIZE	(DELTA_B_SIZE)
+	) deltaBU_mul (
+		.clk			(clk),
+		.rst			(rst),
+		.start		(exp_finish),
+		.delta_B 	(delta_B),
+		.u 			(reg_u),
+		
+		.data_out 	(delta_BU),
+		.finish		(delta_BU_finish)
+	);
+	
+	logic        exp_x_start;
+	logic        exp_x_finish;
+	logic signed [31:0] exp_x_out;
+
+	
+	//保存上一個的 state：x[l-1][d][n]
+	
+	logic signed [31:0] state_x [0:D_IN-1][0:N-1];
+	
+	//*****************
+	//		x
+	//*****************
+	integer d;
+	integer n;
+	always_ff @(posedge clk) begin
+		if (rst) begin
+			for (d = 0; d < D_IN; d = d + 1) begin
+				for (n = 0; n < N; n = n + 1) begin
+					state_x[d][n] <= 0;
+				end
+			end
+		end
+	end
+	
+	
+	exp_deltaA_x
+	#(
+		.EXP_SIZE      (32),
+		.X_SIZE        (32),
+		.OUT_SIZE      (32),
+		.EXP_FRAC_BITS (8)
+	) exp_deltaA_x_unit (
+		.clk        (clk),
+		.rst        (rst),
+		.start      (exp_x_start),
+
+		.exp_deltaA (exp_out_data),
+		.x          (state_x[out_d][out_n]),
+
+		.data_out   (exp_x_out),
+		.finish     (exp_x_finish)
+	);
+	
+	
+	
 	
 	////////////////////////////////////////////////////// OUTPUT FSM
 	
@@ -185,6 +275,8 @@ module Discretization
 	logic [0:$clog2(L)-1]    out_l;
 	logic [0:$clog2(D_IN)-1] out_d;
 	logic [0:$clog2(N)-1]    out_n;
+	
+	logic bu_done_flag; // 紀錄 deltaB_u 是否已經運算完畢的旗標
 	
 	// 新增：處理 Exponential 的子狀態機
 	typedef enum {INIT, WAIT_EXP, WRITE} substate_t;
@@ -195,11 +287,16 @@ module Discretization
 			out_valid <= 0; out_data  <= 0; finish    <= 0;
 			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
 			exp_start <= 0; sub_state <= INIT; exp_in_data <= 0;
+			bu_done_flag <= 0;
 		end 
 		else begin
+			// 隨時捕捉 delta_BU_finish 訊號（避免它在處理 A 的時候就拉高而錯過）
+			if (delta_BU_finish) bu_done_flag <= 1;
+
 			if (delta_mul_done) begin
 				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
 				out_valid <= 0; finish    <= 0; sub_state <= INIT; exp_start <= 0;
+				bu_done_flag <= 0; // 新回合開始，重置旗標
 			end 
 			else if (out_busy) begin
 				
@@ -244,22 +341,31 @@ module Discretization
 					endcase
 				end 
 				else begin
-					// ========== delta_B 不經過 Exponential，直接輸出 ==========
-					out_valid <= 1;
-					out_data  <= delta_B[out_l][out_d][out_n];
+					// ========== delta_B 經過 deltaB_u 運算後輸出 ==========
 					
-					// 更新計數器 (B 跑完後結束)
-					if (out_n == N-1) begin
-						out_n <= 0;
-						if (out_d == D_IN-1) begin
-							out_d <= 0;
-							if (out_l == L-1) begin
-								out_l <= 0;
-								out_busy <= 0;   
-								finish   <= 1;   // 全部跑完！
-							end else out_l <= out_l + 1;
-						end else out_d <= out_d + 1;
-					end else out_n <= out_n + 1;
+					// 必須等待 BU 運算完成才開始輸出
+					if (bu_done_flag || delta_BU_finish) begin
+						out_valid <= 1;
+						out_data  <= delta_BU[out_l][out_d][out_n];
+						
+						// 更新計數器 (B 跑完後結束)
+						if (out_n == N-1) begin
+							out_n <= 0;
+							if (out_d == D_IN-1) begin
+								out_d <= 0;
+								if (out_l == L-1) begin
+									out_l <= 0;
+									out_busy <= 0;   
+									finish   <= 1;   // 全部跑完！
+									bu_done_flag <= 0; // 輸出完畢，重置旗標
+								end else out_l <= out_l + 1;
+							end else out_d <= out_d + 1;
+						end else out_n <= out_n + 1;
+					end 
+					else begin
+						// 若 BU 還沒算完，讓 valid 保持 0 等待
+						out_valid <= 0;
+					end
 				end
 				
 			end 
