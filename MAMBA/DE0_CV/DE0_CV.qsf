@@ -493,4 +493,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE design/DE0_CV.sv
 set_global_assignment -name SDC_FILE DE0_CV.SDC
 set_global_assignment -name SYSTEMVERILOG_FILE design/deltaA_deltaB.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/deltaB_u.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/exp_delta_A_x.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

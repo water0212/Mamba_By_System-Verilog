@@ -222,6 +222,51 @@ module Discretization
 		.finish		(delta_BU_finish)
 	);
 	
+	logic        exp_x_start;
+	logic        exp_x_finish;
+	logic signed [31:0] exp_x_out;
+
+	
+	//保存上一個的 state：x[l-1][d][n]
+	
+	logic signed [31:0] state_x [0:D_IN-1][0:N-1];
+	
+	//*****************
+	//		x
+	//*****************
+	integer d;
+	integer n;
+	always_ff @(posedge clk) begin
+		if (rst) begin
+			for (d = 0; d < D_IN; d = d + 1) begin
+				for (n = 0; n < N; n = n + 1) begin
+					state_x[d][n] <= '0;
+				end
+			end
+		end
+	end
+	
+	
+	exp_deltaA_x
+	#(
+		.EXP_SIZE      (32),
+		.X_SIZE        (32),
+		.OUT_SIZE      (32),
+		.EXP_FRAC_BITS (8)
+	) exp_deltaA_x_unit (
+		.clk        (clk),
+		.rst        (rst),
+		.start      (exp_x_start),
+
+		.exp_deltaA (exp_out_data),
+		.x          (state_x[out_d][out_n]),
+
+		.data_out   (exp_x_out),
+		.finish     (exp_x_finish)
+	);
+	
+	
+	
 	
 	////////////////////////////////////////////////////// OUTPUT FSM
 	
