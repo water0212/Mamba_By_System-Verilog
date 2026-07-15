@@ -240,7 +240,7 @@ module Discretization
 		if (rst) begin
 			for (d = 0; d < D_IN; d = d + 1) begin
 				for (n = 0; n < N; n = n + 1) begin
-					state_x[d][n] <= '0;
+					state_x[d][n] <= 0;
 				end
 			end
 		end
