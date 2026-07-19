@@ -391,7 +391,7 @@ class MambaBlock(nn.Module):
         # A的軟體運算資訊(delta尚未量化)
         deltaA_float = torch.exp(deltaAnonE_float)
         
-        deltaB = einsum(delta_float_tensor, B_int, 'b l d_in, b l n -> b l d_in n') 
+        deltaB = einsum(delta_float_tensor, B_int, 'b l d_in, b l n -> b l d_in n')
         deltaB_origin = einsum(delta, B, 'b l d_in, b l n -> b l d_in n')
         # 匯出硬體運算的標準答案 (Golden Answer)
         
@@ -418,18 +418,26 @@ class MambaBlock(nn.Module):
         delta_B_u_origin256 = torch.round(delta_B_u_origin * BIT_WIDTH_SCALE**3)
         export_tensor_to_txt(delta_B_u_origin256, "delta_B_u_origin256.txt", is_hex=False, bit_width=32,is_int=False)
         # 執行選擇性掃描 (Perform selective scan)
+        #----------------------------------------------
         
         #使數值回歸到原本的浮點數範圍
-        delta_B_u = delta_B_u_int /BIT_WIDTH_SCALE**3
-        deltaA = deltaA_int /  BIT_WIDTH_SCALE
+        delta_B_u = torch.round(delta_B_u_int /BIT_WIDTH_SCALE) #B 2^24
+        deltaA = deltaA_int * (BIT_WIDTH_SCALE) # A 2^8
         export_tensor_to_txt(deltaA, "delta_A_testbench_exp_answer.txt", is_hex=False, bit_width=32,is_int=False)
         export_tensor_to_txt(delta_B_u, "delta_B_u_testbench_answer.txt", is_hex=False, bit_width=32,is_int=False)
 
-        x = torch.zeros((b, d_in, n), device=deltaA.device)
+        x = torch.zeros((b, d_in, n), device=delta.device)
+        x_origin_answer = torch.zeros((b, d_in, n), device=delta.device)
         ys = []    
         for i in range(l):
-            x = deltaA[:, i] * x + delta_B_u[:, i]
-            export_tensor_to_txt(deltaA[:, i] * x, f"deltaA_x_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            if(i != 0) : x_nonB = deltaA[:, i] * x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
+            else : x_nonB = deltaA[:, i] * x
+            x = x_nonB + delta_B_u[:, i] 
+            #if(i != 1) : x = x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
+            x_origin_answer = deltaA_origin_float[:, i] * x_origin_answer + delta_B_u_origin[:, i]
+            export_tensor_to_txt(x_origin_answer* BIT_WIDTH_SCALE**2 , f"x_origin_answer_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(deltaA[:, i] * x, f"deltaA_x_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(x, f"x_{i}.txt", is_hex=False, bit_width=64,is_int=False)
             y = einsum(x, C[:, i, :], 'b d_in n, b n -> b d_in')
             ys.append(y)
         y = torch.stack(ys, dim=1) 

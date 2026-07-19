@@ -21,7 +21,7 @@ batch_size = 1
 seq_len = 4  # 序列長度 (測試先用 4 個 Token)
 # 隨機產生輸入的 Token ID
 #input_ids = torch.randint(0, args.vocab_size, (batch_size, seq_len))
-input_ids = torch.tensor([[1, 2, 3, 4]], dtype=torch.long)  # 固定輸入，方便觀察輸出結果
+input_ids = torch.tensor([[1, 2, 2.1, 0.7]], dtype=torch.long)  # 固定輸入，方便觀察輸出結果
 
 print(f"輸入的 Token IDs: \n{input_ids}\n")
 
