@@ -21,10 +21,7 @@ module Discretization
 		output logic finish
 	);
 	
-	logic [31:0] exp_in_data;
-	logic        exp_start;
-	logic [31:0] exp_out_data;
-	logic        exp_finish;
+	
 
 	//////////////////////////////////////////////////////  INPUT
 	
@@ -193,13 +190,24 @@ module Discretization
 		.finish		(delta_mul_done)
 	);
 	
+	logic signed [31:0] exp_in_data;
+	logic        exp_start;
+	logic [31:0] exp_out_data;
+	logic        exp_finish;
+	
+	/*
+		每個clk輸入一筆、輸出一筆
+		clk1：in_data0, clk2：out_data0、in_data1
+		
+	*/
+	
 	Exponential #(.SIZE(32)) exp_unit (
 		.clk			(clk),
 		.rst			(rst),
-		.start		(exp_start),
+		.in_valid	(exp_start),
 		.data			(exp_in_data),
 		.out_data	(exp_out_data),
-		.finish		(exp_finish)
+		.out_valid	(exp_finish)
 	);
 	
 	logic signed [DELTA_BU_SIZE-1:0] delta_BU [0:L-1][0:D_IN-1][0:N-1];
@@ -214,7 +222,7 @@ module Discretization
 	) deltaBU_mul (
 		.clk			(clk),
 		.rst			(rst),
-		.start		(exp_finish),
+		.start		(delta_mul_done),
 		.delta_B 	(delta_B),
 		.u 			(reg_u),
 		

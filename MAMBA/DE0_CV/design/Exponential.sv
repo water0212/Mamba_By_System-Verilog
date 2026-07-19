@@ -5,13 +5,13 @@ module Exponential
     (
     input  logic clk,
     input  logic rst,
-    input  logic start,
+    input  logic in_valid,
     input  logic signed [SIZE-1:0] data,
 
     output logic [SIZE-1:0] out_data,
-    output logic finish
+    output logic out_valid
     );
-    
+    /*
     
     //**********************
     //      data * 369
@@ -34,13 +34,13 @@ module Exponential
     //**********************
     //          F
     //**********************
-    logic [SIZE-1:0]        f;
+    logic [SIZE-1:0] f;
     assign f = shift_8_data[7:0];
 
     //**********************
     //          2^f
     //**********************
-	 logic [SIZE-1:0]        pow_2_f;
+	 logic [SIZE-1:0] pow_2_f;
     assign pow_2_f = 256 + f;
 
     //**********************
@@ -82,5 +82,40 @@ module Exponential
             finish <= 0; // 等待下一次 start
         end
     end
-
+	*/
+	
+	logic signed [SIZE+8:0] data_369;
+   logic signed [SIZE:0] shift_8_data;
+   logic signed [SIZE-1:0] z;
+   logic [SIZE-1:0] f;
+   logic [SIZE-1:0] pow_2_f;
+   logic [SIZE-1:0] exp_result;
+	logic [SIZE-1:0] exp_result;
+	
+	always_comb begin
+		data_369    = $signed(data) * 369;
+		shift_8_data = data_369 >>> 8;
+		z             = shift_8_data >>> 8;
+		f             = shift_8_data[7:0];
+		pow_2_f       = 256 + f;
+	
+		if (z < 0)
+				exp_result = pow_2_f >> ((-z > 31) ? 31 : -z);
+		else
+            exp_result = pow_2_f << (( z > 31) ? 31 :  z);
+   end
+	
+	always_ff @(posedge clk) begin
+		if (rst) begin
+			out_valid <= 1'b0;
+			out_data  <= '0;
+		end else begin
+			out_valid <= in_valid;
+		
+			if (in_valid)
+				out_data <= exp_result;
+		end
+    end
+	
+	
 endmodule
