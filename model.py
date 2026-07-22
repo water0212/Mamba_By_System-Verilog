@@ -422,15 +422,17 @@ class MambaBlock(nn.Module):
         
         #使數值回歸到原本的浮點數範圍
         delta_B_u = torch.sign(delta_B_u_int) * ((torch.abs(delta_B_u_int) + BIT_WIDTH_SCALE // 2) // BIT_WIDTH_SCALE)#B 2^24
+        delta_B_u_float = delta_B_u_int / (BIT_WIDTH_SCALE) # B 2^8
         deltaA = deltaA_int * (BIT_WIDTH_SCALE) # A 2^8
         export_tensor_to_txt(deltaA, "delta_A_testbench_exp_answer.txt", is_hex=False, bit_width=32,is_int=False)
         export_tensor_to_txt(delta_B_u, "delta_B_u_testbench_answer.txt", is_hex=False, bit_width=32,is_int=False)
-
+        export_tensor_to_txt(delta_B_u_float, "delta_B_u_testbench_answer_float.txt", is_hex=False, bit_width=32,is_int=False)
         x = torch.zeros((b, d_in, n), device=delta.device)
         x_origin_answer = torch.zeros((b, d_in, n), device=delta.device)
         ys = []    
         for i in range(l):
-            if(i != 0) : x_nonB = deltaA[:, i] * x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
+            product = deltaA[:, i].to(torch.int64) * x.to(torch.int64)
+            if(i != 0) : x_nonB = torch.sign(product) * ((torch.abs(product) + BIT_WIDTH_SCALE**2 // 2)// BIT_WIDTH_SCALE**2)# 將數值回歸到原本的浮點數範圍
             else : x_nonB = deltaA[:, i] * x
             x = x_nonB + delta_B_u[:, i] 
             #if(i != 1) : x = x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
