@@ -1,0 +1,315 @@
+module mamba_scan_pipeline 
+    #(
+    parameter integer A_SIZE          = 16,
+    parameter integer B_SIZE          = 16,
+    parameter integer DELTA_SIZE      = 16,
+    parameter integer U_SIZE          = 16,
+    parameter integer STATE_SIZE      = 32,
+    parameter integer L               = 4,
+    parameter integer D_IN            = 32,
+    parameter integer N               = 16,
+
+    parameter integer A_FRAC_BITS     = 8,
+    parameter integer B_FRAC_BITS     = 8,
+    parameter integer DELTA_FRAC_BITS = 8,
+    parameter integer U_FRAC_BITS     = 8,
+    parameter integer STATE_FRAC_BITS = 16,
+    parameter integer EXP_FRAC_BITS   = 8
+    ) 
+    (
+    input  logic clk,
+    input  logic rst,
+    input  logic start,
+
+    input  logic signed [A_SIZE-1:0]     reg_A     [0:D_IN-1][0:N-1],
+    input  logic signed [B_SIZE-1:0]     reg_B     [0:L-1][0:N-1],
+    input  logic signed [DELTA_SIZE-1:0] reg_delta [0:L-1][0:D_IN-1],
+    input  logic signed [U_SIZE-1:0]     reg_u     [0:L-1][0:D_IN-1],
+
+    output logic busy,
+    output logic out_valid,
+    output logic signed [STATE_SIZE-1:0] out_data,
+    output logic finish,
+    output logic alignment_error
+    );
+    // L,D,N 的 bit-width
+    localparam integer L_W = (L <= 1) ? 1 : $clog2(L);
+    localparam integer D_W = (D_IN <= 1) ? 1 : $clog2(D_IN);
+    localparam integer N_W = (N <= 1) ? 1 : $clog2(N);
+
+    localparam integer DELTA_A_SIZE = 32;
+    localparam integer DELTA_UB_SIZE = 32;
+
+    localparam integer EXP_INPUT_FRAC_BITS = DELTA_FRAC_BITS + A_FRAC_BITS;
+    localparam integer BU_TO_STATE_SHIFT = DELTA_FRAC_BITS + U_FRAC_BITS + B_FRAC_BITS - STATE_FRAC_BITS;
+
+    // A 路徑clk數：delta*A(1) + exponential(3) + exp*x(1) = 5
+    // B 路徑clk數：delta*u(1) + *B(1) = 2
+    // 所以 B 路徑再延遲 3 拍。
+    localparam integer B_ALIGN_DELAY = 3;
+
+    logic scan_busy;
+    logic scan_valid;
+    logic scan_done;
+    logic [L_W-1:0] scan_l;
+    logic [D_W-1:0] scan_d;
+    logic [N_W-1:0] scan_n;
+    
+    // 表示 scan pipeline 正在運作中，不能接受新的 start。
+    logic processing_busy;
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            processing_busy <= 1'b0;
+        end
+        else begin
+            if (start && !processing_busy)
+                processing_busy <= 1'b1;
+            else if (finish)
+                processing_busy <= 1'b0;
+        end
+    end
+
+    assign busy = processing_busy;
+
+    // 產生 (l,d,n)
+    scan_index_generator #(
+        .L   (L),
+        .D_IN(D_IN),
+        .N   (N),
+        .L_W (L_W),
+        .D_W (D_W),
+        .N_W (N_W)
+    ) index_gen (
+        .clk       (clk),
+        .rst       (rst),
+        .start     (start),
+        .busy      (scan_busy),
+        .out_valid (scan_valid),
+        .scan_done (scan_done),
+        .out_l     (scan_l),
+        .out_d     (scan_d),
+        .out_n     (scan_n)
+    );
+
+    // -----------------------------------------------------------------
+    // 路線 A：delta × A → exp(delta*A) → × state_x
+    // -----------------------------------------------------------------
+    logic da_valid;
+    logic [L_W-1:0] da_l;
+    logic [D_W-1:0] da_d;
+    logic [N_W-1:0] da_n;
+    logic signed [DELTA_A_SIZE-1:0] da_data;
+
+    delta_a_mul_stage #(
+        .A_SIZE    (A_SIZE),
+        .DELTA_SIZE(DELTA_SIZE),
+        .OUT_SIZE  (DELTA_A_SIZE),
+        .L_W       (L_W),
+        .D_W       (D_W),
+        .N_W       (N_W)
+    ) delta_a_stage (
+        .clk        (clk),
+        .rst        (rst),
+        .in_valid   (scan_valid),
+        .in_l       (scan_l),
+        .in_d       (scan_d),
+        .in_n       (scan_n),
+        .delta_value(reg_delta[scan_l][scan_d]),
+        .a_value    (reg_A[scan_d][scan_n]),
+        .out_valid  (da_valid),
+        .out_l      (da_l),
+        .out_d      (da_d),
+        .out_n      (da_n),
+        .out_data   (da_data)
+    );
+
+    logic exp_valid;
+    logic [L_W-1:0] exp_l;
+    logic [D_W-1:0] exp_d;
+    logic [N_W-1:0] exp_n;
+    logic [DELTA_A_SIZE-1:0] exp_data;
+
+    exponential_pipeline #(
+        .SIZE         (DELTA_A_SIZE),
+        .IN_FRAC_BITS (EXP_INPUT_FRAC_BITS),
+        .OUT_FRAC_BITS(EXP_FRAC_BITS),
+        .L_W          (L_W),
+        .D_W          (D_W),
+        .N_W          (N_W)
+    ) exp_stage (
+        .clk      (clk),
+        .rst      (rst),
+        .in_valid (da_valid),
+        .in_l     (da_l),
+        .in_d     (da_d),
+        .in_n     (da_n),
+        .in_data  (da_data),
+        .out_valid(exp_valid),
+        .out_l    (exp_l),
+        .out_d    (exp_d),
+        .out_n    (exp_n),
+        .out_data (exp_data)
+    );
+
+    logic signed [STATE_SIZE-1:0] state_read_data;
+    logic state_write_valid;
+    logic [D_W-1:0] state_write_d;
+    logic [N_W-1:0] state_write_n;
+    logic signed [STATE_SIZE-1:0] state_write_data;
+
+    state_memory #(
+        .D_IN      (D_IN),
+        .N         (N),
+        .STATE_SIZE(STATE_SIZE),
+        .D_W       (D_W),
+        .N_W       (N_W)
+    ) x_memory (
+        .clk        (clk),
+        .rst        (rst),
+        .clear      (start),
+        .read_d     (exp_d),
+        .read_n     (exp_n),
+        .write_valid(state_write_valid),
+        .write_d    (state_write_d),
+        .write_n    (state_write_n),
+        .write_data (state_write_data),
+        .read_data  (state_read_data),
+    );
+
+    logic ax_valid;
+    logic [L_W-1:0] ax_l;
+    logic [D_W-1:0] ax_d;
+    logic [N_W-1:0] ax_n;
+    logic signed [STATE_SIZE-1:0] ax_data;
+
+    exp_state_mul_stage #(
+        .EXP_SIZE     (DELTA_A_SIZE),
+        .STATE_SIZE   (STATE_SIZE),
+        .EXP_FRAC_BITS(EXP_FRAC_BITS),
+        .L_W          (L_W),
+        .D_W          (D_W),
+        .N_W          (N_W)
+    ) exp_x_stage (
+        .clk        (clk),
+        .rst        (rst),
+        .in_valid   (exp_valid),
+        .in_l       (exp_l),
+        .in_d       (exp_d),
+        .in_n       (exp_n),
+        .exp_value  (exp_data),
+        .state_value(state_read_data),
+        .out_valid  (ax_valid),
+        .out_l      (ax_l),
+        .out_d      (ax_d),
+        .out_n      (ax_n),
+        .out_data   (ax_data)
+    );
+
+    // -----------------------------------------------------------------
+    // 路線 B：delta × u → × B
+    // -----------------------------------------------------------------
+    logic dub_valid_raw;
+    logic [L_W-1:0] dub_l_raw;
+    logic [D_W-1:0] dub_d_raw;
+    logic [N_W-1:0] dub_n_raw;
+    logic signed [DELTA_UB_SIZE-1:0] dub_data_raw;
+
+    delta_u_b_pipeline #(
+        .DELTA_SIZE(DELTA_SIZE),
+        .U_SIZE    (U_SIZE),
+        .B_SIZE    (B_SIZE),
+        .OUT_SIZE  (DELTA_UB_SIZE),
+        .L_W       (L_W),
+        .D_W       (D_W),
+        .N_W       (N_W)
+    ) delta_u_b_stage (
+        .clk        (clk),
+        .rst        (rst),
+        .in_valid   (scan_valid),
+        .in_l       (scan_l),
+        .in_d       (scan_d),
+        .in_n       (scan_n),
+        .delta_value(reg_delta[scan_l][scan_d]),
+        .u_value    (reg_u[scan_l][scan_d]),
+        .b_value    (reg_B[scan_l][scan_n]),
+        .out_valid  (dub_valid_raw),
+        .out_l      (dub_l_raw),
+        .out_d      (dub_d_raw),
+        .out_n      (dub_n_raw),
+        .out_data   (dub_data_raw)
+    );
+
+    logic dub_valid_aligned;
+    logic [L_W-1:0] dub_l_aligned;
+    logic [D_W-1:0] dub_d_aligned;
+    logic [N_W-1:0] dub_n_aligned;
+    logic signed [DELTA_UB_SIZE-1:0] dub_data_aligned;
+
+    stream_delay #(
+        .DATA_WIDTH(DELTA_UB_SIZE),
+        .LATENCY   (B_ALIGN_DELAY),
+        .L_W       (L_W),
+        .D_W       (D_W),
+        .N_W       (N_W)
+    ) align_b_path (
+        .clk      (clk),
+        .rst      (rst),
+        .in_valid (dub_valid_raw),
+        .in_l     (dub_l_raw),
+        .in_d     (dub_d_raw),
+        .in_n     (dub_n_raw),
+        .in_data  (dub_data_raw),
+        .out_valid(dub_valid_aligned),
+        .out_l    (dub_l_aligned),
+        .out_d    (dub_d_aligned),
+        .out_n    (dub_n_aligned),
+        .out_data (dub_data_aligned)
+    );
+
+    logic signed [STATE_SIZE-1:0] dub_scaled;
+
+    fixed_round_shift #(
+        .IN_WIDTH (DELTA_UB_SIZE),
+        .OUT_WIDTH(STATE_SIZE),
+        .SHIFT    (BU_TO_STATE_SHIFT)
+    ) scale_delta_ub (
+        .in_data  (dub_data_aligned),
+        .out_data (dub_scaled)
+    );
+
+    // -----------------------------------------------------------------
+    // 兩路合併：x_new = exp(delta*A) * x_old + delta*u*B
+    // -----------------------------------------------------------------
+    state_update_stage #(
+        .STATE_SIZE(STATE_SIZE),
+        .L         (L),
+        .D_IN      (D_IN),
+        .N         (N),
+        .L_W       (L_W),
+        .D_W       (D_W),
+        .N_W       (N_W)
+    ) update_x_stage (
+        .clk            (clk),
+        .rst            (rst),
+        .a_valid        (ax_valid),
+        .a_l            (ax_l),
+        .a_d            (ax_d),
+        .a_n            (ax_n),
+        .a_data         (ax_data),
+        .b_valid        (dub_valid_aligned),
+        .b_l            (dub_l_aligned),
+        .b_d            (dub_d_aligned),
+        .b_n            (dub_n_aligned),
+        .b_data         (dub_scaled),
+        .write_valid    (state_write_valid),
+        .write_d        (state_write_d),
+        .write_n        (state_write_n),
+        .write_data     (state_write_data),
+        .out_valid      (out_valid),
+        .out_data       (out_data),
+        .finish         (finish),
+        .alignment_error(alignment_error)
+    );
+
+endmodule

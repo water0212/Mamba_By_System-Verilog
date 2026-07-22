@@ -1,0 +1,261 @@
+module exponential_pipeline 
+	#(
+    parameter integer SIZE           = 32,
+    parameter integer IN_FRAC_BITS   = 16,
+    parameter integer OUT_FRAC_BITS  = 8,
+    parameter integer L_W            = 2,
+    parameter integer D_W            = 5,
+    parameter integer N_W            = 4
+	) 
+	(
+    input  logic clk,
+    input  logic rst,
+
+    input  logic in_valid,
+    input  logic [L_W-1:0] in_l,
+    input  logic [D_W-1:0] in_d,
+    input  logic [N_W-1:0] in_n,
+    input  logic signed [SIZE-1:0] in_data,
+
+    output logic out_valid,
+    output logic [L_W-1:0] out_l,
+    output logic [D_W-1:0] out_d,
+    output logic [N_W-1:0] out_n,
+    output logic [SIZE-1:0] out_data
+	);
+
+    /*
+     * exp(x) = 2^(x × log2(e))
+     *
+     * log2(e) ≈ 369 / 256
+     */
+    localparam integer PRODUCT_W = SIZE + 10;
+    localparam integer Z_W       = PRODUCT_W;
+    localparam integer POW_W     = OUT_FRAC_BITS + 2;
+
+    /*
+     * Q8 輸出最大安全左移量。
+     *
+     * SIZE = 32、OUT_FRAC_BITS = 8 時：
+     * 最大左移量約為 23。
+     */
+    localparam integer MAX_LEFT_SHIFT =
+        SIZE - OUT_FRAC_BITS - 1;
+
+    //==================================================
+    // Stage 0 registers：in_data × 369
+    //==================================================
+
+    logic v0;
+
+    logic [L_W-1:0] l0;
+    logic [D_W-1:0] d0;
+    logic [N_W-1:0] n0;
+
+    logic signed [PRODUCT_W-1:0] product0;
+
+    //==================================================
+    // Stage 1 combinational signals
+    //==================================================
+
+    logic signed [PRODUCT_W-1:0] y_q_comb;
+    logic signed [Z_W-1:0]       z_comb;
+
+    logic [OUT_FRAC_BITS-1:0] frac_comb;
+    logic [POW_W-1:0]         pow2_f_comb;
+
+    //==================================================
+    // Stage 1 registers
+    //==================================================
+
+    logic v1;
+
+    logic [L_W-1:0] l1;
+    logic [D_W-1:0] d1;
+    logic [N_W-1:0] n1;
+
+    logic signed [Z_W-1:0] z1;
+    logic [POW_W-1:0]      pow2_f1;
+
+    //==================================================
+    // Stage 2 combinational signals
+    //==================================================
+
+    logic [SIZE-1:0] pow2_wide;
+    logic [SIZE-1:0] exp_comb;
+
+    integer signed   z_integer;
+    integer unsigned shift_amount;
+
+    //==================================================
+    // Stage 1 combinational logic
+    //==================================================
+
+    always_comb begin
+        /*
+         * in_data 是 Q(IN_FRAC_BITS)。
+         *
+         * 369 是 log2(e) 的 Q8 表示：
+         * 369 / 256 ≈ log2(e)
+         *
+         * product0 小數位：
+         * IN_FRAC_BITS + 8
+         *
+         * 右移 IN_FRAC_BITS 後，
+         * y_q_comb 變成 Q8。
+         */
+        y_q_comb = product0 >>> IN_FRAC_BITS;
+
+        /*
+         * Q8 的低 8 bits 為小數部分。
+         */
+        frac_comb = y_q_comb[OUT_FRAC_BITS-1:0];
+
+        /*
+         * 右移 8 bits 取得整數部分 z。
+         */
+        z_comb = y_q_comb >>> OUT_FRAC_BITS;
+
+        /*
+         * 2^f ≈ 1 + f
+         *
+         * Q8 中：
+         * 1.0 = 256
+         */
+        pow2_f_comb =
+            ({{(POW_W-1){1'b0}}, 1'b1}
+             << OUT_FRAC_BITS)
+            + frac_comb;
+    end
+
+    //==================================================
+    // Stage 2 combinational logic
+    //==================================================
+
+    always_comb begin
+        /*
+         * 先為所有變數給預設值，
+         * 避免 Quartus 推導 latch。
+         */
+        pow2_wide  = '0;
+        exp_comb   = '0;
+        z_integer  = 0;
+        shift_amount = 0;
+
+        /*
+         * 將較窄的 pow2_f1 補零到 SIZE bits。
+         */
+        pow2_wide[POW_W-1:0] = pow2_f1;
+
+        z_integer = z1;
+
+        if (z_integer < 0) begin
+
+            /*
+             * 負數 z：
+             * 2^z 為右移。
+             */
+            if ((-z_integer) >= SIZE) begin
+                exp_comb = '0;
+            end
+            else begin
+                shift_amount = -z_integer;
+                exp_comb = pow2_wide >> shift_amount;
+            end
+        end
+        else begin
+
+            /*
+             * 正數 z：
+             * 2^z 為左移。
+             */
+            if (z_integer > MAX_LEFT_SHIFT) begin
+
+                /*
+                 * 超出 32-bit Q8 表示範圍時飽和，
+                 * 避免左移後溢位或回捲成零。
+                 */
+                exp_comb = {SIZE{1'b1}};
+            end
+            else begin
+                shift_amount = z_integer;
+                exp_comb = pow2_wide << shift_amount;
+            end
+        end
+    end
+
+    //==================================================
+    // Pipeline registers
+    //==================================================
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            v0        <= 1'b0;
+            v1        <= 1'b0;
+            out_valid <= 1'b0;
+
+            l0 <= '0;
+            d0 <= '0;
+            n0 <= '0;
+
+            l1 <= '0;
+            d1 <= '0;
+            n1 <= '0;
+
+            out_l <= '0;
+            out_d <= '0;
+            out_n <= '0;
+
+            product0 <= '0;
+            z1       <= '0;
+            pow2_f1  <= '0;
+            out_data <= '0;
+        end
+        else begin
+            //==========================================
+            // Stage 0
+            //==========================================
+
+            v0 <= in_valid;
+
+            if (in_valid) begin
+                l0 <= in_l;
+                d0 <= in_d;
+                n0 <= in_n;
+
+                product0 <=
+                    $signed(in_data) * 10'sd369;
+            end
+
+            //==========================================
+            // Stage 1
+            //==========================================
+
+            v1 <= v0;
+
+            if (v0) begin
+                l1 <= l0;
+                d1 <= d0;
+                n1 <= n0;
+
+                z1      <= z_comb;
+                pow2_f1 <= pow2_f_comb;
+            end
+
+            //==========================================
+            // Stage 2
+            //==========================================
+
+            out_valid <= v1;
+
+            if (v1) begin
+                out_l <= l1;
+                out_d <= d1;
+                out_n <= n1;
+
+                out_data <= exp_comb;
+            end
+        end
+    end
+
+endmodule

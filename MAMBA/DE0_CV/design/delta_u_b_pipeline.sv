@@ -1,0 +1,83 @@
+module delta_u_b_pipeline 
+	#(
+    parameter integer DELTA_SIZE = 16,
+    parameter integer U_SIZE     = 16,
+    parameter integer B_SIZE     = 16,
+    parameter integer OUT_SIZE   = 32,
+    parameter integer L_W        = 2,
+    parameter integer D_W        = 5,
+    parameter integer N_W        = 4
+	) 
+	(
+    input  logic clk,
+    input  logic rst,
+
+    input  logic in_valid,
+    input  logic [L_W-1:0] in_l,
+    input  logic [D_W-1:0] in_d,
+    input  logic [N_W-1:0] in_n,
+    input  logic signed [DELTA_SIZE-1:0] delta_value,
+    input  logic signed [U_SIZE-1:0]     u_value,
+    input  logic signed [B_SIZE-1:0]     b_value,
+
+    output logic out_valid,
+    output logic [L_W-1:0] out_l,
+    output logic [D_W-1:0] out_d,
+    output logic [N_W-1:0] out_n,
+    output logic signed [OUT_SIZE-1:0] out_data
+	);
+
+    localparam integer DU_SIZE = DELTA_SIZE + U_SIZE;
+
+    // delta_u_cache 對同一個 (l,d) 的所有 n 共用。
+    // 因為輸入順序固定為 l -> d -> n，所以只在 n=0 時計算一次。
+    logic signed [DU_SIZE-1:0] delta_u_cache;
+
+    // 將 tag 與 B 延遲一拍，下一拍使用已更新的 delta_u_cache。
+    logic v0;
+    logic [L_W-1:0] l0;
+    logic [D_W-1:0] d0;
+    logic [N_W-1:0] n0;
+    logic signed [B_SIZE-1:0] b0;
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            delta_u_cache <= '0;
+            v0            <= 1'b0;
+            l0            <= '0;
+            d0            <= '0;
+            n0            <= '0;
+            b0            <= '0;
+            out_valid     <= 1'b0;
+            out_l         <= '0;
+            out_d         <= '0;
+            out_n         <= '0;
+            out_data      <= '0;
+        end
+        else begin
+            // Stage 0：每個 (l,d) 僅在 n=0 計算一次 delta × u。
+            v0 <= in_valid;
+            if (in_valid) begin
+                l0 <= in_l;
+                d0 <= in_d;
+                n0 <= in_n;
+                b0 <= b_value;
+
+                if (in_n == 0) begin
+                    delta_u_cache <= $signed(delta_value) * $signed(u_value);
+                end
+            end
+
+            // Stage 1：同一組 (l,d) 的所有 B[l][n] 共用 delta_u_cache。
+            // 非阻塞賦值使本級看到的是前一拍完成的 cache，正好對應 v0/b0。
+            out_valid <= v0;
+            if (v0) begin
+                out_l    <= l0;
+                out_d    <= d0;
+                out_n    <= n0;
+                out_data <= $signed(delta_u_cache) * $signed(b0);
+            end
+        end
+    end
+
+endmodule

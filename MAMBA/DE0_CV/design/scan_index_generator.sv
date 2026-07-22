@@ -1,0 +1,80 @@
+module scan_index_generator 
+	#(
+    parameter integer L    = 4,
+    parameter integer D_IN = 32,
+    parameter integer N    = 16,
+    parameter integer L_W  = (L <= 1) ? 1 : $clog2(L),
+    parameter integer D_W  = (D_IN <= 1) ? 1 : $clog2(D_IN),
+    parameter integer N_W  = (N <= 1) ? 1 : $clog2(N)
+	) 
+	(
+    input  logic clk,
+    input  logic rst,
+    input  logic start,
+
+    output logic busy,
+    output logic out_valid,
+    output logic scan_done,
+    output logic [L_W-1:0] out_l,
+    output logic [D_W-1:0] out_d,
+    output logic [N_W-1:0] out_n
+	);
+
+    logic [L_W-1:0] l_cnt;
+    logic [D_W-1:0] d_cnt;
+    logic [N_W-1:0] n_cnt;
+
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            busy       <= 1'b0;
+            out_valid  <= 1'b0;
+            scan_done  <= 1'b0;
+            l_cnt      <= '0;
+            d_cnt      <= '0;
+            n_cnt      <= '0;
+            out_l      <= '0;
+            out_d      <= '0;
+            out_n      <= '0;
+        end
+        else begin
+            out_valid  <= 1'b0;
+            scan_done <= 1'b0;
+
+            if (start && !busy) begin
+                busy  <= 1'b1;
+                l_cnt <= '0;
+                d_cnt <= '0;
+                n_cnt <= '0;
+            end
+            else if (busy) begin
+                // 每個 clock 發出一組 (l,d,n)
+                out_valid <= 1'b1;
+                out_l     <= l_cnt;
+                out_d     <= d_cnt;
+                out_n     <= n_cnt;
+
+                if (n_cnt == N-1) begin
+                    n_cnt <= '0;
+                    if (d_cnt == D_IN-1) begin
+                        d_cnt <= '0;
+                        if (l_cnt == L-1) begin
+                            l_cnt      <= '0;
+                            busy       <= 1'b0;
+                            scan_done <= 1'b1;
+                        end
+                        else begin
+                            l_cnt <= l_cnt + 1'b1;
+                        end
+                    end
+                    else begin
+                        d_cnt <= d_cnt + 1'b1;
+                    end
+                end
+                else begin
+                    n_cnt <= n_cnt + 1'b1;
+                end
+            end
+        end
+    end
+
+endmodule
