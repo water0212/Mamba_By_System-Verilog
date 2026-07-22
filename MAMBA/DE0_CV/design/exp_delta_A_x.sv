@@ -10,7 +10,7 @@ module exp_delta_A_x
 		input  logic rst,
 		input  logic start,
 		
-		input  logic is_first, // 保留不影響外層
+		input  logic is_first, // 判斷是否為 i==0
 
 		// Exponential 模組輸出的 exp(delta_A)
 		input  logic [EXP_SIZE-1:0] exp_deltaA,
@@ -38,16 +38,21 @@ module exp_delta_A_x
 	assign exp_deltaA_signed = $signed({1'b0, exp_deltaA});
 
 	/*
-	 * Q8 × Q16 = Q24
+	 * 硬體的 mul_result = deltaA_int * x
+	 * 相當於 Python 裡的 product / 256
 	 */
 	assign mul_result = exp_deltaA_signed * $signed(x);
 
-	// 修改：使用標準硬體四捨五入 (+32768 後右移)，並用有號數變數接住
-	logic signed [MUL_SIZE-1:0] mul_rounded;
+	// 修改：數學化簡對齊 Python！只需加 128 並右移 8 bits
+	logic signed [MUL_SIZE-1:0] mul_abs;
+	logic signed [MUL_SIZE-1:0] mul_abs_rounded;
+	logic signed [MUL_SIZE-1:0] mul_abs_shifted;
 	logic signed [MUL_SIZE-1:0] mul_shifted;
 
-	assign mul_rounded = mul_result + 65'sd32768;
-	assign mul_shifted = mul_rounded >>> 16; // 絕對保證是算術右移
+	assign mul_abs         = (mul_result >= 0) ? mul_result : -mul_result;
+	assign mul_abs_rounded = mul_abs + 65'sd128;                  // + 128
+	assign mul_abs_shifted = mul_abs_rounded >>> EXP_FRAC_BITS;   // 右移 8 bits (除以 256)
+	assign mul_shifted     = (mul_result >= 0) ? mul_abs_shifted : -mul_abs_shifted; 
 
 	assign scaled_result = is_first ? mul_result : mul_shifted;
 

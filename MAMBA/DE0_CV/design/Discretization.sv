@@ -250,14 +250,18 @@ module Discretization
 	//保存上一個的 state：x[l-1][d][n]
 	logic signed [31:0] state_x [0:D_IN-1][0:N-1];
 	
-	// 修改：使用標準硬體四捨五入 (+128 後右移)，並用有號數變數接住，防編譯器 Bug
+	// 修改：100% 對齊 Python 的 torch.sign(x) * ((torch.abs(x) + 128) // 256)
 	logic signed [31:0] bu_val;
-	logic signed [31:0] bu_rounded;
+	logic signed [31:0] bu_abs;
+	logic signed [31:0] bu_abs_rounded;
+	logic signed [31:0] bu_abs_shifted;
 	logic signed [31:0] bu_shifted;
 	
-	assign bu_val     = delta_BU[out_l][out_d][out_n];
-	assign bu_rounded = bu_val + 32'sd128;
-	assign bu_shifted = bu_rounded >>> 8; // 絕對保證是算術右移
+	assign bu_val         = delta_BU[out_l][out_d][out_n];
+	assign bu_abs         = (bu_val >= 0) ? bu_val : -bu_val; // torch.abs
+	assign bu_abs_rounded = bu_abs + 32'sd128;                // + 128
+	assign bu_abs_shifted = bu_abs_rounded >>> 8;             // // 256
+	assign bu_shifted     = (bu_val >= 0) ? bu_abs_shifted : -bu_abs_shifted; // torch.sign
 	
 	logic signed [31:0] current_x_new;
 	assign current_x_new = exp_x_out + bu_shifted;

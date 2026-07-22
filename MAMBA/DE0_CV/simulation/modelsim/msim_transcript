@@ -12,122 +12,122 @@
 # 
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Exponential.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:49 on Jul 21,2026
+# Start time: 16:43:08 on Jul 22,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Exponential.sv 
 # -- Compiling module Exponential
 # 
 # Top level modules:
 # 	Exponential
-# End time: 22:46:49 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:43:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:49 on Jul 21,2026
+# Start time: 16:43:08 on Jul 22,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 22:46:49 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:43:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/deltaA_deltaB.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:49 on Jul 21,2026
+# Start time: 16:43:08 on Jul 22,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/deltaA_deltaB.sv 
 # -- Compiling module deltaA_deltaB
 # 
 # Top level modules:
 # 	deltaA_deltaB
-# End time: 22:46:49 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:43:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/deltaB_u.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:49 on Jul 21,2026
+# Start time: 16:43:09 on Jul 22,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/deltaB_u.sv 
 # -- Compiling module deltaB_u
 # 
 # Top level modules:
 # 	deltaB_u
-# End time: 22:46:50 on Jul 21,2026, Elapsed time: 0:00:01
+# End time: 16:43:09 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_delta_A_x.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:50 on Jul 21,2026
+# Start time: 16:43:09 on Jul 22,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_delta_A_x.sv 
 # -- Compiling module exp_delta_A_x
 # 
 # Top level modules:
 # 	exp_delta_A_x
-# End time: 22:46:50 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:43:09 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:32 on Jul 22,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:32 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:32 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:32 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:32 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
 # -- Compiling module deltaA_deltaB
 # 
 # Top level modules:
 # 	deltaA_deltaB
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:32 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:32 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Exponential.sv 
 # -- Compiling module Exponential
 # 
 # Top level modules:
 # 	Exponential
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:33 on Jul 22,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:33 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaB_u.sv 
 # -- Compiling module deltaB_u
 # 
 # Top level modules:
 # 	deltaB_u
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:33 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:33 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
 # -- Compiling module exp_delta_A_x
 # 
 # Top level modules:
 # 	exp_delta_A_x
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:33 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:46:58 on Jul 21,2026
+# Start time: 16:44:33 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 22:46:58 on Jul 21,2026, Elapsed time: 0:00:00
+# End time: 16:44:33 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 22:47:06 on Jul 21,2026
+# Start time: 16:44:34 on Jul 22,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -145,13 +145,13 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftgqecw1".
+#           Attempting to use alternate WLF file "./wlft2fa9hf".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftgqecw1
+#           Using alternate file: ./wlft2fa9hf
 # ========== Test 0 start ==========
 # Mismatch found:
-#   Output: FEACB800
-#   Answer: FFFFFEAD
+#   Output: FFFFFF32
+#   Answer: FFFFFE8F
 # 
 # Files have different lengths.
 # Test 0 FAIL.
@@ -161,75 +161,11 @@ do sim.do
 # ** Note: $stop    : ../tb/testbench.sv(185)
 #    Time: 267780 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 22:56:00 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 22:56:00 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
 do sim.do
-# End time: 22:56:02 on Jul 21,2026, Elapsed time: 0:08:56
+# End time: 16:45:12 on Jul 22,2026, Elapsed time: 0:00:38
 # Errors: 0, Warnings: 6
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 22:56:02 on Jul 21,2026
+# Start time: 16:45:12 on Jul 22,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -247,723 +183,9 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlft80a6xk".
+#           Attempting to use alternate WLF file "./wlftit4q62".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft80a6xk
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: FEACB800
-#   Answer: FFFFFEAD
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:17 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 23:08:17 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 23:08:19 on Jul 21,2026, Elapsed time: 0:12:17
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 23:08:19 on Jul 21,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftebv6y2".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftebv6y2
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: FEACB800
-#   Answer: FFFFFEAD
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:38 on Jul 21,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 23:08:38 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:38 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 23:08:38 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:39 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:08:39 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:39 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 23:08:39 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:39 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 23:08:39 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:39 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:08:39 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:08:39 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 23:08:39 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 23:08:40 on Jul 21,2026, Elapsed time: 0:00:21
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 23:08:40 on Jul 21,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftd5v1vi".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftd5v1vi
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: FFFFFEAC
-#   Answer: FFFFFEAD
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:09:13 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 23:09:13 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 23:09:15 on Jul 21,2026, Elapsed time: 0:00:35
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 23:09:15 on Jul 21,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlft57m2va".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft57m2va
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: 0000012F
-#   Answer: 0000012E
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:16:28 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 23:16:28 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 23:16:30 on Jul 21,2026, Elapsed time: 0:07:15
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 23:16:30 on Jul 21,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftqnnk3k".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftqnnk3k
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: 00FFFEAD
-#   Answer: FFFFFEAD
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 23:21:36 on Jul 21,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 23:21:36 on Jul 21,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 23:21:37 on Jul 21,2026, Elapsed time: 0:05:07
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 23:21:37 on Jul 21,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlft2h2x4f".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft2h2x4f
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: 0000012F
-#   Answer: 0000012E
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:15 on Jul 22,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:16 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:16 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:16 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:16 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:16 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:35:16 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 10:35:16 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 10:35:18 on Jul 22,2026, Elapsed time: 11:13:41
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 10:35:18 on Jul 22,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftrstg0x".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftrstg0x
-# ========== Test 0 start ==========
-# Mismatch found:
-#   Output: 0000012F
-#   Answer: 0000012E
-# 
-# Files have different lengths.
-# Test 0 FAIL.
-# 
-# 
-# [FAILED] One or more tests failed.
-# ** Note: $stop    : ../tb/testbench.sv(185)
-#    Time: 267780 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at ../tb/testbench.sv line 185
-do compile.do
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../tb/testbench.sv 
-# -- Compiling module testbench
-# 
-# Top level modules:
-# 	testbench
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/Discretization.sv 
-# -- Compiling module Discretization
-# 
-# Top level modules:
-# 	Discretization
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/Exponential.sv 
-# -- Compiling module Exponential
-# 
-# Top level modules:
-# 	Exponential
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/deltaB_u.sv 
-# -- Compiling module deltaB_u
-# 
-# Top level modules:
-# 	deltaB_u
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
-# -- Compiling module exp_delta_A_x
-# 
-# Top level modules:
-# 	exp_delta_A_x
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:42:40 on Jul 22,2026
-# vlog -reportprogress 300 ../../design/DE0_CV.sv 
-# -- Compiling module DE0_CV
-# 
-# Top level modules:
-# 	DE0_CV
-# End time: 10:42:40 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-do sim.do
-# End time: 10:42:42 on Jul 22,2026, Elapsed time: 0:07:24
-# Errors: 0, Warnings: 6
-# vsim -voptargs="+acc" work.testbench 
-# Start time: 10:42:42 on Jul 22,2026
-# Loading sv_std.std
-# Loading work.testbench
-# Loading work.Discretization
-# Loading work.deltaA_deltaB
-# Loading work.Exponential
-# Loading work.deltaB_u
-# Loading work.exp_delta_A_x
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
-#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
-# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
-#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
-# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
-# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
-# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
-#           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftb5krwj".
-# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftb5krwj
+#           Using alternate file: ./wlftit4q62
 # ========== Test 0 start ==========
 # Mismatch found:
 #   Output: FFFFFF32
@@ -979,73 +201,73 @@ do sim.do
 # Break in Module testbench at ../tb/testbench.sv line 185
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:15 on Jul 22,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:45:15 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:15 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:45:16 on Jul 22,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:16 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
+# -- Compiling module deltaA_deltaB
 # 
 # Top level modules:
-# 	exp_delta_A_x
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# 	deltaA_deltaB
+# End time: 16:45:16 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:16 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Exponential.sv 
 # -- Compiling module Exponential
 # 
 # Top level modules:
 # 	Exponential
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:45:16 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:16 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaB_u.sv 
 # -- Compiling module deltaB_u
 # 
 # Top level modules:
 # 	deltaB_u
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:45:16 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:16 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
 # -- Compiling module exp_delta_A_x
 # 
 # Top level modules:
 # 	exp_delta_A_x
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:45:16 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:49:40 on Jul 22,2026
+# Start time: 16:45:16 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 10:49:40 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:45:16 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
-# End time: 10:49:41 on Jul 22,2026, Elapsed time: 0:06:59
+# End time: 16:45:18 on Jul 22,2026, Elapsed time: 0:00:06
 # Errors: 0, Warnings: 6
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 10:49:41 on Jul 22,2026
+# Start time: 16:45:18 on Jul 22,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -1063,9 +285,9 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftf5tiee".
+#           Attempting to use alternate WLF file "./wlftgbk72d".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftf5tiee
+#           Using alternate file: ./wlftgbk72d
 # ========== Test 0 start ==========
 # Mismatch found:
 #   Output: FFFFFF32
@@ -1081,73 +303,73 @@ do sim.do
 # Break in Module testbench at ../tb/testbench.sv line 185
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:49 on Jul 22,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:55:49 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:49 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:55:49 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:49 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
-# -- Compiling module exp_delta_A_x
+# -- Compiling module deltaA_deltaB
 # 
 # Top level modules:
-# 	exp_delta_A_x
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# 	deltaA_deltaB
+# End time: 16:55:49 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:49 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Exponential.sv 
 # -- Compiling module Exponential
 # 
 # Top level modules:
 # 	Exponential
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:55:50 on Jul 22,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:50 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaB_u.sv 
 # -- Compiling module deltaB_u
 # 
 # Top level modules:
 # 	deltaB_u
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:55:50 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:50 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
 # -- Compiling module exp_delta_A_x
 # 
 # Top level modules:
 # 	exp_delta_A_x
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:55:50 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 10:55:19 on Jul 22,2026
+# Start time: 16:55:50 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 10:55:19 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 16:55:50 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
-# End time: 10:55:20 on Jul 22,2026, Elapsed time: 0:05:39
+# End time: 16:55:51 on Jul 22,2026, Elapsed time: 0:10:33
 # Errors: 0, Warnings: 6
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 10:55:21 on Jul 22,2026
+# Start time: 16:55:51 on Jul 22,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -1165,13 +387,13 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlft73i7xh".
+#           Attempting to use alternate WLF file "./wlfttetzyg".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft73i7xh
+#           Using alternate file: ./wlfttetzyg
 # ========== Test 0 start ==========
 # Mismatch found:
-#   Output: 0000012F
-#   Answer: 0000012E
+#   Output: FFFFFF32
+#   Answer: FFFFFE8F
 # 
 # Files have different lengths.
 # Test 0 FAIL.
@@ -1183,73 +405,73 @@ do sim.do
 # Break in Module testbench at ../tb/testbench.sv line 185
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:58 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 11:04:58 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:58 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 11:04:58 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:58 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaA_deltaB.sv 
 # -- Compiling module deltaA_deltaB
 # 
 # Top level modules:
 # 	deltaA_deltaB
-# End time: 11:04:58 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:58 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/Exponential.sv 
 # -- Compiling module Exponential
 # 
 # Top level modules:
 # 	Exponential
-# End time: 11:04:58 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:58 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/deltaB_u.sv 
 # -- Compiling module deltaB_u
 # 
 # Top level modules:
 # 	deltaB_u
-# End time: 11:04:58 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:58 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/exp_delta_A_x.sv 
 # -- Compiling module exp_delta_A_x
 # 
 # Top level modules:
 # 	exp_delta_A_x
-# End time: 11:04:59 on Jul 22,2026, Elapsed time: 0:00:01
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 11:04:59 on Jul 22,2026
+# Start time: 17:03:08 on Jul 22,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 11:04:59 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 17:03:08 on Jul 22,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
-# End time: 11:05:00 on Jul 22,2026, Elapsed time: 0:09:39
+# End time: 17:03:10 on Jul 22,2026, Elapsed time: 0:07:19
 # Errors: 0, Warnings: 6
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 11:05:00 on Jul 22,2026
+# Start time: 17:03:10 on Jul 22,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -1267,21 +489,14 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlftvsf4av".
+#           Attempting to use alternate WLF file "./wlftsqrmrf".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftvsf4av
+#           Using alternate file: ./wlftsqrmrf
 # ========== Test 0 start ==========
-# Mismatch found:
-#   Output: 0000012F
-#   Answer: 0000012E
-# 
-# Files have different lengths.
-# Test 0 FAIL.
+# Test 0 PASS.
 # 
 # 
-# [FAILED] One or more tests failed.
+# [SUCCESS] All 1 tests passed!
 # ** Note: $stop    : ../tb/testbench.sv(185)
 #    Time: 267780 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at ../tb/testbench.sv line 185
-# End time: 14:15:27 on Jul 22,2026, Elapsed time: 3:10:27
-# Errors: 0, Warnings: 6
