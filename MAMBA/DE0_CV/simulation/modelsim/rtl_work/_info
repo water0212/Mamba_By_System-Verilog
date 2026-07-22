@@ -7,78 +7,171 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
-vadder_4bit
-Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1784095310
-!i10b 1
-!s100 HFKgC;ik<lf^?n8YiP4nJ3
-I75;5=JbbCT[P9=oF^8_bB3
-Z3 VDg1SIo80bB@j0V0VzS_@n1
-!s105 adder_4bit_sv_unit
-S1
-R0
-Z4 w1779885468
-8C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv
-FC:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv
-L0 1
-Z5 OV;L;10.5b;63
-r1
-!s85 0
-31
-Z6 !s108 1784095310.000000
-!s107 C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design|C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/adder_4bit.sv|
-!i113 1
-Z7 o-sv -work work
-Z8 !s92 -sv -work work +incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design
-Z9 tCvgOpt 0
+Z0 dC:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
 vDE0_CV
-R1
-R2
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1784689499
 !i10b 1
 !s100 AYSgFb;^maJWHVOKgVgi?2
-IAgLX0Cdb?Po>RZ`nA9HU32
-R3
+IYSKZRJQaDTR_jVc8zO7<N0
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 !s105 DE0_CV_sv_unit
 S1
 R0
-R4
-8C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv
-FC:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv
+w1780491980
+8../../design/DE0_CV.sv
+F../../design/DE0_CV.sv
 L0 6
-R5
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-R6
-!s107 C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design|C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv|
+!s108 1784689499.000000
+!s107 ../../design/DE0_CV.sv|
+!s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
-R7
-R8
-R9
+Z5 tCvgOpt 0
 n@d@e0_@c@v
+vdeltaA_deltaB
+R1
+Z6 !s110 1784689498
+!i10b 1
+!s100 7Kn9jTD``gzfTK]BzK`nC1
+I5H5jFcgbk9@3P<NCN4f^81
+R3
+!s105 deltaA_deltaB_sv_unit
+S1
+R0
+w1784689485
+8../../design/deltaA_deltaB.sv
+F../../design/deltaA_deltaB.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z7 !s108 1784689498.000000
+!s107 ../../design/deltaA_deltaB.sv|
+!s90 -reportprogress|300|../../design/deltaA_deltaB.sv|
+!i113 1
+R5
+ndelta@a_delta@b
+vdeltaB_u
+R1
+R6
+!i10b 1
+!s100 SiT:IdjX4Em?MBSi;;_IT2
+IzM^oiPnXWa5O^^[`kEF5R3
+R3
+!s105 deltaB_u_sv_unit
+S1
+R0
+w1783410320
+8../../design/deltaB_u.sv
+F../../design/deltaB_u.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R7
+!s107 ../../design/deltaB_u.sv|
+!s90 -reportprogress|300|../../design/deltaB_u.sv|
+!i113 1
+R5
+ndelta@b_u
+vDiscretization
+R1
+R6
+!i10b 1
+!s100 XUQTEScBfO>]A0N1XG^>`3
+IZ]NSiGTKzmSH0D@5RV^iT0
+R3
+!s105 Discretization_sv_unit
+S1
+R0
+w1784688901
+8../../design/Discretization.sv
+F../../design/Discretization.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R7
+!s107 ../../design/Discretization.sv|
+!s90 -reportprogress|300|../../design/Discretization.sv|
+!i113 1
+R5
+n@discretization
+vexp_delta_A_x
+R1
+R2
+!i10b 1
+!s100 @MZZB@BaZYC=U_AQ3RT[b2
+I<=d6EKfM>3QoGjz10jR1z1
+R3
+!s105 exp_delta_A_x_sv_unit
+S1
+R0
+w1784688915
+8../../design/exp_delta_A_x.sv
+F../../design/exp_delta_A_x.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R7
+!s107 ../../design/exp_delta_A_x.sv|
+!s90 -reportprogress|300|../../design/exp_delta_A_x.sv|
+!i113 1
+R5
+nexp_delta_@a_x
+vExponential
+R1
+R6
+!i10b 1
+!s100 U7E@Oj8cT4GVk?I_n[N_N0
+I7cQUSP1n^IzDJQKQJhUVa3
+R3
+!s105 Exponential_sv_unit
+S1
+R0
+w1784445580
+8../../design/Exponential.sv
+F../../design/Exponential.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R7
+!s107 ../../design/Exponential.sv|
+!s90 -reportprogress|300|../../design/Exponential.sv|
+!i113 1
+R5
+n@exponential
 vtestbench
 R1
-!s110 1784095522
+R6
 !i10b 1
-!s100 ;kg:6KLBeP6zAhzbj>D0S1
-Id@d5LonHE9mhfYXR1?3Y82
+!s100 b8A^_U39`gBgdDR9Z0NdZ2
+I2fTQ?5_;I2Ue5=REC436D2
 R3
 !s105 testbench_sv_unit
 S1
 R0
-w1783415770
+w1784451632
 8../tb/testbench.sv
 F../tb/testbench.sv
 L0 3
-R5
+R4
 r1
 !s85 0
 31
-!s108 1784095522.000000
+R7
 !s107 ../tb/testbench.sv|
 !s90 -reportprogress|300|../tb/testbench.sv|
 !i113 1
-R9
+R5

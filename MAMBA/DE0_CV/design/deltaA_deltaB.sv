@@ -74,22 +74,31 @@ module deltaA_deltaB
 		end
 	end
 	
+	// 新增：用來接 generate 乘法結果的實體線路 (Wire)
+	logic signed [DELTA_A_SIZE-1:0] mul_out_A [0:PE_NUM-1];
+	logic signed [DELTA_B_SIZE-1:0] mul_out_B [0:PE_NUM-1];
+
 	genvar PE_cnt;
 	generate
 		for (PE_cnt = 0; PE_cnt < PE_NUM; PE_cnt = PE_cnt + 1) begin : delta_A_generate
-			always_ff @(posedge clk) begin
-				if (delta_mul_busy) begin
-					// 完美對齊 einsum('l d, d n -> l d n')
-					delta_A[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
-						$signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt]);
-					
-					// 完美對齊 einsum('l d, l n -> l d n')
-					delta_B[token_cnt][row_group_cnt*PE_NUM+PE_cnt][col_cnt] <= 
-						$signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_B[token_cnt][col_cnt]);
-				end
-			end
+			// 乘法器改為連續賦值 (Combinational logic)，不涉及 Clock
+			assign mul_out_A[PE_cnt] = $signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_A[row_group_cnt*PE_NUM+PE_cnt][col_cnt]);
+			assign mul_out_B[PE_cnt] = $signed(reg_delta[token_cnt][row_group_cnt*PE_NUM+PE_cnt]) * $signed(reg_B[token_cnt][col_cnt]);
 		end
 	endgenerate
 	
+	// 新增：將所有乘法結果在「同一個」 always_ff 區塊內寫入陣列，完美解決多重驅動
+	integer i;
+	always_ff @(posedge clk) begin
+		if (delta_mul_busy) begin
+			for (i = 0; i < PE_NUM; i = i + 1) begin
+				// 完美對齊 einsum('l d, d n -> l d n')
+				delta_A[token_cnt][row_group_cnt*PE_NUM+i][col_cnt] <= mul_out_A[i];
+				
+				// 完美對齊 einsum('l d, l n -> l d n')
+				delta_B[token_cnt][row_group_cnt*PE_NUM+i][col_cnt] <= mul_out_B[i];
+			end
+		end
+	end
 	
 endmodule

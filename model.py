@@ -437,7 +437,7 @@ class MambaBlock(nn.Module):
             x_origin_answer = deltaA_origin_float[:, i] * x_origin_answer + delta_B_u_origin[:, i]
             export_tensor_to_txt(x_origin_answer* BIT_WIDTH_SCALE**2 , f"x_origin_answer_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             export_tensor_to_txt(deltaA[:, i] * x, f"deltaA_x_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
-            export_tensor_to_txt(x, f"x_{i}.txt", is_hex=False, bit_width=64,is_int=False)
+            export_tensor_to_txt(x, f"x_{i}.txt", is_hex=True, bit_width=32,is_int=False)
             y = einsum(x, C[:, i, :], 'b d_in n, b n -> b d_in')
             ys.append(y)
         y = torch.stack(ys, dim=1) 

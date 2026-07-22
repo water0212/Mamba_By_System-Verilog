@@ -9,6 +9,8 @@ module exp_delta_A_x
 		input  logic clk,
 		input  logic rst,
 		input  logic start,
+		
+		input  logic is_first, // 保留不影響外層
 
 		// Exponential 模組輸出的 exp(delta_A)
 		input  logic [EXP_SIZE-1:0] exp_deltaA,
@@ -36,15 +38,18 @@ module exp_delta_A_x
 	assign exp_deltaA_signed = $signed({1'b0, exp_deltaA});
 
 	/*
-	 * Q8 × x
+	 * Q8 × Q16 = Q24
 	 */
 	assign mul_result = exp_deltaA_signed * $signed(x);
 
-	
-	/*********exp_deltaA 有 8-bit fraction，所以乘完要右移 8-bit。********/
-	
-	assign scaled_result = mul_result >>> EXP_FRAC_BITS;
+	// 修改：使用標準硬體四捨五入 (+32768 後右移)，並用有號數變數接住
+	logic signed [MUL_SIZE-1:0] mul_rounded;
+	logic signed [MUL_SIZE-1:0] mul_shifted;
 
+	assign mul_rounded = mul_result + 65'sd32768;
+	assign mul_shifted = mul_rounded >>> 16; // 絕對保證是算術右移
+
+	assign scaled_result = is_first ? mul_result : mul_shifted;
 
 	always_ff @(posedge clk) begin
 		if (rst) begin

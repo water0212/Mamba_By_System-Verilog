@@ -235,27 +235,62 @@ module Discretization
 	logic signed [31:0] exp_x_out;
 
 	
-	//保存上一個的 state：x[l-1][d][n]
+	/////////////////////////////////////////////////////// OUTPUT FSM
 	
+	logic out_busy;
+	logic [0:$clog2(L)-1]    out_l;
+	logic [0:$clog2(D_IN)-1] out_d;
+	logic [0:$clog2(N)-1]    out_n;
+	
+	logic bu_done_flag; // 紀錄 deltaB_u 是否已經運算完畢的旗標
+	
+	typedef enum {INIT, WAIT_EXP, WAIT_EXP_X, WRITE} substate_t;
+	substate_t sub_state;
+	
+	//保存上一個的 state：x[l-1][d][n]
 	logic signed [31:0] state_x [0:D_IN-1][0:N-1];
+	
+	// 修改：使用標準硬體四捨五入 (+128 後右移)，並用有號數變數接住，防編譯器 Bug
+	logic signed [31:0] bu_val;
+	logic signed [31:0] bu_rounded;
+	logic signed [31:0] bu_shifted;
+	
+	assign bu_val     = delta_BU[out_l][out_d][out_n];
+	assign bu_rounded = bu_val + 32'sd128;
+	assign bu_shifted = bu_rounded >>> 8; // 絕對保證是算術右移
+	
+	logic signed [31:0] current_x_new;
+	assign current_x_new = exp_x_out + bu_shifted;
 	
 	//*****************
 	//		x
 	//*****************
-	integer d;
-	integer n;
+	integer d_idx;
+	integer n_idx;
 	always_ff @(posedge clk) begin
 		if (rst) begin
-			for (d = 0; d < D_IN; d = d + 1) begin
-				for (n = 0; n < N; n = n + 1) begin
-					state_x[d][n] <= 0;
+			for (d_idx = 0; d_idx < D_IN; d_idx = d_idx + 1) begin
+				for (n_idx = 0; n_idx < N; n_idx = n_idx + 1) begin
+					state_x[d_idx][n_idx] <= '0;
 				end
 			end
+		end 
+		// 對齊 Python 的 x = torch.zeros()：每次新運算開始時將狀態歸零
+		else if (delta_mul_done) begin
+			for (d_idx = 0; d_idx < D_IN; d_idx = d_idx + 1) begin
+				for (n_idx = 0; n_idx < N; n_idx = n_idx + 1) begin
+					state_x[d_idx][n_idx] <= '0;
+				end
+			end
+		end
+		// 在算出新的 x 時更新狀態
+		else if (out_busy && sub_state == WAIT_EXP_X && exp_x_finish) begin
+			state_x[out_d][out_n] <= current_x_new;
 		end
 	end
 	
 	
-	exp_deltaA_x
+	exp_delta_A_x
 	#(
 		.EXP_SIZE      (32),
 		.X_SIZE        (32),
@@ -265,6 +300,7 @@ module Discretization
 		.clk        (clk),
 		.rst        (rst),
 		.start      (exp_x_start),
+		.is_first   (out_l == 0), // 判斷是否為 i==0
 
 		.exp_deltaA (exp_out_data),
 		.x          (state_x[out_d][out_n]),
@@ -276,52 +312,50 @@ module Discretization
 	
 	
 	
-	////////////////////////////////////////////////////// OUTPUT FSM
 	
-	logic out_busy;
-	logic out_is_B;
-	logic [0:$clog2(L)-1]    out_l;
-	logic [0:$clog2(D_IN)-1] out_d;
-	logic [0:$clog2(N)-1]    out_n;
-	
-	logic bu_done_flag; // 紀錄 deltaB_u 是否已經運算完畢的旗標
-	
-	// 新增：處理 Exponential 的子狀態機
-	typedef enum {INIT, WAIT_EXP, WRITE} substate_t;
-	substate_t sub_state;
-
 	always_ff @(posedge clk) begin
 		if (rst) begin
 			out_valid <= 0; out_data  <= 0; finish    <= 0;
-			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
-			exp_start <= 0; sub_state <= INIT; exp_in_data <= 0;
+			out_busy  <= 0; out_l <= 0; out_d <= 0; out_n <= 0; 
+			exp_start <= 0; exp_x_start <= 0; sub_state <= INIT; exp_in_data <= 0;
 			bu_done_flag <= 0;
 		end 
 		else begin
-			// 隨時捕捉 delta_BU_finish 訊號（避免它在處理 A 的時候就拉高而錯過）
+			// 隨時捕捉 delta_BU_finish 訊號
 			if (delta_BU_finish) bu_done_flag <= 1;
 
 			if (delta_mul_done) begin
-				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; out_is_B <= 0;
-				out_valid <= 0; finish    <= 0; sub_state <= INIT; exp_start <= 0;
+				out_busy  <= 1; out_l <= 0; out_d <= 0; out_n <= 0; 
+				out_valid <= 0; finish    <= 0; sub_state <= INIT; 
+				exp_start <= 0; exp_x_start <= 0;
 				bu_done_flag <= 0; // 新回合開始，重置旗標
 			end 
 			else if (out_busy) begin
 				
-				if (out_is_B == 0) begin
-					// ========== delta_A 經過 Exponential 運算 ==========
+				// 必須等待 BU 運算完成，才開始輸出最終的 X
+				if (bu_done_flag || delta_BU_finish) begin
+				
+					// ========== delta_A 經過 Exponential 運算並乘上 X，再與 delta_BU 相加 ==========
 					case (sub_state)
 						INIT: begin
-							// 只處理 delta_A 的資料
 							exp_in_data <= delta_A[out_l][out_d][out_n];
 							exp_start   <= 1;
 							sub_state   <= WAIT_EXP;
 						end
 						
 						WAIT_EXP: begin
-							exp_start <= 0; // 觸發後立刻拉回 0
+							exp_start <= 0; 
 							if (exp_finish) begin 
-								out_data  <= exp_out_data;
+								exp_x_start <= 1; 
+								sub_state   <= WAIT_EXP_X;
+							end
+						end
+						
+						WAIT_EXP_X: begin
+							exp_x_start <= 0; 
+							if (exp_x_finish) begin
+								// 輸出相加後的 x = x_nonB + delta_BU
+								out_data  <= current_x_new; 
 								out_valid <= 1;
 								sub_state <= WRITE;
 							end
@@ -330,50 +364,28 @@ module Discretization
 						WRITE: begin
 							out_valid <= 0;
 							
-							// 更新計數器 (A 跑完後切換為 B)
+							// 更新計數器 
 							if (out_n == N-1) begin
 								out_n <= 0;
 								if (out_d == D_IN-1) begin
 									out_d <= 0;
 									if (out_l == L-1) begin
 										out_l <= 0;
-										out_is_B <= 1;   // delta_A 跑完，切換成 B!
+										out_busy <= 0;   
+										finish   <= 1;   
+										bu_done_flag <= 0; 
 									end else out_l <= out_l + 1;
 								end else out_d <= out_d + 1;
 							end else out_n <= out_n + 1;
 							
-							sub_state <= INIT; // 回到下一筆資料的 INIT
+							sub_state <= INIT; 
 						end
 						
 						default: sub_state <= INIT;
 					endcase
-				end 
+				end
 				else begin
-					// ========== delta_B 經過 deltaB_u 運算後輸出 ==========
-					
-					// 必須等待 BU 運算完成才開始輸出
-					if (bu_done_flag || delta_BU_finish) begin
-						out_valid <= 1;
-						out_data  <= delta_BU[out_l][out_d][out_n];
-						
-						// 更新計數器 (B 跑完後結束)
-						if (out_n == N-1) begin
-							out_n <= 0;
-							if (out_d == D_IN-1) begin
-								out_d <= 0;
-								if (out_l == L-1) begin
-									out_l <= 0;
-									out_busy <= 0;   
-									finish   <= 1;   // 全部跑完！
-									bu_done_flag <= 0; // 輸出完畢，重置旗標
-								end else out_l <= out_l + 1;
-							end else out_d <= out_d + 1;
-						end else out_n <= out_n + 1;
-					end 
-					else begin
-						// 若 BU 還沒算完，讓 valid 保持 0 等待
-						out_valid <= 0;
-					end
+					out_valid <= 0;
 				end
 				
 			end 
