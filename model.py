@@ -421,7 +421,7 @@ class MambaBlock(nn.Module):
         #----------------------------------------------
         
         #使數值回歸到原本的浮點數範圍
-        delta_B_u = torch.round(delta_B_u_int /BIT_WIDTH_SCALE) #B 2^24
+        delta_B_u = torch.sign(delta_B_u_int) * ((torch.abs(delta_B_u_int) + BIT_WIDTH_SCALE // 2) // BIT_WIDTH_SCALE)#B 2^24
         deltaA = deltaA_int * (BIT_WIDTH_SCALE) # A 2^8
         export_tensor_to_txt(deltaA, "delta_A_testbench_exp_answer.txt", is_hex=False, bit_width=32,is_int=False)
         export_tensor_to_txt(delta_B_u, "delta_B_u_testbench_answer.txt", is_hex=False, bit_width=32,is_int=False)
