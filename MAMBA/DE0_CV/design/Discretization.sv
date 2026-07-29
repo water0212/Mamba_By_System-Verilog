@@ -8,7 +8,7 @@ module Discretization #(
     parameter integer N          = 16,
 
     // 預設假設 A、B、delta、u 都是 Q8，state_x 是 Q16。
-    parameter integer A_FRAC_BITS     = 8,
+    parameter integer A_FRAC_BITS     = 0,
     parameter integer B_FRAC_BITS     = 8,
     parameter integer DELTA_FRAC_BITS = 8,
     parameter integer U_FRAC_BITS     = 8,

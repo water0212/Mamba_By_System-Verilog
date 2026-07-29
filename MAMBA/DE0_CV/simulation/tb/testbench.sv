@@ -17,6 +17,12 @@ module testbench();
 	logic finish;
 	logic out_valid;         
 	logic [31:0] out_data;   // 修正：改為 32 位元接線
+	
+	// === 新增：用來計算 pipeline 效能的變數 ===
+	logic start_delta_mul;
+	integer pipeline_cycles;
+	bit is_pipeline_running;
+	// ==========================================
 
 	integer out_result_file;
 	integer test_idx;
@@ -38,7 +44,8 @@ module testbench();
 		
 		.finish(finish),
 		.out_valid(out_valid),
-		.out_data(out_data)
+		.out_data(out_data),
+		.start_delta_mul(start_delta_mul)
 	);
 
 	task automatic feed_data_from_file(input string filename);
@@ -132,6 +139,13 @@ module testbench();
 		feed_data_from_file(input_file);
 
 		wait(finish == 1'b1);
+		
+		// ====== 新增：在收到 finish 後，立刻印出結果 ======
+		$display("--------------------------------------------------");
+		$display(">>> [Performance] Mamba Scan Pipeline took %0d cycles.", pipeline_cycles);
+		$display("--------------------------------------------------");
+		// =================================================
+		
 		@(negedge clk); 
 
 		$fclose(out_result_file);
@@ -145,7 +159,27 @@ module testbench();
 	endtask
 
 	always #10 clk = ~clk;
-
+	
+	// === 新增：計算 mamba_scan_pipeline 所花費的 Cycle 數 ===
+	always @(posedge clk) begin
+		if (rst) begin
+			pipeline_cycles <= 0;
+			is_pipeline_running <= 0;
+		end else begin
+			if (start_delta_mul == 1'b1) begin
+				is_pipeline_running <= 1;
+				pipeline_cycles <= 0; // 重置計數器
+			end else if (finish == 1'b1) begin
+				is_pipeline_running <= 0; // 遇到 finish 停止計數
+			end
+			
+			if (is_pipeline_running) begin
+				pipeline_cycles <= pipeline_cycles + 1;
+			end
+		end
+	end
+	// ==========================================================
+	
 	always @(negedge clk) begin
 		if (out_valid && out_result_file != 0) begin
 			// 宣告一個字串變數
@@ -161,6 +195,7 @@ module testbench();
 			$fwrite(out_result_file, "%s\n", str_out);
 		end
 	end
+	
 	
 	initial begin
 		clk = 0; rst = 0; start = 0; data = 0;
