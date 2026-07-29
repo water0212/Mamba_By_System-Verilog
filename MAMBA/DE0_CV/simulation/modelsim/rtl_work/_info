@@ -7,185 +7,185 @@ z2
 !i10e 25
 !i10f 100
 cModel Technology
-Z0 dC:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
+Z0 dC:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim
 vDE0_CV
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-!s110 1784714583
+Z2 !s110 1785301894
 !i10b 1
 !s100 AYSgFb;^maJWHVOKgVgi?2
 IYSKZRJQaDTR_jVc8zO7<N0
-Z2 VDg1SIo80bB@j0V0VzS_@n1
+Z3 VDg1SIo80bB@j0V0VzS_@n1
 !s105 DE0_CV_sv_unit
 S1
 R0
-w1779885468
+w1780491980
 8../../design/DE0_CV.sv
 F../../design/DE0_CV.sv
 L0 6
-Z3 OV;L;10.5b;63
+Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-!s108 1784714583.000000
+Z5 !s108 1785301894.000000
 !s107 ../../design/DE0_CV.sv|
 !s90 -reportprogress|300|../../design/DE0_CV.sv|
 !i113 1
-Z4 tCvgOpt 0
+Z6 tCvgOpt 0
 n@d@e0_@c@v
 vdelta_a_mul_stage
 R1
-Z5 !s110 1784714582
+R2
 !i10b 1
 !s100 m2V?j`4<Zo`0f:C2@Ck;Z1
 IA3V6i@H2@bm1GL1]hjE8Z0
-R2
+R3
 !s105 delta_a_mul_stage_sv_unit
 S1
 R0
-w1784713253
+w1785259386
 8../../design/delta_a_mul_stage.sv
 F../../design/delta_a_mul_stage.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-Z6 !s108 1784714582.000000
+R5
 !s107 ../../design/delta_a_mul_stage.sv|
 !s90 -reportprogress|300|../../design/delta_a_mul_stage.sv|
 !i113 1
-R4
+R6
 vdelta_u_b_pipeline
 R1
-R5
+R2
 !i10b 1
 !s100 TA]d6MlV];Q3JAPIoKHOS1
 I?Qa2ncOJOQ7CeQ;XY:BhU3
-R2
+R3
 !s105 delta_u_b_pipeline_sv_unit
 S1
 R0
-w1784708929
+w1785296676
 8../../design/delta_u_b_pipeline.sv
 F../../design/delta_u_b_pipeline.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/delta_u_b_pipeline.sv|
 !s90 -reportprogress|300|../../design/delta_u_b_pipeline.sv|
 !i113 1
-R4
+R6
 vDiscretization
 R1
-Z7 !s110 1784714581
+Z7 !s110 1785301893
 !i10b 1
 !s100 ;AG_MGWe6gD6GdCK^fFoV3
 IkdLCJBQWZGGPF0[kAiDDe3
-R2
+R3
 !s105 Discretization_sv_unit
 S1
 R0
-w1784713047
+w1785259400
 8../../design/Discretization.sv
 F../../design/Discretization.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-Z8 !s108 1784714581.000000
+Z8 !s108 1785301893.000000
 !s107 ../../design/Discretization.sv|
 !s90 -reportprogress|300|../../design/Discretization.sv|
 !i113 1
-R4
+R6
 n@discretization
 vexp_state_mul_stage
 R1
-R5
+R2
 !i10b 1
 !s100 >jGRRN2MLG:;LmB>koE5D2
 I6n<_Y]enF?jzg<>ZRF?mG3
-R2
+R3
 !s105 exp_state_mul_stage_sv_unit
 S1
 R0
-w1784713427
+w1785301380
 8../../design/exp_state_mul_stage.sv
 F../../design/exp_state_mul_stage.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/exp_state_mul_stage.sv|
 !s90 -reportprogress|300|../../design/exp_state_mul_stage.sv|
 !i113 1
-R4
+R6
 vexponential_pipeline
 R1
-R5
+R2
 !i10b 1
 !s100 Lf]W<oRXQ^PPo;SP>SIZ63
 I67?^4`HnaV9mo3bRQEZm[0
-R2
+R3
 !s105 exponential_pipeline_sv_unit
 S1
 R0
-w1784714520
+Z9 w1785245284
 8../../design/exponential_pipeline.sv
 F../../design/exponential_pipeline.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/exponential_pipeline.sv|
 !s90 -reportprogress|300|../../design/exponential_pipeline.sv|
 !i113 1
-R4
+R6
 vfixed_round_shift
 R1
-R5
-!i10b 1
-!s100 jB]jDbX7VVGNCmIdK^VV;0
-IC?=FZQ`?cgedElTVd0Q?C1
 R2
+!i10b 1
+!s100 oZn5I9RC9?92oOZ5gj^P00
+I^G^l4]FJDkmli3EbeGK>?1
+R3
 !s105 fixed_round_shift_sv_unit
 S1
 R0
-w1784713573
+w1785255664
 8../../design/fixed_round_shift.sv
 F../../design/fixed_round_shift.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/fixed_round_shift.sv|
 !s90 -reportprogress|300|../../design/fixed_round_shift.sv|
 !i113 1
-R4
+R6
 vinput_loader
 R1
-R5
+R7
 !i10b 1
 !s100 MUN8]AI=lkzeWIBJ6`;Re1
 I3zo6c3:Ic`B3kMf66jP712
-R2
+R3
 !s105 input_loader_sv_unit
 S1
 R0
-w1784713082
+w1785259443
 8../../design/input_loader.sv
 F../../design/input_loader.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
@@ -193,137 +193,137 @@ R8
 !s107 ../../design/input_loader.sv|
 !s90 -reportprogress|300|../../design/input_loader.sv|
 !i113 1
-R4
+R6
 vmamba_scan_pipeline
 R1
-R5
+R2
 !i10b 1
 !s100 ??CmO29EfJ[NJmH6DPZZk1
 I>OM2nLI;o^Zio1XObC>OI0
-R2
+R3
 !s105 mamba_scan_pipeline_sv_unit
 S1
 R0
-w1784714575
+w1785301888
 8../../design/mamba_scan_pipeline.sv
 F../../design/mamba_scan_pipeline.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R8
 !s107 ../../design/mamba_scan_pipeline.sv|
 !s90 -reportprogress|300|../../design/mamba_scan_pipeline.sv|
 !i113 1
-R4
+R6
 vscan_index_generator
 R1
-R5
+R2
 !i10b 1
 !s100 I5DP9<<Y48PfKE;Wj<Ffm2
 IOoOK8<WL=bziG2m@?=VRO1
-R2
+R3
 !s105 scan_index_generator_sv_unit
 S1
 R0
-w1784714264
+R9
 8../../design/scan_index_generator.sv
 F../../design/scan_index_generator.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/scan_index_generator.sv|
 !s90 -reportprogress|300|../../design/scan_index_generator.sv|
 !i113 1
-R4
+R6
 vstate_memory
 R1
-R5
+R2
 !i10b 1
 !s100 ECX^dYAlRcfdfNXgZ0GL01
 I:<@Q19E1gMiA_PAAmDaO60
-R2
+R3
 !s105 state_memory_sv_unit
 S1
 R0
-w1784714219
+R9
 8../../design/state_memory.sv
 F../../design/state_memory.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/state_memory.sv|
 !s90 -reportprogress|300|../../design/state_memory.sv|
 !i113 1
-R4
+R6
 vstate_update_stage
 R1
-R5
+R2
 !i10b 1
 !s100 O<K@Dz9zGb7fGzh?H1?EO3
 IP`aAMeVlMX8Hogh5DRVbL1
-R2
+R3
 !s105 state_update_stage_sv_unit
 S1
 R0
-w1784713610
+R9
 8../../design/state_update_stage.sv
 F../../design/state_update_stage.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/state_update_stage.sv|
 !s90 -reportprogress|300|../../design/state_update_stage.sv|
 !i113 1
-R4
+R6
 vstream_delay
 R1
-R5
+R2
 !i10b 1
 !s100 GoYDCi`mIc2zIm=2g;1491
 Ii7gH<Wb5h9U>1;GQEVIRz2
-R2
+R3
 !s105 stream_delay_sv_unit
 S1
 R0
-w1784713536
+R9
 8../../design/stream_delay.sv
 F../../design/stream_delay.sv
 L0 1
-R3
+R4
 r1
 !s85 0
 31
-R6
+R5
 !s107 ../../design/stream_delay.sv|
 !s90 -reportprogress|300|../../design/stream_delay.sv|
 !i113 1
-R4
+R6
 vtestbench
 R1
 R7
 !i10b 1
 !s100 b8A^_U39`gBgdDR9Z0NdZ2
 I2fTQ?5_;I2Ue5=REC436D2
-R2
+R3
 !s105 testbench_sv_unit
 S1
 R0
-w1784701218
+w1784451632
 8../tb/testbench.sv
 F../tb/testbench.sv
 L0 3
-R3
+R4
 r1
 !s85 0
 31
@@ -331,4 +331,4 @@ R8
 !s107 ../tb/testbench.sv|
 !s90 -reportprogress|300|../tb/testbench.sv|
 !i113 1
-R4
+R6

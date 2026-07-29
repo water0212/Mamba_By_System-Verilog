@@ -10,142 +10,238 @@
 # Copying C:/intelFPGA/19.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # 
-# vlog -sv -work work +incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv}
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:02:34 on Jul 22,2026
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv 
+# Start time: 11:53:18 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 18:02:34 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:18 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv}
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:02:34 on Jul 22,2026
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv 
+# Start time: 11:53:18 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv 
 # -- Compiling module delta_u_b_pipeline
 # 
 # Top level modules:
 # 	delta_u_b_pipeline
-# End time: 18:02:34 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:18 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv}
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:02:34 on Jul 22,2026
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv 
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv 
 # -- Compiling module input_loader
 # 
 # Top level modules:
 # 	input_loader
-# End time: 18:02:34 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vlog -sv -work work +incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv}
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:02:34 on Jul 22,2026
-# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv 
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv 
 # -- Compiling module mamba_scan_pipeline
-# ** Error: (vlog-13069) C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv(178): near ")": syntax error, unexpected ')', expecting .* or '.'.
-# End time: 18:02:34 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 1, Warnings: 0
-# ** Error: C:/intelFPGA/19.1/modelsim_ase/win32aloem/vlog failed.
-# Error in macro ./DE0_CV_run_msim_rtl_verilog.do line 11
-# C:/intelFPGA/19.1/modelsim_ase/win32aloem/vlog failed.
-#     while executing
-# "vlog -sv -work work +incdir+C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/Users/USER/OneDrive/Desktop/Mam..."
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/scan_index_generator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_a_mul_stage.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 11:53:19 on Jul 29,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 11:53:19 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:01 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 18:03:01 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:01 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 18:03:01 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:01 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/input_loader.sv 
 # -- Compiling module input_loader
 # 
 # Top level modules:
 # 	input_loader
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:01
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
 # -- Compiling module mamba_scan_pipeline
 # 
 # Top level modules:
 # 	mamba_scan_pipeline
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/scan_index_generator.sv 
 # -- Compiling module scan_index_generator
 # 
 # Top level modules:
 # 	scan_index_generator
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
 # -- Compiling module delta_a_mul_stage
 # 
 # Top level modules:
 # 	delta_a_mul_stage
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:36 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
 # -- Compiling module exponential_pipeline
 # 
 # Top level modules:
 # 	exponential_pipeline
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:36 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/state_memory.sv 
 # -- Compiling module state_memory
 # 
 # Top level modules:
 # 	state_memory
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
 # -- Compiling module exp_state_mul_stage
 # 
 # Top level modules:
 # 	exp_state_mul_stage
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
 # -- Compiling module delta_u_b_pipeline
 # 
 # Top level modules:
 # 	delta_u_b_pipeline
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/stream_delay.sv 
 # -- Compiling module stream_delay
 # ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
@@ -161,45 +257,46 @@ do compile.do
 # 
 # Top level modules:
 # 	stream_delay
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 10
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
 # -- Compiling module fixed_round_shift
 # ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
 # ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
 # ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
 # ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
 # ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
-# ** Warning: ../../design/fixed_round_shift.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
 # ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
 # 
 # Top level modules:
 # 	fixed_round_shift
-# End time: 18:03:02 on Jul 22,2026, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 7
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:02 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/state_update_stage.sv 
 # -- Compiling module state_update_stage
 # 
 # Top level modules:
 # 	state_update_stage
-# End time: 18:03:03 on Jul 22,2026, Elapsed time: 0:00:01
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 18:03:03 on Jul 22,2026
+# Start time: 11:53:37 on Jul 29,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 18:03:03 on Jul 22,2026, Elapsed time: 0:00:00
+# End time: 11:53:37 on Jul 29,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 18:03:04 on Jul 22,2026
+# Start time: 11:53:40 on Jul 29,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -224,17 +321,17 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlft024bg4".
+#           Attempting to use alternate WLF file "./wlft8dyk5b".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft024bg4
+#           Using alternate file: ./wlft8dyk5b
 # ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
 # Executing ONERROR command at macro ./wave.do line 11
 # ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
 # Executing ONERROR command at macro ./wave.do line 12
 # ========== Test 0 start ==========
 # Mismatch found:
-#   Output: FFFFFA17
-#   Answer: FFFFFA18
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
 # 
 # Files have different lengths.
 # Test 0 FAIL.
@@ -244,5 +341,1362 @@ do sim.do
 # ** Note: $stop    : ../tb/testbench.sv(185)
 #    Time: 57960 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at ../tb/testbench.sv line 185
-# End time: 18:03:29 on Jul 22,2026, Elapsed time: 0:00:25
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 12:00:36 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:36 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:37 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:37 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:37 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:37 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:37 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:00:37 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 12:00:37 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 12:00:39 on Jul 29,2026, Elapsed time: 0:06:59
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 12:00:39 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.exponential_pipeline
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlftg30j3h".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftg30j3h
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57960 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:07 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 12:53:07 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:07 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 12:53:07 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:07 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 12:53:07 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:07 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 12:53:07 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:07 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:53:08 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 12:53:08 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 12:53:10 on Jul 29,2026, Elapsed time: 0:52:31
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 12:53:10 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.exponential_pipeline
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlft9f9xs8".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft9f9xs8
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57960 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 12:54:15 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 12:54:15 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 12:54:17 on Jul 29,2026, Elapsed time: 0:01:07
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 12:54:17 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlftjnxhye".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftjnxhye
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFF34
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57900 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:34 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 13:02:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 13:02:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 13:02:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 13:02:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:02:35 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 13:02:35 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 13:02:37 on Jul 29,2026, Elapsed time: 0:08:20
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 13:02:37 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.exponential_pipeline
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlftmnb4ij".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftmnb4ij
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57960 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 13:03:23 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:23 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:24 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:24 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:24 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:24 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:24 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:03:24 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 13:03:24 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 13:03:26 on Jul 29,2026, Elapsed time: 0:00:49
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 13:03:26 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.exponential_pipeline
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlftqvkttx".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftqvkttx
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57960 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:57 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 13:10:57 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:58 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 13:10:58 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:58 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 13:10:58 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:10:58 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 13:10:58 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 13:10:59 on Jul 29,2026, Elapsed time: 0:07:33
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 13:10:59 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.exponential_pipeline
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlfttin9k5".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfttin9k5
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57960 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+do compile.do
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:33 on Jul 29,2026
+# vlog -reportprogress 300 ../tb/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 13:11:33 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:33 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/Discretization.sv 
+# -- Compiling module Discretization
+# 
+# Top level modules:
+# 	Discretization
+# End time: 13:11:33 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:33 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/input_loader.sv 
+# -- Compiling module input_loader
+# 
+# Top level modules:
+# 	input_loader
+# End time: 13:11:33 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:33 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
+# -- Compiling module mamba_scan_pipeline
+# 
+# Top level modules:
+# 	mamba_scan_pipeline
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/scan_index_generator.sv 
+# -- Compiling module scan_index_generator
+# 
+# Top level modules:
+# 	scan_index_generator
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
+# -- Compiling module delta_a_mul_stage
+# 
+# Top level modules:
+# 	delta_a_mul_stage
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
+# -- Compiling module exponential_pipeline
+# 
+# Top level modules:
+# 	exponential_pipeline
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_memory.sv 
+# -- Compiling module state_memory
+# 
+# Top level modules:
+# 	state_memory
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
+# -- Compiling module exp_state_mul_stage
+# 
+# Top level modules:
+# 	exp_state_mul_stage
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
+# -- Compiling module delta_u_b_pipeline
+# 
+# Top level modules:
+# 	delta_u_b_pipeline
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/stream_delay.sv 
+# -- Compiling module stream_delay
+# ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(32): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(33): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(76): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(77): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(78): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(79): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/stream_delay.sv(80): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	stream_delay
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 10
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
+# -- Compiling module fixed_round_shift
+# ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(24): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(25): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(26): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(30): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(31): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(35): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: ../../design/fixed_round_shift.sv(36): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	fixed_round_shift
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/state_update_stage.sv 
+# -- Compiling module state_update_stage
+# 
+# Top level modules:
+# 	state_update_stage
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 13:11:34 on Jul 29,2026
+# vlog -reportprogress 300 ../../design/DE0_CV.sv 
+# -- Compiling module DE0_CV
+# 
+# Top level modules:
+# 	DE0_CV
+# End time: 13:11:34 on Jul 29,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+do sim.do
+# End time: 13:11:36 on Jul 29,2026, Elapsed time: 0:00:37
+# Errors: 6, Warnings: 24
+# vsim -voptargs="+acc" work.testbench 
+# Start time: 13:11:36 on Jul 29,2026
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.Discretization
+# Loading work.input_loader
+# Loading work.mamba_scan_pipeline
+# Loading work.scan_index_generator
+# Loading work.delta_a_mul_stage
+# Loading work.exponential_pipeline
+# Loading work.state_memory
+# Loading work.exp_state_mul_stage
+# Loading work.fixed_round_shift
+# Loading work.delta_u_b_pipeline
+# Loading work.stream_delay
+# Loading work.state_update_stage
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(100): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-PLI-3691) ../tb/testbench.sv(101): Expected a system task, not a system function '$fgets'.
+#    Time: 0 ps  Iteration: 0  Region: /testbench/compare_files File: ../tb/testbench.sv
+# ** Warning: (vsim-3017) ../tb/testbench.sv(33): [TFMPC] - Too few port connections. Expected 8, found 7.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/dut File: ../../design/Discretization.sv
+# ** Warning: (vsim-3722) ../tb/testbench.sv(33): [TFMPC] - Missing connection for port 'start_delta_mul'.
+# .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: user  Hostname: MSI  ProcessID: 4912
+#           Attempting to use alternate WLF file "./wlft0jg83r".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft0jg83r
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
+# Executing ONERROR command at macro ./wave.do line 11
+# ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_B'.
+# Executing ONERROR command at macro ./wave.do line 12
+# ========== Test 0 start ==========
+# Mismatch found:
+#   Output: FFFFFDE1
+#   Answer: FFFFFE8F
+# 
+# Files have different lengths.
+# Test 0 FAIL.
+# 
+# 
+# [FAILED] One or more tests failed.
+# ** Note: $stop    : ../tb/testbench.sv(185)
+#    Time: 57960 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at ../tb/testbench.sv line 185
+# End time: 13:32:09 on Jul 29,2026, Elapsed time: 0:20:33
 # Errors: 6, Warnings: 6

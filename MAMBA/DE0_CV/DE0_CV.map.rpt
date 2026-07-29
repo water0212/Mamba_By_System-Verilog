@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE0_CV
-Wed Jul 22 18:02:14 2026
+Tue Jul 28 23:46:20 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Jul 22 18:02:14 2026       ;
+; Analysis & Elaboration Status ; Successful - Tue Jul 28 23:46:20 2026       ;
 ; Quartus Prime Version         ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                 ; DE0_CV                                      ;
 ; Top-level Entity Name         ; Discretization                              ;
@@ -74,7 +74,7 @@ https://fpgasoftware.intel.com/eula.
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
 ; Number detected on machine ; 16          ;
-; Maximum allowed            ; 12          ;
+; Maximum allowed            ; 10          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -401,45 +401,44 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Jul 22 18:02:03 2026
+    Info: Processing started: Tue Jul 28 23:46:07 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_CV -c DE0_CV --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file simulation/tb/testbench.sv
-    Info (12023): Found entity 1: testbench File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/tb/testbench.sv Line: 3
+    Info (12023): Found entity 1: testbench File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/tb/testbench.sv Line: 3
 Info (12021): Found 1 design units, including 1 entities, in source file design/discretization.sv
-    Info (12023): Found entity 1: Discretization File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 1
+    Info (12023): Found entity 1: Discretization File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/de0_cv.sv
-    Info (12023): Found entity 1: DE0_CV File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv Line: 6
+    Info (12023): Found entity 1: DE0_CV File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/DE0_CV.sv Line: 6
 Info (12021): Found 1 design units, including 1 entities, in source file design/delta_u_b_pipeline.sv
-    Info (12023): Found entity 1: delta_u_b_pipeline File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv Line: 1
+    Info (12023): Found entity 1: delta_u_b_pipeline File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/input_loader.sv
-    Info (12023): Found entity 1: input_loader File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv Line: 1
-Warning (10275): Verilog HDL Module Instantiation warning at mamba_scan_pipeline.sv(178): ignored dangling comma in List of Port Connections File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 178
+    Info (12023): Found entity 1: input_loader File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/mamba_scan_pipeline.sv
-    Info (12023): Found entity 1: mamba_scan_pipeline File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 1
+    Info (12023): Found entity 1: mamba_scan_pipeline File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/scan_index_generator.sv
-    Info (12023): Found entity 1: scan_index_generator File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/scan_index_generator.sv Line: 1
+    Info (12023): Found entity 1: scan_index_generator File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/scan_index_generator.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/delta_a_mul_stage.sv
-    Info (12023): Found entity 1: delta_a_mul_stage File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_a_mul_stage.sv Line: 1
+    Info (12023): Found entity 1: delta_a_mul_stage File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_a_mul_stage.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/exponential_pipeline.sv
-    Info (12023): Found entity 1: exponential_pipeline File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv Line: 1
+    Info (12023): Found entity 1: exponential_pipeline File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/state_memory.sv
-    Info (12023): Found entity 1: state_memory File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv Line: 1
+    Info (12023): Found entity 1: state_memory File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/exp_state_mul_stage.sv
-    Info (12023): Found entity 1: exp_state_mul_stage File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv Line: 1
+    Info (12023): Found entity 1: exp_state_mul_stage File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/stream_delay.sv
-    Info (12023): Found entity 1: stream_delay File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv Line: 1
+    Info (12023): Found entity 1: stream_delay File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/fixed_round_shift.sv
-    Info (12023): Found entity 1: fixed_round_shift File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 1
+    Info (12023): Found entity 1: fixed_round_shift File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/state_update_stage.sv
-    Info (12023): Found entity 1: state_update_stage File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv Line: 1
+    Info (12023): Found entity 1: state_update_stage File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv Line: 1
 Info (12127): Elaborating entity "Discretization" for the top level hierarchy
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
-Info (12128): Elaborating entity "input_loader" for hierarchy "input_loader:loader" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 66
+Info (12128): Elaborating entity "input_loader" for hierarchy "input_loader:loader" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 66
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
@@ -448,7 +447,7 @@ Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
-Info (12128): Elaborating entity "mamba_scan_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 96
+Info (12128): Elaborating entity "mamba_scan_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 96
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
@@ -457,31 +456,33 @@ Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
-Info (12128): Elaborating entity "scan_index_generator" for hierarchy "mamba_scan_pipeline:scan_pipeline|scan_index_generator:index_gen" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 93
-Info (12128): Elaborating entity "delta_a_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_a_mul_stage:delta_a_stage" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 125
-Info (12128): Elaborating entity "exponential_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|exponential_pipeline:exp_stage" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 153
-Warning (10230): Verilog HDL assignment warning at exponential_pipeline.sv(150): truncated value with size 42 to match size of target (32) File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv Line: 150
-Info (12128): Elaborating entity "state_memory" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_memory:x_memory" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 178
+Info (12128): Elaborating entity "scan_index_generator" for hierarchy "mamba_scan_pipeline:scan_pipeline|scan_index_generator:index_gen" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 93
+Info (12128): Elaborating entity "delta_a_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_a_mul_stage:delta_a_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 125
+Info (12128): Elaborating entity "exponential_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|exponential_pipeline:exp_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 153
+Warning (10230): Verilog HDL assignment warning at exponential_pipeline.sv(150): truncated value with size 42 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv Line: 150
+Info (12128): Elaborating entity "state_memory" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_memory:x_memory" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 178
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "x_mem" into its bus
-Info (12128): Elaborating entity "exp_state_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 207
-Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage|fixed_round_shift:scale_exp_x" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv Line: 44
-Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(35): truncated value with size 66 to match size of target (32) File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 35
-Info (12128): Elaborating entity "delta_u_b_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_u_b_pipeline:delta_u_b_stage" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 241
-Info (12128): Elaborating entity "stream_delay" for hierarchy "mamba_scan_pipeline:scan_pipeline|stream_delay:align_b_path" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 268
-Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|fixed_round_shift:scale_delta_ub" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 279
-Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(35): truncated value with size 33 to match size of target (32) File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 35
-Info (12128): Elaborating entity "state_update_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_update_stage:update_x_stage" File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 313
-Info (144001): Generated suppressed messages file C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4962 megabytes
-    Info: Processing ended: Wed Jul 22 18:02:14 2026
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:21
+Info (12128): Elaborating entity "exp_state_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 207
+Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage|fixed_round_shift:scale_exp_x" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv Line: 44
+Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): truncated value with size 66 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 31
+Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 66 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
+Info (12128): Elaborating entity "delta_u_b_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_u_b_pipeline:delta_u_b_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 241
+Info (12128): Elaborating entity "stream_delay" for hierarchy "mamba_scan_pipeline:scan_pipeline|stream_delay:align_b_path" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 268
+Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|fixed_round_shift:scale_delta_ub" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 279
+Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): truncated value with size 33 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 31
+Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 33 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
+Info (12128): Elaborating entity "state_update_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_update_stage:update_x_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 313
+Info (144001): Generated suppressed messages file C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 6 warnings
+    Info: Peak virtual memory: 4905 megabytes
+    Info: Processing ended: Tue Jul 28 23:46:20 2026
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:28
 
 
 +--------------------------------------------+
 ; Analysis & Elaboration Suppressed Messages ;
 +--------------------------------------------+
-The suppressed messages can be found in C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg.
+The suppressed messages can be found in C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg.
 
 
