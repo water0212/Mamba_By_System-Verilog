@@ -121,6 +121,8 @@ module testbench();
 		input string answer_file,
 		output bit single_pass
 	);
+		integer calc_cycles;
+		
 		$display("========== Test %0d start ==========", test_id);
 
 		out_result_file = $fopen(output_file, "w");
@@ -131,7 +133,20 @@ module testbench();
 
 		feed_data_from_file(input_file);
 
-		wait(finish == 1'b1);
+		wait(dut.start_delta_mul == 1'b1);
+		calc_cycles = 0; // 收到訊號後，將計數器歸零開始算
+
+		// [修改] 3. 只要還沒收到 finish，每一個 clock 正緣就加 1
+		while (finish == 1'b0) begin
+			@(posedge clk);
+			calc_cycles++;
+		end
+		
+		// ====== 新增：在收到 finish 後，立刻印出結果 ======
+		$display("--------------------------------------------------");
+		$display(">>> [Performance] Mamba No Pipeline took %0d cycles.", calc_cycles);
+		$display("--------------------------------------------------");
+		// =================================================
 		@(negedge clk); 
 
 		$fclose(out_result_file);

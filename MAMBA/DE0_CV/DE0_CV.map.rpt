@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE0_CV
-Wed Jul 22 16:43:00 2026
+Wed Jul 29 14:51:02 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -43,7 +43,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Jul 22 16:43:00 2026       ;
+; Analysis & Elaboration Status ; Successful - Wed Jul 29 14:51:02 2026       ;
 ; Quartus Prime Version         ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                 ; DE0_CV                                      ;
 ; Top-level Entity Name         ; Discretization                              ;
@@ -238,7 +238,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Jul 22 16:41:50 2026
+    Info: Processing started: Wed Jul 29 14:50:10 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_CV -c DE0_CV --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -313,13 +313,13 @@ Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "u" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "data_out" into its bus
 Info (12128): Elaborating entity "exp_delta_A_x" for hierarchy "exp_delta_A_x:exp_deltaA_x_unit" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 314
-Warning (10230): Verilog HDL assignment warning at exp_delta_A_x.sv(66): truncated value with size 65 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_delta_A_x.sv Line: 66
+Warning (10230): Verilog HDL assignment warning at exp_delta_A_x.sv(67): truncated value with size 65 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_delta_A_x.sv Line: 67
 Info (144001): Generated suppressed messages file C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 28 warnings
-    Info: Peak virtual memory: 6987 megabytes
-    Info: Processing ended: Wed Jul 22 16:43:01 2026
-    Info: Elapsed time: 00:01:11
-    Info: Total CPU time (on all processors): 00:01:16
+    Info: Peak virtual memory: 6872 megabytes
+    Info: Processing ended: Wed Jul 29 14:51:03 2026
+    Info: Elapsed time: 00:00:53
+    Info: Total CPU time (on all processors): 00:00:59
 
 
 +--------------------------------------------+
