@@ -158,7 +158,7 @@ module testbench();
 			$display("Test %0d FAIL.\n", test_id);
 	endtask
 
-	always #10 clk = ~clk;
+	always #0.5 clk = ~clk;
 	
 	// === 新增：計算 mamba_scan_pipeline 所花費的 Cycle 數 ===
 	always @(posedge clk) begin
