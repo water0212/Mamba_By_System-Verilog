@@ -22,6 +22,7 @@ Glossary:
 from __future__ import annotations
 import math
 import json
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -301,23 +302,6 @@ class MambaBlock(nn.Module):
         """
         (b, l, d_in) = u.shape
         n = A.shape[1]
-<<<<<<< Updated upstream
-        
-        # Discretize continuous parameters (A, B)
-        # - A is discretized using zero-order hold (ZOH) discretization (see Section 2 Equation 4 in the Mamba paper [1])
-        # - B is discretized using a simplified Euler discretization instead of ZOH. From a discussion with authors:
-        #   "A is the more important term and the performance doesn't change much with the simplification on B"
-        deltaA = torch.exp(einsum(delta, A, 'b l d_in, d_in n -> b l d_in n'))
-        deltaB_u = einsum(delta, B, u, 'b l d_in, b l n, b l d_in -> b l d_in n')
-        
-        # Perform selective scan (see scan_SSM() in The Annotated S4 [2])
-        # Note that the below is sequential, while the official implementation does a much faster parallel scan that
-        # is additionally hardware-aware (like FlashAttention).
-        x = torch.zeros((b, d_in, n), device=deltaA.device)
-        ys = []    
-        for i in range(l):
-            x = deltaA[:, i] * x + deltaB_u[:, i]
-=======
         def hardware_exp_approx(x_int, scale=256):
             """
             實作 MARCA 論文中的 e^x 近似硬體演算法 (純整數與位元運算)
@@ -398,8 +382,8 @@ class MambaBlock(nn.Module):
         # B 方案二：硬體定點數量化 (Fixed-point Quantization)
         BIT_WIDTH_SCALE = 256  
         B_int_tensor = torch.round(B * BIT_WIDTH_SCALE).to(torch.int32)
-        C_q8 = torch.round(C * BIT_WIDTH_SCALE).to(torch.int64)
-        D_q8 = torch.round(D * BIT_WIDTH_SCALE).to(torch.int64)
+        C_q8 = torch.round(C * BIT_WIDTH_SCALE).to(torch.int32)
+        D_q8 = torch.round(D * BIT_WIDTH_SCALE).to(torch.int32)
         
         # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
         # B 是我們量化過後的整數，所以用 is_int=True 匯出乾淨的整數格式
@@ -471,7 +455,8 @@ class MambaBlock(nn.Module):
         export_tensor_to_txt(delta_B_u_float, "delta_B_u_testbench_answer_float.txt", is_hex=False, bit_width=32,is_int=False)
         x = torch.zeros((b, d_in, n), device=delta.device)
         x_origin_answer = torch.zeros((b, d_in, n), device=delta.device)
-        ys = []    
+        ys_q16 = []   
+        ys = []
         for i in range(l):
             product = deltaA[:, i].to(torch.int64) * x.to(torch.int64)
             if(i != 0) : x_nonB = torch.sign(product) * ((torch.abs(product) + BIT_WIDTH_SCALE**2 // 2)// BIT_WIDTH_SCALE**2)# 將數值回歸到原本的浮點數範圍
@@ -483,12 +468,43 @@ class MambaBlock(nn.Module):
             export_tensor_to_txt(x_origin_answer* BIT_WIDTH_SCALE**2 , f"x_origin_answer_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             export_tensor_to_txt(deltaA[:, i] * x, f"deltaA_x_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             export_tensor_to_txt(x, f"x_{i}.txt", is_hex=True, bit_width=32,is_int=False)
->>>>>>> Stashed changes
-            y = einsum(x, C[:, i, :], 'b d_in n, b n -> b d_in')
+            #-----------------------
+            
+            y = einsum(x_origin_answer, C[:, i, :], 'b d_in n, b n -> b d_in')
+            export_tensor_to_txt(y, f"y_xC_origin_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(C[:, i, :], f"C_origin_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             ys.append(y)
-        y = torch.stack(ys, dim=1)  # shape (b, l, d_in)
+            
+            
+            #------------------------
+            
+            C_i_q8 = C_q8[:, i, :].unsqueeze(1)
+            export_tensor_to_txt(C_i_q8, f"C_i_q8_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            xc_q24 = x.to(torch.int64) * C_i_q8
+            xc_acc_q24 = xc_q24.sum(dim=-1)
+
+            cx_q16 = torch.sign(xc_acc_q24) * (
+                (torch.abs(xc_acc_q24) + 128) // 256
+            )
+            export_tensor_to_txt(cx_q16, f"cx_q16_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            ys_q16.append(cx_q16)
+            export_tensor_to_txt(torch.stack(ys_q16, dim=1), f"y_stack_q16_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+        #--------------------------
+        y = torch.stack(ys, dim=1)
+        export_tensor_to_txt(y, f"y_stack_origin_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+        y_origin = y + u * D
+        export_tensor_to_txt(y_origin, f"y_origin_answer.txt", is_hex=False, bit_width=32,is_int=False)
+        #--------------------------
+        cx_all_q16 = torch.stack(ys_q16, dim=1)
         
-        y = y + u * D
+        export_tensor_to_txt(cx_all_q16, f"cx_all_q16.txt", is_hex=False, bit_width=32,is_int=False)
+        
+        ud_q16 = u_int_tensor * D_q8.unsqueeze(0).unsqueeze(0)
+        y_q16 = cx_all_q16 + ud_q16
+        export_tensor_to_txt(y_q16, f"y_q16_answer.txt", is_hex=False, bit_width=32,is_int=False)
+
+        y = y_q16.to(torch.float32) / 65536
+        export_tensor_to_txt(y, f"y_q16_float_answer.txt", is_hex=False, bit_width=32,is_int=False)
     
         return y
 
