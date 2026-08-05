@@ -301,6 +301,7 @@ class MambaBlock(nn.Module):
         """
         (b, l, d_in) = u.shape
         n = A.shape[1]
+<<<<<<< Updated upstream
         
         # Discretize continuous parameters (A, B)
         # - A is discretized using zero-order hold (ZOH) discretization (see Section 2 Equation 4 in the Mamba paper [1])
@@ -316,6 +317,173 @@ class MambaBlock(nn.Module):
         ys = []    
         for i in range(l):
             x = deltaA[:, i] * x + deltaB_u[:, i]
+=======
+        def hardware_exp_approx(x_int, scale=256):
+            """
+            實作 MARCA 論文中的 e^x 近似硬體演算法 (純整數與位元運算)
+            x_int: 已經放大 scale 倍的定點數張量 (必須為 32-bit 整數)
+            scale: 放大倍率 (256 代表保留 8-bit 小數)
+            """
+            # 確保是整數型態，才能做位元運算
+            x_int = x_int.to(torch.int32)
+            
+            # 1. 乘以 log2(e) ≒ 1.442695
+            # 在定點數表示中，1.442695 * 256 ≒ 369
+            LOG2E_INT = 369
+            
+            # x_int 乘以 369 後，小數點被放大了兩次 (256 * 256)
+            # 所以我們要 >> 8 (除以 256) 退回一次，維持 8-bit 小數精度
+            x_prime_int = torch.bitwise_right_shift(x_int * LOG2E_INT, 8)
+            
+            # 2. 提取整數 Z 與小數 f
+            # 向右位移 8 bit 抓出整數 (PyTorch 的 >> 會自動處理 2 的補數符號延伸)
+            Z = torch.bitwise_right_shift(x_prime_int, 8)  
+            # 用 Bitwise AND ( & 0xFF ) 抓出低 8 bit 作為小數部分
+            f_int = torch.bitwise_and(x_prime_int, 255)    
+            
+            # 3. 計算 2^f ≒ 1 + f 
+            # 在 8-bit 定點數中，真實世界的數值 1.0，在暫存器裡的值就是 256
+            two_to_f_int = 256 + f_int
+            
+            # 4. 乘以 2^Z
+            # Z 是負數，乘以 2^Z 等同於向右位移 |Z|
+            shift_amount = torch.abs(Z)
+            
+            # (安全機制) 避免位移量超過 31 導致 PyTorch 報錯，最大限制在 31
+            # 在硬體中如果位移超過暫存器寬度，值會直接變成 0，這裡的 clamp 也能達到接近 0 的效果
+            shift_amount = torch.clamp(shift_amount, max=31)
+            
+            # 執行最終的右移
+            y_int = torch.bitwise_right_shift(two_to_f_int, shift_amount)
+            
+            # 轉回 float32 讓 PyTorch 能繼續做後續的 einsum
+            return y_int.to(torch.float32)
+        # 輔助函數：將 Tensor 匯出為純文字檔 (Testbench 格式)
+        # 輔助函數：將 Tensor 匯出為純文字檔 (Testbench 格式)
+        def export_tensor_to_txt(tensor, filename, is_int=False, is_hex=False, bit_width=8):
+            # 將 tensor 轉為 numpy，並確保它在 CPU 上
+            np_arr = tensor.detach().cpu().numpy()
+            
+            # 將多維陣列攤平成一維
+            flat_arr = np_arr.flatten()
+            
+            if is_hex:
+                # 處理 16 進位與 2 的補數轉換
+                mask = (1 << bit_width) - 1
+                hex_digits = bit_width // 4
+                with open(filename, 'w') as f:
+                    for val in flat_arr:
+                        hex_val = int(val) & mask
+                        f.write(f"{hex_val:0{hex_digits}X}\n")
+            else:
+                # 處理傳統的 10 進位整數或浮點數
+                if is_int:
+                    flat_arr = flat_arr.astype(np.int32)
+                fmt = '%d' if is_int else '%.6f'
+                np.savetxt(filename, flat_arr, fmt=fmt)
+            # print(f"[硬體除錯] 已匯出 {tensor.shape} 的資料至 {filename}")
+
+        # ======================================================================
+        # 硬體模擬：將 A 與 B 的內部數值全部轉換為整數（捨棄小數點）
+        export_tensor_to_txt(A, "A_origin_float.txt", is_hex=False, bit_width=16,is_int = False)
+        export_tensor_to_txt(B, "B_origin_float.txt", is_hex=False, bit_width=16,is_int=False)
+        export_tensor_to_txt(C, "C_origin_float.txt", is_hex=False, bit_width=32,is_int=False)
+        export_tensor_to_txt(D, "D_origin_float.txt", is_hex=False, bit_width=32,is_int=False)
+        # ======================================================================
+        export_tensor_to_txt(delta, "delta_origin_float.txt", is_int=False)
+        # A 方案一：直接無條件四捨五入轉整數
+        A_int_tensor = torch.round(A).to(torch.int32)
+        A_int = A_int_tensor.to(torch.float32)
+        
+        # B 方案二：硬體定點數量化 (Fixed-point Quantization)
+        BIT_WIDTH_SCALE = 256  
+        B_int_tensor = torch.round(B * BIT_WIDTH_SCALE).to(torch.int32)
+        C_q8 = torch.round(C * BIT_WIDTH_SCALE).to(torch.int64)
+        D_q8 = torch.round(D * BIT_WIDTH_SCALE).to(torch.int64)
+        
+        # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
+        # B 是我們量化過後的整數，所以用 is_int=True 匯出乾淨的整數格式
+        # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
+        # 加入 is_hex=True 並設定硬體記憶體的位元寬度 (預設為 8-bit)
+        # 注意：如果你的硬體對應暫存器是 16 或 32 bit，請把 bit_width 改成 16 或 32
+        export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_hex=True, bit_width=16)
+        export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_hex=True, bit_width=16)
+        export_tensor_to_txt(C_q8, "C_testbench.txt", is_hex=False, bit_width=32)
+        export_tensor_to_txt(D_q8, "D_testbench.txt", is_hex=False, bit_width=32)
+        
+        # 如果需要，你也可以匯出 delta 和 u 作為 testbench 輸入
+        delta_int_tensor = torch.round(delta * BIT_WIDTH_SCALE).to(torch.int32)
+        export_tensor_to_txt(delta_int_tensor, "delta_testbench.txt", is_hex=True, bit_width=16)
+        delta_float_tensor = delta_int_tensor.to(torch.float32)
+        B_int = B_int_tensor.to(torch.float32)
+        # ======================================================================
+        
+        # 離散化連續參數
+        deltaAnonE = einsum(delta_float_tensor, A_int, 'b l d_in, d_in n -> b l d_in n')
+        deltaAnonE_float = einsum(delta, A_int, 'b l d_in, d_in n -> b l d_in n')
+        deltaAnonE_origin = einsum(delta, A, 'b l d_in, d_in n -> b l d_in n')
+        # [修改] 中間乘積結果，建議使用 32-bit 匯出 (對應硬體的 Accumulator)
+        deltaAnonE_origin_mul256 = torch.round(deltaAnonE_origin * BIT_WIDTH_SCALE)
+        export_tensor_to_txt(deltaAnonE, "deltaA_nonE.txt", is_hex=True, bit_width=32)
+        export_tensor_to_txt(deltaAnonE_origin, "deltaA_nonE_origin.txt", bit_width=32)
+        export_tensor_to_txt(deltaAnonE_origin_mul256, "deltaA_nonE_origin_mul256.txt", is_hex=True, bit_width=32)
+        deltaA_int = hardware_exp_approx(deltaAnonE, scale=BIT_WIDTH_SCALE)
+        # A的軟體於原始運算資訊
+        deltaA_origin_float = torch.exp(deltaAnonE_origin)
+        # A的軟體運算資訊(delta尚未量化)
+        deltaA_float = torch.exp(deltaAnonE_float)
+        
+        deltaB = einsum(delta_float_tensor, B_int, 'b l d_in, b l n -> b l d_in n')
+        deltaB_origin = einsum(delta, B, 'b l d_in, b l n -> b l d_in n')
+        # 匯出硬體運算的標準答案 (Golden Answer)
+        
+        # [保留] 浮點數版本通常是給軟體驗證演算法 (Algorithm Debug) 用的，不轉 Hex
+        export_tensor_to_txt(deltaA_float, "A_answer_software_exp_float.txt", is_int=False)
+        export_tensor_to_txt(deltaA_origin_float, "A_answer_software_exp_origin_float.txt", is_int=False)
+        # [修改] 整數標準答案轉為 Hex (同樣建議用 32-bit 對齊硬體暫存器寬度)
+        export_tensor_to_txt(deltaA_int, "A_answer_hardware_exp_int.txt", is_hex=False, bit_width=32)
+        export_tensor_to_txt(deltaB, "B_answer.txt", is_hex=True, bit_width=32)
+        # B的軟體原始資訊
+        export_tensor_to_txt(deltaB_origin, "B_answer_origin.txt", bit_width=32)
+        
+        #export_tensor_to_txt(deltaB_u_Quantization, "B_answer_exp_float.txt", is_int=False)
+        #export_tensor_to_txt(deltaA, "A_answer_exp_int_compare_float.txt", is_int=False)
+        # [保留] 用來觀察量化誤差的浮點數，保持小數點輸出
+        export_tensor_to_txt(u, "u_shape_float.txt", is_hex=False, bit_width=32,is_int=False)
+        u_int_tensor = torch.round(u * BIT_WIDTH_SCALE).to(torch.int32)
+        export_tensor_to_txt(u_int_tensor, "u_shape_int.txt", is_hex=True, bit_width=16)
+        # ======================================================================
+        delta_B_u_int = einsum(deltaB,u_int_tensor, 'b l d_in n, b l d_in -> b l d_in n')
+        export_tensor_to_txt(delta_B_u_int, "delta_B_u_int.txt", is_hex=False, bit_width=32,is_int=False)
+        delta_B_u_origin = einsum(deltaB_origin,u, 'b l d_in n, b l d_in -> b l d_in n')
+        export_tensor_to_txt(delta_B_u_origin, "delta_B_u_origin.txt", is_hex=False, bit_width=32,is_int=False)
+        delta_B_u_origin256 = torch.round(delta_B_u_origin * BIT_WIDTH_SCALE**3)
+        export_tensor_to_txt(delta_B_u_origin256, "delta_B_u_origin256.txt", is_hex=False, bit_width=32,is_int=False)
+        # 執行選擇性掃描 (Perform selective scan)
+        #----------------------------------------------
+        
+        #使數值回歸到原本的浮點數範圍
+        delta_B_u = torch.sign(delta_B_u_int) * ((torch.abs(delta_B_u_int) + BIT_WIDTH_SCALE // 2) // BIT_WIDTH_SCALE)#B 2^24
+        delta_B_u_float = delta_B_u_int / (BIT_WIDTH_SCALE) # B 2^8
+        deltaA = deltaA_int * (BIT_WIDTH_SCALE) # A 2^8
+        export_tensor_to_txt(deltaA, "delta_A_testbench_exp_answer.txt", is_hex=False, bit_width=32,is_int=False)
+        export_tensor_to_txt(delta_B_u, "delta_B_u_testbench_answer.txt", is_hex=False, bit_width=32,is_int=False)
+        export_tensor_to_txt(delta_B_u_float, "delta_B_u_testbench_answer_float.txt", is_hex=False, bit_width=32,is_int=False)
+        x = torch.zeros((b, d_in, n), device=delta.device)
+        x_origin_answer = torch.zeros((b, d_in, n), device=delta.device)
+        ys = []    
+        for i in range(l):
+            product = deltaA[:, i].to(torch.int64) * x.to(torch.int64)
+            if(i != 0) : x_nonB = torch.sign(product) * ((torch.abs(product) + BIT_WIDTH_SCALE**2 // 2)// BIT_WIDTH_SCALE**2)# 將數值回歸到原本的浮點數範圍
+            else : x_nonB = deltaA[:, i] * x
+            x = x_nonB + delta_B_u[:, i] 
+            #if(i != 1) : x = x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
+            x_origin_answer = deltaA_origin_float[:, i] * x_origin_answer + delta_B_u_origin[:, i]
+            export_tensor_to_txt(delta_B_u[:, i], f"delta_B_u_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(x_origin_answer* BIT_WIDTH_SCALE**2 , f"x_origin_answer_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(deltaA[:, i] * x, f"deltaA_x_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(x, f"x_{i}.txt", is_hex=True, bit_width=32,is_int=False)
+>>>>>>> Stashed changes
             y = einsum(x, C[:, i, :], 'b d_in n, b n -> b d_in')
             ys.append(y)
         y = torch.stack(ys, dim=1)  # shape (b, l, d_in)
