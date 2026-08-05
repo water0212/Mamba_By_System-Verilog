@@ -4,6 +4,8 @@ module input_loader
     parameter integer B_SIZE     = 16,
     parameter integer DELTA_SIZE = 16,
     parameter integer U_SIZE     = 16,
+	 parameter integer C_SIZE     = 16,
+	 parameter integer D_SIZE     = 16,
     parameter integer L          = 4,
     parameter integer D_IN       = 32,
     parameter integer N          = 16
@@ -20,10 +22,12 @@ module input_loader
     output logic signed [A_SIZE-1:0]     reg_A     [0:D_IN-1][0:N-1],
     output logic signed [B_SIZE-1:0]     reg_B     [0:L-1][0:N-1],
     output logic signed [DELTA_SIZE-1:0] reg_delta [0:L-1][0:D_IN-1],
-    output logic signed [U_SIZE-1:0]     reg_u     [0:L-1][0:D_IN-1]
+    output logic signed [U_SIZE-1:0]     reg_u     [0:L-1][0:D_IN-1],
+	 output logic signed [C_SIZE-1:0]	  reg_c		[0:L-1][0:N-1],
+	 output logic signed [D_SIZE-1:0]	  rea_d		[0:D_IN]
 	);
 
-    typedef enum {IDLE, A, B, DELTA, U} load_state_t;
+    typedef enum {IDLE, A, B, DELTA, U, C, D} load_state_t;
 
     load_state_t state;
     integer unsigned data_count;
@@ -89,6 +93,30 @@ module input_loader
 
                     if (data_count == (L*D_IN)-1) begin
                         data_count <= 0;
+                        state      <= C;
+                    end
+                    else begin
+                        data_count <= data_count + 1;
+                    end
+                end
+					 
+					 C: begin
+                    reg_c[data_count / N][data_count % N] <= $signed(data[C_SIZE-1:0]);
+
+                    if (data_count == (L*N)-1) begin
+                        data_count <= 0;
+                        state      <= D;
+                    end
+                    else begin
+                        data_count <= data_count + 1;
+                    end
+                end
+					 
+					 D: begin
+                    reg_d[data_count % D_IN] <= $signed(data[D_SIZE-1:0]);
+
+                    if (data_count == D_IN-1) begin
+                        data_count <= 0;
                         busy       <= 1'b0;
                         load_done  <= 1'b1;
                         state      <= IDLE;
@@ -97,7 +125,7 @@ module input_loader
                         data_count <= data_count + 1;
                     end
                 end
-
+					 
                 default: begin
                     state      <= IDLE;
                     data_count <= 0;
