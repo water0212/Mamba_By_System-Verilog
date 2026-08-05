@@ -500,4 +500,5 @@ set_global_assignment -name SYSTEMVERILOG_FILE design/exp_state_mul_stage.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/stream_delay.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/fixed_round_shift.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/state_update_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/y_output_pipeline.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

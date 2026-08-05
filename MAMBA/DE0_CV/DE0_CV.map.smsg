@@ -1,1 +1,1 @@
-Info (10281): Verilog HDL Declaration information at state_memory.sv(4): object "N" differs only in case from object "n" in the same scope File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv Line: 4
+Info (10281): Verilog HDL Declaration information at state_memory.sv(4): object "N" differs only in case from object "n" in the same scope File: C:/Users/USER/OneDrive/Desktop/Mamba_by_SV/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv Line: 4

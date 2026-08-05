@@ -8,12 +8,18 @@ module mamba_scan_pipeline
     parameter integer L               = 4,
     parameter integer D_IN            = 32,
     parameter integer N               = 16,
+	 parameter integer C_SIZE			  = 16,
+	 parameter integer D_SIZE			  = 16,
+	 parameter integer Y_SIZE			  = 32,
 
     parameter integer A_FRAC_BITS     = 8,
     parameter integer B_FRAC_BITS     = 8,
+	 parameter integer C_FRAC_BITS     = 8,
+    parameter integer D_FRAC_BITS     = 8,
     parameter integer DELTA_FRAC_BITS = 8,
     parameter integer U_FRAC_BITS     = 8,
     parameter integer STATE_FRAC_BITS = 16,
+	 parameter integer Y_FRAC_BITS = 16,
     parameter integer EXP_FRAC_BITS   = 8
     ) 
     (
@@ -25,10 +31,13 @@ module mamba_scan_pipeline
     input  logic signed [B_SIZE-1:0]     reg_B     [0:L-1][0:N-1],
     input  logic signed [DELTA_SIZE-1:0] reg_delta [0:L-1][0:D_IN-1],
     input  logic signed [U_SIZE-1:0]     reg_u     [0:L-1][0:D_IN-1],
+	 input  logic signed [C_SIZE-1:0] 	  reg_C 		[0:L-1][0:N-1],
+    input  logic signed [D_SIZE-1:0]     reg_D     [0:D_IN-1],
 
     output logic busy,
     output logic out_valid,
-    output logic signed [STATE_SIZE-1:0] out_data,
+    output logic signed [STATE_SIZE-1:0] x_out_data,
+	 output logic signed [Y_SIZE-1:0] y_out_data,
     output logic finish,
     output logic alignment_error
     );
@@ -281,6 +290,8 @@ module mamba_scan_pipeline
     // -----------------------------------------------------------------
     // 兩路合併：x_new = exp(delta*A) * x_old + delta*u*B
     // -----------------------------------------------------------------
+	 logic state_stream_finish;
+	 logic x_out_valid;
     state_update_stage #(
         .STATE_SIZE(STATE_SIZE),
         .L         (L),
@@ -306,10 +317,51 @@ module mamba_scan_pipeline
         .write_d        (state_write_d),
         .write_n        (state_write_n),
         .write_data     (state_write_data),
-        .out_valid      (out_valid),
-        .out_data       (out_data),
-        .finish         (finish),
+        .out_valid      (x_out_valid),
+        .out_data       (x_out_data),
+        .finish         (state_stream_finish),
         .alignment_error(alignment_error)
     );
+	
+	
+	 // -----------------------------------------------------------------
+    // 輸出路徑：y(l,d) = sum_n C(l,n)*x_new(l,d,n) + D(d)*u(l,d)
+    // -----------------------------------------------------------------
+    logic [L_W-1:0] y_l;
+    logic [D_W-1:0] y_d;
 
+    y_output_pipeline #(
+        .C_SIZE         (C_SIZE),
+        .D_SIZE         (D_SIZE),
+        .U_SIZE         (U_SIZE),
+        .STATE_SIZE     (STATE_SIZE),
+        .Y_SIZE         (Y_SIZE),
+        .L              (L),
+        .D_IN           (D_IN),
+        .N              (N),
+        .C_FRAC_BITS    (C_FRAC_BITS),
+        .D_FRAC_BITS    (D_FRAC_BITS),
+        .U_FRAC_BITS    (U_FRAC_BITS),
+        .STATE_FRAC_BITS(STATE_FRAC_BITS),
+        .Y_FRAC_BITS    (Y_FRAC_BITS),
+        .L_W            (L_W),
+        .D_W            (D_W),
+        .N_W            (N_W)
+    ) y_stage (
+        .clk        (clk),
+        .rst        (rst),
+        .in_valid   (state_write_valid),
+        .in_l       (state_write_l),
+        .in_d       (state_write_d),
+        .in_n       (state_write_n),
+        .state_value(state_write_data),
+        .c_value    (reg_C[state_write_l][state_write_n]),
+        .d_value    (reg_D[state_write_d]),
+        .u_value    (reg_u[state_write_l][state_write_d]),
+        .out_valid  (out_valid),
+        .out_l      (y_l),
+        .out_d      (y_d),
+        .out_data   (y_out_data),
+        .finish     (finish)
+    );
 endmodule

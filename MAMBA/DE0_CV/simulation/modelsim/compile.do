@@ -16,6 +16,7 @@ vlog ../../design/delta_u_b_pipeline.sv
 vlog ../../design/stream_delay.sv
 vlog ../../design/fixed_round_shift.sv
 vlog ../../design/state_update_stage.sv
+vlog ../../design/y_output_pipeline.sv
 
 vlog ../../design/DE0_CV.sv
 

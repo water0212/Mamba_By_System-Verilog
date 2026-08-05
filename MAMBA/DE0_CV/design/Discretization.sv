@@ -21,7 +21,8 @@ module Discretization #(
     input  logic [15:0] data,
 
     output logic out_valid,
-    output logic [31:0] out_data,
+    output logic [31:0] x_out_data,
+	 output logic [31:0] y_out_data,
 
     // 保留舊介面：所有輸入載入完成、開始 scan pipeline 時 pulse 一拍。
     output logic start_delta_mul,
@@ -32,7 +33,8 @@ module Discretization #(
     logic load_done;
     logic pipeline_busy;
     logic pipeline_out_valid;
-    logic signed [31:0] pipeline_out_data;
+    logic signed [31:0] x_pipeline_out_data;
+	 logic signed [31:0] y_pipeline_out_data;
     logic pipeline_finish;
     logic alignment_error;
 
@@ -90,14 +92,16 @@ module Discretization #(
         .reg_u          (reg_u),
         .busy           (pipeline_busy),
         .out_valid      (pipeline_out_valid),
-        .out_data       (pipeline_out_data),
+        .x_out_data     (pipeline_y_out_data),
+		  .y_out_data     (pipeline_x_out_data),
         .finish         (pipeline_finish),
         .alignment_error(alignment_error)
     );
 
     assign start_delta_mul = load_done;
     assign out_valid       = pipeline_out_valid;
-    assign out_data        = pipeline_out_data;
+    assign x_out_data      = x_pipeline_out_data;
+	 assign y_out_data      = y_pipeline_out_data;
     assign finish          = pipeline_finish;
 
 endmodule
