@@ -392,8 +392,8 @@ class MambaBlock(nn.Module):
         # 注意：如果你的硬體對應暫存器是 16 或 32 bit，請把 bit_width 改成 16 或 32
         export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_hex=True, bit_width=16)
         export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_hex=True, bit_width=16)
-        export_tensor_to_txt(C_q8, "C_testbench.txt", is_hex=False, bit_width=32)
-        export_tensor_to_txt(D_q8, "D_testbench.txt", is_hex=False, bit_width=32)
+        export_tensor_to_txt(C_q8, "C_testbench.txt", is_hex=True, bit_width=16)
+        export_tensor_to_txt(D_q8, "D_testbench.txt", is_hex=True, bit_width=16)
         
         # 如果需要，你也可以匯出 delta 和 u 作為 testbench 輸入
         delta_int_tensor = torch.round(delta * BIT_WIDTH_SCALE).to(torch.int32)
@@ -501,7 +501,7 @@ class MambaBlock(nn.Module):
         
         ud_q16 = u_int_tensor * D_q8.unsqueeze(0).unsqueeze(0)
         y_q16 = cx_all_q16 + ud_q16
-        export_tensor_to_txt(y_q16, f"y_q16_answer.txt", is_hex=False, bit_width=32,is_int=False)
+        export_tensor_to_txt(y_q16, f"y_q16_answer.txt", is_hex=True, bit_width=32,is_int=False)
 
         y = y_q16.to(torch.float32) / 65536
         export_tensor_to_txt(y, f"y_q16_float_answer.txt", is_hex=False, bit_width=32,is_int=False)
