@@ -22,12 +22,13 @@ Glossary:
 from __future__ import annotations
 import math
 import json
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from dataclasses import dataclass
 from einops import rearrange, repeat, einsum
-
+import os
 
 @dataclass
 class ModelArgs:
@@ -273,13 +274,34 @@ class MambaBlock(nn.Module):
 
     
     def selective_scan(self, u, delta, A, B, C, D):
-        """Does selective scan algorithm."""
-        from einops import einsum  # 確保有引入
-        import numpy as np         # 用於方便地輸出純文字檔案
-        import os
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        os.chdir(current_dir)  # 確保輸出檔案在當前程式碼所在的目錄下
-        
+        os.chdir(current_dir)
+        """Does selective scan algorithm. See:
+            - Section 2 State Space Models in the Mamba paper [1]
+            - Algorithm 2 in Section 3.2 in the Mamba paper [1]
+            - run_SSM(A, B, C, u) in The Annotated S4 [2]
+
+        This is the classic discrete state space formula:
+            x(t + 1) = Ax(t) + Bu(t)
+            y(t)     = Cx(t) + Du(t)
+        except B and C (and the ste p size delta, which is used for discretization) are dependent on the input x(t).
+    
+        Args:
+            u: shape (b, l, d_in)    (See Glossary at top for definitions of b, l, d_in, n...)
+            delta: shape (b, l, d_in)
+            A: shape (d_in, n)
+            B: shape (b, l, n)
+            C: shape (b, l, n)
+            D: shape (d_in,)
+    
+        Returns:
+            output: shape (b, l, d_in)
+    
+        Official Implementation:
+            selective_scan_ref(), https://github.com/state-spaces/mamba/blob/main/mamba_ssm/ops/selective_scan_interface.py#L86
+            Note: I refactored some parts out of `selective_scan_ref` out, so the functionality doesn't match exactly.
+            
+        """
         (b, l, d_in) = u.shape
         n = A.shape[1]
         def hardware_exp_approx(x_int, scale=256):
@@ -351,6 +373,8 @@ class MambaBlock(nn.Module):
         # 硬體模擬：將 A 與 B 的內部數值全部轉換為整數（捨棄小數點）
         export_tensor_to_txt(A, "A_origin_float.txt", is_hex=False, bit_width=16,is_int = False)
         export_tensor_to_txt(B, "B_origin_float.txt", is_hex=False, bit_width=16,is_int=False)
+        export_tensor_to_txt(C, "C_origin_float.txt", is_hex=False, bit_width=32,is_int=False)
+        export_tensor_to_txt(D, "D_origin_float.txt", is_hex=False, bit_width=32,is_int=False)
         # ======================================================================
         export_tensor_to_txt(delta, "delta_origin_float.txt", is_int=False)
         # A 方案一：直接無條件四捨五入轉整數
@@ -360,6 +384,8 @@ class MambaBlock(nn.Module):
         # B 方案二：硬體定點數量化 (Fixed-point Quantization)
         BIT_WIDTH_SCALE = 256  
         B_int_tensor = torch.round(B * BIT_WIDTH_SCALE).to(torch.int32)
+        C_q8 = torch.round(C * BIT_WIDTH_SCALE).to(torch.int32)
+        D_q8 = torch.round(D * BIT_WIDTH_SCALE).to(torch.int32)
         
         # 匯出 Testbench 輸入資料 (A 與 B 放大後的整數值)
         # B 是我們量化過後的整數，所以用 is_int=True 匯出乾淨的整數格式
@@ -368,6 +394,8 @@ class MambaBlock(nn.Module):
         # 注意：如果你的硬體對應暫存器是 16 或 32 bit，請把 bit_width 改成 16 或 32
         export_tensor_to_txt(A_int_tensor, "A_testbench.txt", is_hex=True, bit_width=16)
         export_tensor_to_txt(B_int_tensor, "B_testbench.txt", is_hex=True, bit_width=16)
+        export_tensor_to_txt(C_q8, "C_testbench.txt", is_hex=True, bit_width=16)
+        export_tensor_to_txt(D_q8, "D_testbench.txt", is_hex=True, bit_width=16)
         
         # 如果需要，你也可以匯出 delta 和 u 作為 testbench 輸入
         delta_int_tensor = torch.round(delta * BIT_WIDTH_SCALE).to(torch.int32)
@@ -422,27 +450,63 @@ class MambaBlock(nn.Module):
         
         #使數值回歸到原本的浮點數範圍
         delta_B_u = torch.sign(delta_B_u_int) * ((torch.abs(delta_B_u_int) + BIT_WIDTH_SCALE // 2) // BIT_WIDTH_SCALE)#B 2^24
+        delta_B_u_float = delta_B_u_int / (BIT_WIDTH_SCALE) # B 2^8
         deltaA = deltaA_int * (BIT_WIDTH_SCALE) # A 2^8
         export_tensor_to_txt(deltaA, "delta_A_testbench_exp_answer.txt", is_hex=False, bit_width=32,is_int=False)
         export_tensor_to_txt(delta_B_u, "delta_B_u_testbench_answer.txt", is_hex=False, bit_width=32,is_int=False)
-
+        export_tensor_to_txt(delta_B_u_float, "delta_B_u_testbench_answer_float.txt", is_hex=False, bit_width=32,is_int=False)
         x = torch.zeros((b, d_in, n), device=delta.device)
         x_origin_answer = torch.zeros((b, d_in, n), device=delta.device)
-        ys = []    
+        ys_q16 = []   
+        ys = []
         for i in range(l):
-            if(i != 0) : x_nonB = deltaA[:, i] * x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
+            product = deltaA[:, i].to(torch.int64) * x.to(torch.int64)
+            if(i != 0) : x_nonB = torch.sign(product) * ((torch.abs(product) + BIT_WIDTH_SCALE**2 // 2)// BIT_WIDTH_SCALE**2)# 將數值回歸到原本的浮點數範圍
             else : x_nonB = deltaA[:, i] * x
             x = x_nonB + delta_B_u[:, i] 
             #if(i != 1) : x = x / BIT_WIDTH_SCALE**2  # 將數值回歸到原本的浮點數範圍
             x_origin_answer = deltaA_origin_float[:, i] * x_origin_answer + delta_B_u_origin[:, i]
+            export_tensor_to_txt(delta_B_u[:, i], f"delta_B_u_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             export_tensor_to_txt(x_origin_answer* BIT_WIDTH_SCALE**2 , f"x_origin_answer_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             export_tensor_to_txt(deltaA[:, i] * x, f"deltaA_x_int_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             export_tensor_to_txt(x, f"x_{i}.txt", is_hex=True, bit_width=32,is_int=False)
-            y = einsum(x, C[:, i, :], 'b d_in n, b n -> b d_in')
+            #-----------------------
+            
+            y = einsum(x_origin_answer, C[:, i, :], 'b d_in n, b n -> b d_in')
+            export_tensor_to_txt(y, f"y_xC_origin_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            export_tensor_to_txt(C[:, i, :], f"C_origin_{i}.txt", is_hex=False, bit_width=32,is_int=False)
             ys.append(y)
-        y = torch.stack(ys, dim=1) 
+            
+            
+            #------------------------
+            
+            C_i_q8 = C_q8[:, i, :].unsqueeze(1)
+            export_tensor_to_txt(C_i_q8, f"C_i_q8_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            xc_q24 = x.to(torch.int64) * C_i_q8
+            xc_acc_q24 = xc_q24.sum(dim=-1)
+
+            cx_q16 = torch.sign(xc_acc_q24) * (
+                (torch.abs(xc_acc_q24) + 128) // 256
+            )
+            export_tensor_to_txt(cx_q16, f"cx_q16_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+            ys_q16.append(cx_q16)
+            export_tensor_to_txt(torch.stack(ys_q16, dim=1), f"y_stack_q16_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+        #--------------------------
+        y = torch.stack(ys, dim=1)
+        export_tensor_to_txt(y, f"y_stack_origin_{i}.txt", is_hex=False, bit_width=32,is_int=False)
+        y_origin = y + u * D
+        export_tensor_to_txt(y_origin, f"y_origin_answer.txt", is_hex=False, bit_width=32,is_int=False)
+        #--------------------------
+        cx_all_q16 = torch.stack(ys_q16, dim=1)
         
-        y = y + u * D
+        export_tensor_to_txt(cx_all_q16, f"cx_all_q16.txt", is_hex=False, bit_width=32,is_int=False)
+        
+        ud_q16 = u_int_tensor * D_q8.unsqueeze(0).unsqueeze(0)
+        y_q16 = cx_all_q16 + ud_q16
+        export_tensor_to_txt(y_q16, f"y_q16_answer.txt", is_hex=True, bit_width=32,is_int=False)
+
+        y = y_q16.to(torch.float32) / 65536
+        export_tensor_to_txt(y, f"y_q16_float_answer.txt", is_hex=False, bit_width=32,is_int=False)
     
         return y
 
