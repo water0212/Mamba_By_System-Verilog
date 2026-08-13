@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE0_CV
-Wed Aug 12 23:23:32 2026
+Thu Aug 13 13:39:42 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -23,16 +23,15 @@ Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
  15. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|fixed_round_shift:scale_delta_ub
  16. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|state_update_stage:update_x_stage
  17. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage
- 18. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_cx
- 19. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_du
+ 18. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_du
+ 19. Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_acc
  20. Analysis & Elaboration Settings
  21. Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage"
  22. Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline|state_update_stage:update_x_stage"
  23. Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline|scan_index_generator:index_gen"
  24. Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline"
- 25. Port Connectivity Checks: "input_loader:loader"
- 26. Analysis & Elaboration Messages
- 27. Analysis & Elaboration Suppressed Messages
+ 25. Analysis & Elaboration Messages
+ 26. Analysis & Elaboration Suppressed Messages
 
 
 
@@ -59,7 +58,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Aug 12 23:23:32 2026       ;
+; Analysis & Elaboration Status ; Successful - Thu Aug 13 13:39:42 2026       ;
 ; Quartus Prime Version         ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                 ; DE0_CV                                      ;
 ; Top-level Entity Name         ; Discretization                              ;
@@ -99,6 +98,8 @@ https://fpgasoftware.intel.com/eula.
 ; B_size          ; 16    ; Signed Integer                                       ;
 ; Delta_size      ; 16    ; Signed Integer                                       ;
 ; U_size          ; 16    ; Signed Integer                                       ;
+; C_size          ; 16    ; Signed Integer                                       ;
+; D_size          ; 16    ; Signed Integer                                       ;
 ; L               ; 4     ; Signed Integer                                       ;
 ; D_IN            ; 32    ; Signed Integer                                       ;
 ; N               ; 16    ; Signed Integer                                       ;
@@ -329,18 +330,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_cx ;
-+----------------+-------+------------------------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                                       ;
-+----------------+-------+------------------------------------------------------------------------------------------------------------+
-; IN_WIDTH       ; 48    ; Signed Integer                                                                                             ;
-; OUT_WIDTH      ; 32    ; Signed Integer                                                                                             ;
-; SHIFT          ; 8     ; Signed Integer                                                                                             ;
-+----------------+-------+------------------------------------------------------------------------------------------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_du ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                                       ;
@@ -349,6 +338,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; OUT_WIDTH      ; 32    ; Signed Integer                                                                                             ;
 ; SHIFT          ; 0     ; Signed Integer                                                                                             ;
 +----------------+-------+------------------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_acc ;
++----------------+-------+-------------------------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                                        ;
++----------------+-------+-------------------------------------------------------------------------------------------------------------+
+; IN_WIDTH       ; 53    ; Signed Integer                                                                                              ;
+; OUT_WIDTH      ; 32    ; Signed Integer                                                                                              ;
+; SHIFT          ; 8     ; Signed Integer                                                                                              ;
++----------------+-------+-------------------------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -439,15 +440,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage"                                                                                  ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                                                                                      ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; in_l  ; Input  ; Warning  ; Input port expression (1 bits) is smaller than the input port (2 bits) it drives.  Extra input bit(s) "in_l[1..1]" will be connected to GND. ;
-; out_l ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
-; out_d ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage"                         ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; out_l ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; out_d ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------+
@@ -470,27 +470,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline"                                                                                                                      ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                                                                                      ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-; x_out_data      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
-; y_out_data      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
-; alignment_error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
-; reg_C           ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-; reg_D           ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "input_loader:loader"                                                                                      ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                                                  ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; reg_c ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-; reg_d ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+----------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "mamba_scan_pipeline:scan_pipeline"                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; alignment_error ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +---------------------------------+
@@ -499,7 +485,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Aug 12 23:23:22 2026
+    Info: Processing started: Thu Aug 13 13:39:30 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_CV -c DE0_CV --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -533,20 +519,13 @@ Info (12021): Found 1 design units, including 1 entities, in source file design/
     Info (12023): Found entity 1: state_update_stage File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file design/y_output_pipeline.sv
     Info (12023): Found entity 1: y_output_pipeline File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv Line: 1
-Warning (10236): Verilog HDL Implicit Net warning at Discretization.sv(95): created implicit net for "pipeline_y_out_data" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 95
-Warning (10236): Verilog HDL Implicit Net warning at Discretization.sv(96): created implicit net for "pipeline_x_out_data" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 96
-Warning (10236): Verilog HDL Implicit Net warning at mamba_scan_pipeline.sv(354): created implicit net for "state_write_l" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 354
 Info (12127): Elaborating entity "Discretization" for the top level hierarchy
-Warning (10858): Verilog HDL warning at Discretization.sv(36): object x_pipeline_out_data used but never assigned File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 36
-Warning (10858): Verilog HDL warning at Discretization.sv(37): object y_pipeline_out_data used but never assigned File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 37
-Warning (10030): Net "x_pipeline_out_data" at Discretization.sv(36) has no driver or initial value, using a default initial value '0' File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 36
-Warning (10030): Net "y_pipeline_out_data" at Discretization.sv(37) has no driver or initial value, using a default initial value '0' File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 37
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
-Info (12128): Elaborating entity "input_loader" for hierarchy "input_loader:loader" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 68
-Warning (10034): Output port "reg_d[32]" at input_loader.sv(28) has no driver File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv Line: 28
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_c" into its bus
+Info (12128): Elaborating entity "input_loader" for hierarchy "input_loader:loader" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 74
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
@@ -557,47 +536,44 @@ Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_c" into its bus
-Info (12128): Elaborating entity "mamba_scan_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 99
-Warning (10027): Verilog HDL or VHDL warning at the mamba_scan_pipeline.sv(358): index expression is not wide enough to address all of the elements in the array File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 358
-Warning (10027): Verilog HDL or VHDL warning at the mamba_scan_pipeline.sv(360): index expression is not wide enough to address all of the elements in the array File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 360
+Info (12128): Elaborating entity "mamba_scan_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv Line: 107
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
-Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_C" into its bus
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_c" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_A" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_B" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_delta" into its bus
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_u" into its bus
-Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_C" into its bus
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "reg_c" into its bus
 Info (12128): Elaborating entity "scan_index_generator" for hierarchy "mamba_scan_pipeline:scan_pipeline|scan_index_generator:index_gen" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 102
 Info (12128): Elaborating entity "delta_a_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_a_mul_stage:delta_a_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 134
 Info (12128): Elaborating entity "exponential_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|exponential_pipeline:exp_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 162
 Warning (10230): Verilog HDL assignment warning at exponential_pipeline.sv(150): truncated value with size 42 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv Line: 150
-Info (12128): Elaborating entity "state_memory" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_memory:x_memory" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 187
+Info (12128): Elaborating entity "state_memory" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_memory:x_memory" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 188
 Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "x_mem" into its bus
-Info (12128): Elaborating entity "exp_state_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 216
+Info (12128): Elaborating entity "exp_state_mul_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 217
 Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|exp_state_mul_stage:exp_x_stage|fixed_round_shift:scale_exp_x" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv Line: 44
 Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): truncated value with size 66 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 31
 Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 66 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
-Info (12128): Elaborating entity "delta_u_b_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_u_b_pipeline:delta_u_b_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 250
-Info (12128): Elaborating entity "stream_delay" for hierarchy "mamba_scan_pipeline:scan_pipeline|stream_delay:align_b_path" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 277
-Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|fixed_round_shift:scale_delta_ub" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 288
+Info (12128): Elaborating entity "delta_u_b_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|delta_u_b_pipeline:delta_u_b_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 251
+Info (12128): Elaborating entity "stream_delay" for hierarchy "mamba_scan_pipeline:scan_pipeline|stream_delay:align_b_path" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 278
+Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|fixed_round_shift:scale_delta_ub" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 289
 Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): truncated value with size 33 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 31
 Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 33 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
-Info (12128): Elaborating entity "state_update_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_update_stage:update_x_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 324
-Info (12128): Elaborating entity "y_output_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 366
-Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_cx" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv Line: 83
-Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): truncated value with size 49 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 31
-Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 49 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
-Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_du" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv Line: 92
-Warning (12241): 3 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info (12128): Elaborating entity "state_update_stage" for hierarchy "mamba_scan_pipeline:scan_pipeline|state_update_stage:update_x_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 326
+Info (12128): Elaborating entity "y_output_pipeline" for hierarchy "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv Line: 368
+Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_du" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv Line: 81
+Info (12128): Elaborating entity "fixed_round_shift" for hierarchy "mamba_scan_pipeline:scan_pipeline|y_output_pipeline:y_stage|fixed_round_shift:scale_acc" File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv Line: 104
+Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): truncated value with size 54 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 31
+Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 54 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
 Info (144001): Generated suppressed messages file C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 19 warnings
-    Info: Peak virtual memory: 4913 megabytes
-    Info: Processing ended: Wed Aug 12 23:23:32 2026
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:16
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4925 megabytes
+    Info: Processing ended: Thu Aug 13 13:39:42 2026
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:17
 
 
 +--------------------------------------------+
