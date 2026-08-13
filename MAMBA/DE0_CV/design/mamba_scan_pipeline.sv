@@ -31,8 +31,8 @@ module mamba_scan_pipeline
     input  logic signed [B_SIZE-1:0]     reg_B     [0:L-1][0:N-1],
     input  logic signed [DELTA_SIZE-1:0] reg_delta [0:L-1][0:D_IN-1],
     input  logic signed [U_SIZE-1:0]     reg_u     [0:L-1][0:D_IN-1],
-	 input  logic signed [C_SIZE-1:0] 	  reg_C 		[0:L-1][0:N-1],
-    input  logic signed [D_SIZE-1:0]     reg_D     [0:D_IN-1],
+	 input  logic signed [C_SIZE-1:0] 	  reg_c 		[0:L-1][0:N-1],
+    input  logic signed [D_SIZE-1:0]     reg_d     [0:D_IN-1],
 
     output logic busy,
     output logic out_valid,
@@ -163,6 +163,7 @@ module mamba_scan_pipeline
 
     logic signed [STATE_SIZE-1:0] state_read_data;
     logic state_write_valid;
+	 logic [L_W-1:0] state_write_l;
     logic [D_W-1:0] state_write_d;
     logic [N_W-1:0] state_write_n;
     logic signed [STATE_SIZE-1:0] state_write_data;
@@ -314,6 +315,7 @@ module mamba_scan_pipeline
         .b_n            (dub_n_aligned),
         .b_data         (dub_scaled),
         .write_valid    (state_write_valid),
+		  .write_l        (state_write_l),
         .write_d        (state_write_d),
         .write_n        (state_write_n),
         .write_data     (state_write_data),
@@ -355,8 +357,8 @@ module mamba_scan_pipeline
         .in_d       (state_write_d),
         .in_n       (state_write_n),
         .state_value(state_write_data),
-        .c_value    (reg_C[state_write_l][state_write_n]),
-        .d_value    (reg_D[state_write_d]),
+        .c_value    (reg_c[state_write_l][state_write_n]),
+        .d_value    (reg_d[state_write_d]),
         .u_value    (reg_u[state_write_l][state_write_d]),
         .out_valid  (out_valid),
         .out_l      (y_l),

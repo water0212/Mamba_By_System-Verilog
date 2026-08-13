@@ -44,7 +44,7 @@ module testbench();
 		
 		.finish(finish),
 		.out_valid(out_valid),
-		.out_data(out_data),
+		.y_out_data(out_data),
 		.start_delta_mul(start_delta_mul)
 	);
 

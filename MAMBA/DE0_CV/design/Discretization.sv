@@ -3,6 +3,8 @@ module Discretization #(
     parameter integer B_size     = 16,
     parameter integer Delta_size = 16,
     parameter integer U_size     = 16,
+	 parameter integer C_size     = 16,
+	 parameter integer D_size     = 16,
     parameter integer L          = 4,
     parameter integer D_IN       = 32,
     parameter integer N          = 16,
@@ -42,7 +44,9 @@ module Discretization #(
     logic signed [B_size-1:0]     reg_B     [0:L-1][0:N-1];
     logic signed [Delta_size-1:0] reg_delta [0:L-1][0:D_IN-1];
     logic signed [U_size-1:0]     reg_u     [0:L-1][0:D_IN-1];
-
+	 logic signed [C_size-1:0]     reg_c     [0:L-1][0:N-1];
+    logic signed [D_size-1:0]     reg_d     [0:D_IN-1];
+	 
     logic accepted_start;
     assign accepted_start = start && !load_busy && !pipeline_busy;
 
@@ -64,7 +68,9 @@ module Discretization #(
         .reg_A    (reg_A),
         .reg_B    (reg_B),
         .reg_delta(reg_delta),
-        .reg_u    (reg_u)
+        .reg_u    (reg_u),
+		  .reg_c		(reg_c),
+		  .reg_d		(reg_d)
     );
 
     mamba_scan_pipeline #(
@@ -90,10 +96,12 @@ module Discretization #(
         .reg_B          (reg_B),
         .reg_delta      (reg_delta),
         .reg_u          (reg_u),
+		  .reg_c          (reg_c),
+		  .reg_d          (reg_d),
         .busy           (pipeline_busy),
         .out_valid      (pipeline_out_valid),
-        .x_out_data     (pipeline_y_out_data),
-		  .y_out_data     (pipeline_x_out_data),
+        .x_out_data     (x_pipeline_out_data),
+		  .y_out_data     (y_pipeline_out_data),
         .finish         (pipeline_finish),
         .alignment_error(alignment_error)
     );

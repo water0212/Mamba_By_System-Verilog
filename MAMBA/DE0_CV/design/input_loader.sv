@@ -24,7 +24,7 @@ module input_loader
     output logic signed [DELTA_SIZE-1:0] reg_delta [0:L-1][0:D_IN-1],
     output logic signed [U_SIZE-1:0]     reg_u     [0:L-1][0:D_IN-1],
 	 output logic signed [C_SIZE-1:0]	  reg_c		[0:L-1][0:N-1],
-	 output logic signed [D_SIZE-1:0]	  reg_d		[0:D_IN]
+	 output logic signed [D_SIZE-1:0]	  reg_d		[0:D_IN-1]
 	);
 
     typedef enum {IDLE, A, B, DELTA, U, C, D} load_state_t;
