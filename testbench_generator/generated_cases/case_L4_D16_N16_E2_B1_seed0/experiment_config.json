@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-08-13T11:06:28.006385+00:00",
+  "created_utc": "2026-08-13T11:26:52.028600+00:00",
   "seed": 0,
   "parameters": {
     "batch_size": 1,
@@ -63,6 +63,56 @@
       "line_count": 128,
       "format": "Q16, 32-bit hex"
     }
+  },
+  "merged_hardware_input": {
+    "filename": "test_in_0.txt",
+    "order": [
+      "A_testbench.txt",
+      "B_testbench.txt",
+      "delta_testbench.txt",
+      "u_shape_int.txt",
+      "C_testbench.txt",
+      "D_testbench.txt"
+    ],
+    "line_count": 928,
+    "sections": [
+      {
+        "source": "A_testbench.txt",
+        "start_line": 1,
+        "end_line": 512,
+        "line_count": 512
+      },
+      {
+        "source": "B_testbench.txt",
+        "start_line": 513,
+        "end_line": 576,
+        "line_count": 64
+      },
+      {
+        "source": "delta_testbench.txt",
+        "start_line": 577,
+        "end_line": 704,
+        "line_count": 128
+      },
+      {
+        "source": "u_shape_int.txt",
+        "start_line": 705,
+        "end_line": 832,
+        "line_count": 128
+      },
+      {
+        "source": "C_testbench.txt",
+        "start_line": 833,
+        "end_line": 896,
+        "line_count": 64
+      },
+      {
+        "source": "D_testbench.txt",
+        "start_line": 897,
+        "end_line": 928,
+        "line_count": 32
+      }
+    ]
   },
   "notes": [
     "N is the same parameter as d_state.",

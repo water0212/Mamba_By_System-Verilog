@@ -72,11 +72,26 @@ d_inner = d_model * expand
 改變序列長度和狀態維度：
 
 ```powershell
-python .\codex_work\selective_scan_case_generator\generate_case.py --L 8 --N 32 --d-model 16 --expand 2 --seed 1
+python .\testbench_generator\generate_case.py --L 8 --N 32 --d-model 16 --expand 2 --seed 1
 ```
 
 指定案例名稱：
 
 ```powershell
-python .\codex_work\selective_scan_case_generator\generate_case.py --L 16 --N 8 --case-name L16_N8_test1
+python .\testbench_generator\generate_case.py --L 16 --N 8 --case-name L16_N8_test1
 ```
+
+## 硬體輸入合併檔
+
+每次產生案例後，工具也會建立 `test_in_0.txt`，內容按照硬體讀取順序直接串接：
+
+```text
+A_testbench.txt
+B_testbench.txt
+delta_testbench.txt
+u_shape_int.txt
+C_testbench.txt
+D_testbench.txt
+```
+
+檔案之間不會加入標題或空白行，每一行仍是一筆 16-bit Hex 資料。各區段的開始行、結束行及行數會記錄在 `experiment_config.json` 的 `merged_hardware_input` 欄位中。

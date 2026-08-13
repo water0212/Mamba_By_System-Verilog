@@ -28,6 +28,16 @@ EXPORT_SPECS = {
     "y_q16_answer.txt": {"bits": 32, "format": "Q16, 32-bit hex"},
 }
 
+HARDWARE_INPUT_ORDER = (
+    "A_testbench.txt",
+    "B_testbench.txt",
+    "delta_testbench.txt",
+    "u_shape_int.txt",
+    "C_testbench.txt",
+    "D_testbench.txt",
+)
+MERGED_INPUT_FILENAME = "test_in_0.txt"
+
 
 def positive_int(value: str) -> int:
     parsed = int(value)
@@ -95,7 +105,7 @@ def expected_line_counts(args: argparse.Namespace, d_inner: int) -> dict[str, in
 
 
 def prepare_case_directory(case_dir: Path, overwrite: bool) -> None:
-    managed_files = [*EXPORT_SPECS, "experiment_config.json"]
+    managed_files = [*EXPORT_SPECS, MERGED_INPUT_FILENAME, "experiment_config.json"]
     existing = [case_dir / name for name in managed_files if (case_dir / name).exists()]
     if existing and not overwrite:
         names = ", ".join(path.name for path in existing)
@@ -163,6 +173,42 @@ def verify_exports(
     return results
 
 
+def merge_hardware_inputs(case_dir: Path) -> dict[str, object]:
+    """Merge the six 16-bit input files in the order expected by the RTL."""
+    output_path = case_dir / MERGED_INPUT_FILENAME
+    sections = []
+    next_start_line = 1
+
+    with output_path.open("w", encoding="ascii", newline="\n") as output_file:
+        for filename in HARDWARE_INPUT_ORDER:
+            source_path = case_dir / filename
+            if not source_path.is_file():
+                raise RuntimeError(f"Cannot merge missing input file: {source_path}")
+
+            values = source_path.read_text(encoding="ascii").splitlines()
+            for value in values:
+                output_file.write(f"{value}\n")
+
+            line_count = len(values)
+            end_line = next_start_line + line_count - 1
+            sections.append(
+                {
+                    "source": filename,
+                    "start_line": next_start_line,
+                    "end_line": end_line,
+                    "line_count": line_count,
+                }
+            )
+            next_start_line = end_line + 1
+
+    return {
+        "filename": MERGED_INPUT_FILENAME,
+        "order": list(HARDWARE_INPUT_ORDER),
+        "line_count": next_start_line - 1,
+        "sections": sections,
+    }
+
+
 def main() -> None:
     args = parse_args()
     d_inner = args.d_model * args.expand
@@ -220,6 +266,7 @@ def main() -> None:
         case_dir,
         expected_line_counts(args, d_inner),
     )
+    merged_input = merge_hardware_inputs(case_dir)
     metadata = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "seed": args.seed,
@@ -243,6 +290,7 @@ def main() -> None:
         },
         "input_ids": input_ids.tolist(),
         "exports": export_results,
+        "merged_hardware_input": merged_input,
         "notes": [
             "N is the same parameter as d_state.",
             "d_inner equals d_model multiplied by expand.",
@@ -263,6 +311,10 @@ def main() -> None:
     )
     for filename, result in export_results.items():
         print(f"  {filename}: {result['line_count']} lines")
+    print(
+        f"  {merged_input['filename']}: {merged_input['line_count']} lines "
+        "(A, B, delta, u, C, D)"
+    )
     print(f"  {config_path.name}: parameters and random input IDs")
 
 
