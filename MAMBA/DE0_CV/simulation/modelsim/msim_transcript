@@ -12,97 +12,97 @@
 # 
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_u_b_pipeline.sv 
 # -- Compiling module delta_u_b_pipeline
 # 
 # Top level modules:
 # 	delta_u_b_pipeline
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/input_loader.sv 
 # -- Compiling module input_loader
 # 
 # Top level modules:
 # 	input_loader
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/mamba_scan_pipeline.sv 
 # -- Compiling module mamba_scan_pipeline
 # 
 # Top level modules:
 # 	mamba_scan_pipeline
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/scan_index_generator.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/scan_index_generator.sv 
 # -- Compiling module scan_index_generator
 # 
 # Top level modules:
 # 	scan_index_generator
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_a_mul_stage.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/delta_a_mul_stage.sv 
 # -- Compiling module delta_a_mul_stage
 # 
 # Top level modules:
 # 	delta_a_mul_stage
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exponential_pipeline.sv 
 # -- Compiling module exponential_pipeline
 # 
 # Top level modules:
 # 	exponential_pipeline
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_memory.sv 
 # -- Compiling module state_memory
 # 
 # Top level modules:
 # 	state_memory
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:21:59 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/exp_state_mul_stage.sv 
 # -- Compiling module exp_state_mul_stage
 # 
 # Top level modules:
 # 	exp_state_mul_stage
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:21:59 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:22:00 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv 
 # -- Compiling module stream_delay
 # ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
@@ -118,11 +118,11 @@
 # 
 # Top level modules:
 # 	stream_delay
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:00 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 10
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:48 on Aug 13,2026
+# Start time: 14:22:00 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv 
 # -- Compiling module fixed_round_shift
 # ** Warning: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
@@ -136,122 +136,122 @@
 # 
 # Top level modules:
 # 	fixed_round_shift
-# End time: 13:39:48 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:00 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 8
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:49 on Aug 13,2026
+# Start time: 14:22:00 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/state_update_stage.sv 
 # -- Compiling module state_update_stage
 # 
 # Top level modules:
 # 	state_update_stage
-# End time: 13:39:49 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:00 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design {C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv}
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:49 on Aug 13,2026
+# Start time: 14:22:00 on Aug 19,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design" C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/y_output_pipeline.sv 
 # -- Compiling module y_output_pipeline
 # 
 # Top level modules:
 # 	y_output_pipeline
-# End time: 13:39:49 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:00 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 do compile.do
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:53 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../tb/testbench.sv 
 # -- Compiling module testbench
 # 
 # Top level modules:
 # 	testbench
-# End time: 13:39:53 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:53 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/Discretization.sv 
 # -- Compiling module Discretization
 # 
 # Top level modules:
 # 	Discretization
-# End time: 13:39:53 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:53 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/input_loader.sv 
 # -- Compiling module input_loader
 # 
 # Top level modules:
 # 	input_loader
-# End time: 13:39:53 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:53 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/mamba_scan_pipeline.sv 
 # -- Compiling module mamba_scan_pipeline
 # 
 # Top level modules:
 # 	mamba_scan_pipeline
-# End time: 13:39:53 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:53 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/scan_index_generator.sv 
 # -- Compiling module scan_index_generator
 # 
 # Top level modules:
 # 	scan_index_generator
-# End time: 13:39:53 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:53 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/delta_a_mul_stage.sv 
 # -- Compiling module delta_a_mul_stage
 # 
 # Top level modules:
 # 	delta_a_mul_stage
-# End time: 13:39:53 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/exponential_pipeline.sv 
 # -- Compiling module exponential_pipeline
 # 
 # Top level modules:
 # 	exponential_pipeline
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/state_memory.sv 
 # -- Compiling module state_memory
 # 
 # Top level modules:
 # 	state_memory
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/exp_state_mul_stage.sv 
 # -- Compiling module exp_state_mul_stage
 # 
 # Top level modules:
 # 	exp_state_mul_stage
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/delta_u_b_pipeline.sv 
 # -- Compiling module delta_u_b_pipeline
 # 
 # Top level modules:
 # 	delta_u_b_pipeline
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:11 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:11 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/stream_delay.sv 
 # -- Compiling module stream_delay
 # ** Warning: ../../design/stream_delay.sv(29): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
@@ -267,10 +267,10 @@ do compile.do
 # 
 # Top level modules:
 # 	stream_delay
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:12 on Aug 19,2026, Elapsed time: 0:00:01
 # Errors: 0, Warnings: 10
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:12 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/fixed_round_shift.sv 
 # -- Compiling module fixed_round_shift
 # ** Warning: ../../design/fixed_round_shift.sv(15): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
@@ -284,38 +284,48 @@ do compile.do
 # 
 # Top level modules:
 # 	fixed_round_shift
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:12 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 8
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:12 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/state_update_stage.sv 
 # -- Compiling module state_update_stage
 # 
 # Top level modules:
 # 	state_update_stage
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:12 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:12 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/y_output_pipeline.sv 
 # -- Compiling module y_output_pipeline
 # 
 # Top level modules:
 # 	y_output_pipeline
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:12 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
-# Start time: 13:39:54 on Aug 13,2026
+# Start time: 14:22:12 on Aug 19,2026
+# vlog -reportprogress 300 ../../mamba_input_rom.v 
+# -- Compiling module mamba_input_rom
+# 
+# Top level modules:
+# 	mamba_input_rom
+# End time: 14:22:12 on Aug 19,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:22:12 on Aug 19,2026
 # vlog -reportprogress 300 ../../design/DE0_CV.sv 
 # -- Compiling module DE0_CV
+# -- Compiling module hex_decoder
 # 
 # Top level modules:
 # 	DE0_CV
-# End time: 13:39:54 on Aug 13,2026, Elapsed time: 0:00:00
+# End time: 14:22:12 on Aug 19,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 do sim.do
 # vsim -voptargs="+acc" work.testbench 
-# Start time: 13:39:57 on Aug 13,2026
+# Start time: 14:22:14 on Aug 19,2026
 # Loading sv_std.std
 # Loading work.testbench
 # Loading work.Discretization
@@ -341,9 +351,9 @@ do sim.do
 # .main_pane.structure.interior.cs.body.struct .main_pane.wave.interior.cs.body.pw.wf .main_pane.objects.interior.cs.body.tree
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: user  Hostname: MSI  ProcessID: 4912
-#           Attempting to use alternate WLF file "./wlft91egy1".
+#           Attempting to use alternate WLF file "./wlftdf4x55".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft91egy1
+#           Using alternate file: ./wlftdf4x55
 # ** Error: (vish-4014) No objects found matching '/testbench/dut/out_data'.
 # Executing ONERROR command at macro ./wave.do line 9
 # ** Error: (vish-4014) No objects found matching '/testbench/dut/delta_A'.
@@ -352,14 +362,14 @@ do sim.do
 # Executing ONERROR command at macro ./wave.do line 12
 # ========== Test 0 start ==========
 # --------------------------------------------------
-# >>> [Performance] Mamba Scan Pipeline took 2056 cycles.
+# >>> [Performance] Mamba Scan Pipeline took 4104 cycles.
 # --------------------------------------------------
 # Test 0 PASS.
 # 
 # 
 # [SUCCESS] All 1 tests passed!
 # ** Note: $stop    : ../tb/testbench.sv(220)
-#    Time: 3186 ns  Iteration: 1  Instance: /testbench
+#    Time: 5618 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at ../tb/testbench.sv line 220
-# End time: 13:40:04 on Aug 13,2026, Elapsed time: 0:00:07
+# End time: 14:22:25 on Aug 19,2026, Elapsed time: 0:00:11
 # Errors: 9, Warnings: 6

@@ -273,6 +273,9 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (SystemVerilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name SDC_FILE DE0_CV.sdc
+set_global_assignment -name VERILOG_FILE rom_input_data_bb.v
+set_global_assignment -name MIF_FILE ../../../../Users/user/Downloads/test_in_0.mif
 set_global_assignment -name SYSTEMVERILOG_FILE simulation/tb/testbench.sv
 set_global_assignment -name COMMAND_MACRO_FILE simulation/modelsim/wave.do
 set_global_assignment -name COMMAND_MACRO_FILE simulation/modelsim/sim.do
@@ -280,6 +283,19 @@ set_global_assignment -name COMMAND_MACRO_FILE simulation/modelsim/compile.do
 set_global_assignment -name SYSTEMVERILOG_FILE design/Discretization.sv
 set_global_assignment -name SYSTEMVERILOG_FILE design/DE0_CV.sv
 set_global_assignment -name SDC_FILE DE0_CV.SDC
+set_global_assignment -name SYSTEMVERILOG_FILE design/delta_u_b_pipeline.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/input_loader.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/mamba_scan_pipeline.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/scan_index_generator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/delta_a_mul_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/exponential_pipeline.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/state_memory.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/exp_state_mul_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/stream_delay.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/fixed_round_shift.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/state_update_stage.sv
+set_global_assignment -name SYSTEMVERILOG_FILE design/y_output_pipeline.sv
+set_global_assignment -name QIP_FILE mamba_input_rom.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -489,16 +505,4 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[32]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[33]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[34]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[35]
-set_global_assignment -name SYSTEMVERILOG_FILE design/delta_u_b_pipeline.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/input_loader.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/mamba_scan_pipeline.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/scan_index_generator.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/delta_a_mul_stage.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/exponential_pipeline.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/state_memory.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/exp_state_mul_stage.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/stream_delay.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/fixed_round_shift.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/state_update_stage.sv
-set_global_assignment -name SYSTEMVERILOG_FILE design/y_output_pipeline.sv
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

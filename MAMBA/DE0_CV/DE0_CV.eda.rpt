@@ -1,5 +1,5 @@
 EDA Netlist Writer report for DE0_CV
-Thu Mar 02 15:05:39 2023
+Thu Aug 13 15:39:54 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Thu Mar 02 15:05:39 2023 ;
+; EDA Netlist Writer Status ; Successful - Thu Aug 13 15:39:54 2026 ;
 ; Revision Name             ; DE0_CV                                ;
 ; Top-level Entity Name     ; DE0_CV                                ;
 ; Family                    ; Cyclone V                             ;
@@ -67,13 +67,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------------------------+---------------------------------+
 
 
-+------------------------------------------+
-; Simulation Generated Files               ;
-+------------------------------------------+
-; Generated Files                          ;
-+------------------------------------------+
-; D:/DE0_CV/simulation/modelsim/DE0_CV.svo ;
-+------------------------------------------+
++------------------------------------------------------------------------------+
+; Simulation Generated Files                                                   ;
++------------------------------------------------------------------------------+
+; Generated Files                                                              ;
++------------------------------------------------------------------------------+
+; C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim/DE0_CV.svo ;
++------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -82,15 +82,15 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Thu Mar 02 15:05:38 2023
+    Info: Processing started: Thu Aug 13 15:39:48 2026
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off DE0_CV -c DE0_CV
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Warning (10905): Generated the EDA functional simulation netlist because it is the only supported netlist type for this device.
-Info (204019): Generated file DE0_CV.svo in folder "D:/DE0_CV/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file DE0_CV.svo in folder "C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4743 megabytes
-    Info: Processing ended: Thu Mar 02 15:05:39 2023
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Peak virtual memory: 5173 megabytes
+    Info: Processing ended: Thu Aug 13 15:39:55 2026
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:07
 
 

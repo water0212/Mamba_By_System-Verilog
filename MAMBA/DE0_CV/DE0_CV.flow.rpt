@@ -1,5 +1,5 @@
 Flow report for DE0_CV
-Thu Aug 13 13:39:42 2026
+Wed Aug 19 14:21:52 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Thu Aug 13 13:39:42 2026       ;
+; Flow Status                 ; Successful - Wed Aug 19 14:21:52 2026       ;
 ; Quartus Prime Version       ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name               ; DE0_CV                                      ;
 ; Top-level Entity Name       ; Discretization                              ;
@@ -63,7 +63,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 08/13/2026 13:39:31 ;
+; Start date & time ; 08/19/2026 14:21:43 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE0_CV              ;
 +-------------------+---------------------+
@@ -74,11 +74,12 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+----------------+----------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name    ; Section Id     ;
 +-------------------------------------+----------------------------------------+---------------+----------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 2543452256861.178659957114624          ; --            ; --             ; --             ;
+; COMPILER_SIGNATURE_ID               ; 2543452256861.178712050329924          ; --            ; --             ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Systemverilog Hdl                      ; --            ; --             ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (SystemVerilog)        ; <None>        ; --             ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --            ; --             ; --             ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --            ; --             ; --             ;
+; MISC_FILE                           ; mamba_input_rom_bb.v                   ; --            ; --             ; --             ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; Discretization ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; Discretization ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; Discretization ; Top            ;
@@ -93,8 +94,8 @@ https://fpgasoftware.intel.com/eula.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:12     ; 1.0                     ; 4925 MB             ; 00:00:17                           ;
-; Total                  ; 00:00:12     ; --                      ; --                  ; 00:00:17                           ;
+; Analysis & Elaboration ; 00:00:09     ; 1.0                     ; 4979 MB             ; 00:00:09                           ;
+; Total                  ; 00:00:09     ; --                      ; --                  ; 00:00:09                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

@@ -5,7 +5,7 @@ module Discretization #(
     parameter integer U_size     = 16,
 	 parameter integer C_size     = 16,
 	 parameter integer D_size     = 16,
-    parameter integer L          = 4,
+    parameter integer L          = 8,
     parameter integer D_IN       = 32,
     parameter integer N          = 16,
 

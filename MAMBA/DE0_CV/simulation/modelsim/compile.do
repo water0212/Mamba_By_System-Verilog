@@ -18,6 +18,8 @@ vlog ../../design/fixed_round_shift.sv
 vlog ../../design/state_update_stage.sv
 vlog ../../design/y_output_pipeline.sv
 
+vlog ../../mamba_input_rom.v
+
 vlog ../../design/DE0_CV.sv
 
 

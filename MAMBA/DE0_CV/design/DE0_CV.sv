@@ -70,22 +70,144 @@ module DE0_CV(
 
 
 //=======================================================
-//  REG/WIRE declarations
+//  內部訊號宣告 (Internal Wires & Registers)
 //=======================================================
+    logic clk;
+    logic rst;
+    
+    assign clk = CLOCK_50;
+    assign rst = ~RESET_N; // KEY0 按下時為 1，作為系統 Reset
 
+    // 給 Discretization 的訊號
+    logic start_pulse;
+    logic [15:0] feed_data;
+    logic out_valid;
+    logic [31:0] x_out;
+    logic [31:0] y_out;
+    logic finish_calc;
 
-
+    // 給 ROM 的訊號
+    logic [9:0] rom_addr;
+    logic [15:0] rom_q;
 
 //=======================================================
-//  Structural coding
+//  資料饋送狀態機 (取代 Testbench 的 feed_data_from_file)
 //=======================================================
-adder_4bit s1(
-	.s(LEDR[3:0]),
-	.a(SW[7:4]),
-	.b(SW[3:0])
-	);
+    logic feeding;
+    logic key1_d1, key1_d2;
+    logic key1_pulse;
 
-	
-	
+    // 產生 KEY1 按下的單一週期 Pulse (邊緣觸發)
+    always_ff @(posedge clk) begin
+        key1_d1 <= ~KEY[1];
+        key1_d2 <= key1_d1;
+    end
+    assign key1_pulse = key1_d1 & ~key1_d2;
 
+    // 控制 ROM 位址與送出 start 訊號
+    always_ff @(posedge clk) begin
+        if (rst) begin
+            rom_addr    <= 0;
+            feeding     <= 1'b0;
+            start_pulse <= 1'b0;
+        end else begin
+            start_pulse <= 1'b0; // 預設拉低
+
+            if (key1_pulse && !feeding) begin
+                feeding     <= 1'b1;
+                start_pulse <= 1'b1; // 發送一個 Clock 的 start 訊號
+                rom_addr    <= 0;
+            end else if (feeding) begin
+                // 假設總共有 928 筆資料
+                if (rom_addr < 927) begin
+                    rom_addr <= rom_addr + 1'b1;
+                end else begin
+                    feeding <= 1'b0; // 送完資料，停止動作
+                end
+            end
+        end
+    end
+
+    assign feed_data = rom_q;
+
+//=======================================================
+//  實例化你的 ROM IP (請在 Quartus 中自行產生這個 IP)
+//=======================================================
+    // 這個模組需要利用 Quartus IP Catalog 產生一個 1-Port ROM
+    // 並載入你的 test_in_0.mif 檔案
+    mamba_input_rom my_rom (
+        .address (rom_addr),
+        .clock   (clk),
+        .q       (rom_q)
+    );
+
+//=======================================================
+//  實例化你的 Mamba 加速器模組
+//=======================================================
+    Discretization s1 (
+        .clk             (clk),
+        .rst             (rst),
+        .start           (start_pulse),
+        .data            (feed_data),
+        .out_valid       (out_valid),
+        .x_out_data      (x_out),
+        .y_out_data      (y_out),
+        .start_delta_mul (),
+        .finish          (finish_calc)
+    );
+
+//=======================================================
+//  輸出觀察與周邊對應
+//=======================================================
+    // 1. LED 指示燈
+    assign LEDR[9] = finish_calc; // 運算結束時亮起最左邊的紅燈
+    assign LEDR[8] = out_valid;   // 正在輸出 y 資料時亮起
+    assign LEDR[0] = feeding;     // 正在從 ROM 讀資料時亮起
+
+    // 2. 七段顯示器：顯示 y_out_data 的低 24 位元 (6 個 16進位數字)
+    // 為了看到最終結果，我們把算出來的 y_out 鎖存起來顯示
+    logic [31:0] display_y;
+    always_ff @(posedge clk) begin
+        if (rst) display_y <= 32'h0;
+        else if (out_valid) display_y <= y_out; // 捕捉最後一筆算好的答案
+    end
+
+    // 實例化 6 個七段顯示器解碼器
+    hex_decoder h0 (.hex_digit(display_y[3:0]),   .segments(HEX0));
+    hex_decoder h1 (.hex_digit(display_y[7:4]),   .segments(HEX1));
+    hex_decoder h2 (.hex_digit(display_y[11:8]),  .segments(HEX2));
+    hex_decoder h3 (.hex_digit(display_y[15:12]), .segments(HEX3));
+    hex_decoder h4 (.hex_digit(display_y[19:16]), .segments(HEX4));
+    hex_decoder h5 (.hex_digit(display_y[23:20]), .segments(HEX5));
+
+endmodule
+
+//=======================================================
+//  七段顯示器解碼器子模組 (共陽極)
+//=======================================================
+module hex_decoder(
+    input  logic [3:0] hex_digit,
+    output logic [6:0] segments
+);
+    always_comb begin
+        case (hex_digit)
+            4'h0: segments = 7'b1000000;
+            4'h1: segments = 7'b1111001;
+            4'h2: segments = 7'b0100100;
+            4'h3: segments = 7'b0110000;
+            4'h4: segments = 7'b0011001;
+            4'h5: segments = 7'b0010010;
+            4'h6: segments = 7'b0000010;
+            4'h7: segments = 7'b1111000;
+            4'h8: segments = 7'b0000000;
+            4'h9: segments = 7'b0010000;
+            4'hA: segments = 7'b0001000;
+            4'hB: segments = 7'b0000011;
+            4'hC: segments = 7'b1000110;
+            4'hD: segments = 7'b0100001;
+            4'hE: segments = 7'b0000110;
+            4'hF: segments = 7'b0001110;
+            default: segments = 7'b1111111;
+        endcase
+    end
 endmodule

@@ -5,7 +5,7 @@ module testbench();
 	parameter A_size     = 16;
 	parameter B_size     = 16;
 	parameter Delta_size = 16;
-	parameter L          = 4;
+	parameter L          = 8;
 	parameter D_IN       = 32;
 	parameter N          = 16;
 	parameter NUM_TESTS  = 1; 
