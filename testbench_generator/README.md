@@ -62,6 +62,8 @@ d_inner = d_model * expand
 | `delta_testbench.txt` | `batch * L * d_inner` | Q8、16-bit Hex |
 | `u_shape_int.txt` | `batch * L * d_inner` | Q8、16-bit Hex |
 | `y_q16_answer.txt` | `batch * L * d_inner` | Q16、32-bit Hex |
+| `y_q16_float_answer.txt` | `batch * L * d_inner` | Python 整數近似結果反量化後的 float |
+| `y_origin_answer.txt` | `batch * L * d_inner` | 原始 float selective scan 標準答案 |
 
 另外會產生 `experiment_config.json`，記錄本次參數、衍生尺寸、隨機 Token IDs、各檔案行數與格式，方便日後比對不同硬體實驗。
 
@@ -95,3 +97,39 @@ D_testbench.txt
 ```
 
 檔案之間不會加入標題或空白行，每一行仍是一筆 16-bit Hex 資料。各區段的開始行、結束行及行數會記錄在 `experiment_config.json` 的 `merged_hardware_input` 欄位中。
+
+## RTL 與標準 float 誤差比較
+
+先把 ModelSim 產生的 `test_out_0.txt` 放進對應的案例資料夾，再執行：
+
+```powershell
+python .\testbench_generator\compare_error.py --case-dir .\testbench_generator\generated_cases\case_L4_D16_N16_E2_B1_seed0
+```
+
+預設比較對象是：
+
+```text
+test_out_0.txt vs y_origin_answer.txt
+```
+
+這是硬體 Q16 結果與原始 float 軟體結果的誤差，適合放入不同參數的統計表。程式會計算 MAE、RMSE、中位絕對誤差、P95、最大絕對誤差、相對 MAE、MAE LSB、最大誤差 LSB，以及把 float 四捨五入為 Q16 後的完全相同比例。
+
+輸出包含：
+
+```text
+案例資料夾/error_report.json
+案例資料夾/error_details.csv
+testbench_generator/comparison_summary.csv
+```
+
+其中 `comparison_summary.csv` 會集中保留各組 L、d_model、N、expand、seed 與誤差，可直接用 Excel 製作統計表。同一案例與同一參考檔再次比較時會更新原本那一列。
+
+若要確認 RTL 是否重現 Python 的整數近似模型，可改用：
+
+```powershell
+python .\testbench_generator\compare_error.py `
+  --case-dir .\testbench_generator\generated_cases\case_L4_D16_N16_E2_B1_seed0 `
+  --reference .\testbench_generator\generated_cases\case_L4_D16_N16_E2_B1_seed0\y_q16_float_answer.txt
+```
+
+注意：`y_q16_float_answer.txt` 不是原始 float 標準答案；它只是 `y_q16_answer.txt / 65536`。真正用來評估硬體量化與 exp 近似誤差的是 `y_origin_answer.txt`。

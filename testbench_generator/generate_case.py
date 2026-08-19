@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import importlib.util
 import json
+import math
 import os
 import re
 import shutil
@@ -19,13 +20,21 @@ PROJECT_ROOT = SCRIPT_DIR.parents[0]
 
 
 EXPORT_SPECS = {
-    "A_testbench.txt": {"bits": 16, "format": "signed integer, 16-bit hex"},
-    "B_testbench.txt": {"bits": 16, "format": "Q8, 16-bit hex"},
-    "C_testbench.txt": {"bits": 16, "format": "Q8, 16-bit hex"},
-    "D_testbench.txt": {"bits": 16, "format": "Q8, 16-bit hex"},
-    "delta_testbench.txt": {"bits": 16, "format": "Q8, 16-bit hex"},
-    "u_shape_int.txt": {"bits": 16, "format": "Q8, 16-bit hex"},
-    "y_q16_answer.txt": {"bits": 32, "format": "Q16, 32-bit hex"},
+    "A_testbench.txt": {"kind": "hex", "bits": 16, "format": "signed integer, 16-bit hex"},
+    "B_testbench.txt": {"kind": "hex", "bits": 16, "format": "Q8, 16-bit hex"},
+    "C_testbench.txt": {"kind": "hex", "bits": 16, "format": "Q8, 16-bit hex"},
+    "D_testbench.txt": {"kind": "hex", "bits": 16, "format": "Q8, 16-bit hex"},
+    "delta_testbench.txt": {"kind": "hex", "bits": 16, "format": "Q8, 16-bit hex"},
+    "u_shape_int.txt": {"kind": "hex", "bits": 16, "format": "Q8, 16-bit hex"},
+    "y_q16_answer.txt": {"kind": "hex", "bits": 32, "format": "Q16, 32-bit hex"},
+    "y_q16_float_answer.txt": {
+        "kind": "float",
+        "format": "dequantized Python integer model (Q16 / 65536)",
+    },
+    "y_origin_answer.txt": {
+        "kind": "float",
+        "format": "original float selective_scan reference",
+    },
 }
 
 HARDWARE_INPUT_ORDER = (
@@ -101,6 +110,8 @@ def expected_line_counts(args: argparse.Namespace, d_inner: int) -> dict[str, in
         "delta_testbench.txt": args.batch_size * args.seq_len * d_inner,
         "u_shape_int.txt": args.batch_size * args.seq_len * d_inner,
         "y_q16_answer.txt": args.batch_size * args.seq_len * d_inner,
+        "y_q16_float_answer.txt": args.batch_size * args.seq_len * d_inner,
+        "y_origin_answer.txt": args.batch_size * args.seq_len * d_inner,
     }
 
 
@@ -159,11 +170,19 @@ def verify_exports(
                 f"{filename}: expected {expected_count} lines, found {len(lines)}"
             )
 
-        hex_digits = int(spec["bits"]) // 4
-        pattern = re.compile(rf"[0-9A-F]{{{hex_digits}}}")
-        invalid_line = next((line for line in lines if not pattern.fullmatch(line)), None)
-        if invalid_line is not None:
-            raise RuntimeError(f"{filename}: invalid hex value {invalid_line!r}")
+        if spec["kind"] == "hex":
+            hex_digits = int(spec["bits"]) // 4
+            pattern = re.compile(rf"[0-9A-F]{{{hex_digits}}}")
+            invalid_line = next((line for line in lines if not pattern.fullmatch(line)), None)
+            if invalid_line is not None:
+                raise RuntimeError(f"{filename}: invalid hex value {invalid_line!r}")
+        else:
+            try:
+                values = [float(line) for line in lines]
+            except ValueError as error:
+                raise RuntimeError(f"{filename}: invalid float value") from error
+            if not all(math.isfinite(value) for value in values):
+                raise RuntimeError(f"{filename}: contains NaN or infinity")
 
         results[filename] = {
             "line_count": len(lines),
@@ -296,6 +315,8 @@ def main() -> None:
             "d_inner equals d_model multiplied by expand.",
             "Random model weights and token IDs are reproducible with the same seed.",
             "A and D retain the initialization defined by the current model.py.",
+            "y_q16_float_answer.txt is the dequantized Python integer approximation.",
+            "y_origin_answer.txt is the original float reference for hardware error analysis.",
         ],
     }
     config_path = case_dir / "experiment_config.json"

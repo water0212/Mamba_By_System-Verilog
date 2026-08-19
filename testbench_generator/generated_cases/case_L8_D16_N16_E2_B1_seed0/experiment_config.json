@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-08-13T11:40:58.422617+00:00",
+  "created_utc": "2026-08-19T07:02:13.523067+00:00",
   "seed": 0,
   "parameters": {
     "batch_size": 1,
@@ -66,6 +66,14 @@
     "y_q16_answer.txt": {
       "line_count": 256,
       "format": "Q16, 32-bit hex"
+    },
+    "y_q16_float_answer.txt": {
+      "line_count": 256,
+      "format": "dequantized Python integer model (Q16 / 65536)"
+    },
+    "y_origin_answer.txt": {
+      "line_count": 256,
+      "format": "original float selective_scan reference"
     }
   },
   "merged_hardware_input": {
@@ -122,6 +130,8 @@
     "N is the same parameter as d_state.",
     "d_inner equals d_model multiplied by expand.",
     "Random model weights and token IDs are reproducible with the same seed.",
-    "A and D retain the initialization defined by the current model.py."
+    "A and D retain the initialization defined by the current model.py.",
+    "y_q16_float_answer.txt is the dequantized Python integer approximation.",
+    "y_origin_answer.txt is the original float reference for hardware error analysis."
   ]
 }
