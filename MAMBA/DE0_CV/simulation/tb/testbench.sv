@@ -5,9 +5,9 @@ module testbench();
 	parameter A_size     = 16;
 	parameter B_size     = 16;
 	parameter Delta_size = 16;
-	parameter L          = 8;
-	parameter D_IN       = 32;
-	parameter N          = 16;
+	parameter L          = 4;
+	parameter D_IN       = 16;
+	parameter N          = 8;
 	parameter NUM_TESTS  = 1; 
 
 	logic clk;
@@ -206,9 +206,9 @@ module testbench();
 		for (test_idx = 0; test_idx < NUM_TESTS; test_idx = test_idx + 1) begin
 			run_one_test(
 				test_idx,
-				$sformatf("../tb/test_in_%0d.txt", test_idx),       
+				$sformatf("../tb/test_in_9.txt"),       
 				$sformatf("../tb/test_out_%0d.txt", test_idx),      
-				$sformatf("../tb/y_q16_answer%0d.txt", test_idx),   
+				$sformatf("../tb/y_q16_answer9.txt"),   
 				test_result
 			);
 			all_pass = all_pass && test_result;

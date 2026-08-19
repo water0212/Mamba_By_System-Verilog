@@ -5,9 +5,9 @@ module Discretization #(
     parameter integer U_size     = 16,
 	 parameter integer C_size     = 16,
 	 parameter integer D_size     = 16,
-    parameter integer L          = 8,
-    parameter integer D_IN       = 32,
-    parameter integer N          = 16,
+    parameter integer L          = 4,
+    parameter integer D_IN       = 16,
+    parameter integer N          = 8,
 
     // 預設假設 A、B、delta、u 都是 Q8，state_x 是 Q16。
     parameter integer A_FRAC_BITS     = 0,
