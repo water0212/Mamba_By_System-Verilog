@@ -1,0 +1,137 @@
+{
+  "created_utc": "2026-08-26T06:42:43.170511+00:00",
+  "seed": 2,
+  "parameters": {
+    "batch_size": 1,
+    "L": 8,
+    "d_model": 32,
+    "d_state_N": 16,
+    "expand": 2,
+    "n_layer": 1,
+    "vocab_size_requested": 256,
+    "vocab_size_padded": 256,
+    "dt_rank_requested": "auto",
+    "dt_rank_resolved": 2,
+    "d_conv": 4
+  },
+  "derived": {
+    "d_inner": 64,
+    "input_ids_shape": [
+      1,
+      8
+    ],
+    "logits_shape": [
+      1,
+      8,
+      256
+    ]
+  },
+  "input_ids": [
+    [
+      190,
+      74,
+      69,
+      132,
+      16,
+      185,
+      148,
+      2
+    ]
+  ],
+  "exports": {
+    "A_testbench.txt": {
+      "line_count": 1024,
+      "format": "signed integer, 16-bit hex"
+    },
+    "B_testbench.txt": {
+      "line_count": 128,
+      "format": "Q8, 16-bit hex"
+    },
+    "C_testbench.txt": {
+      "line_count": 128,
+      "format": "Q8, 16-bit hex"
+    },
+    "D_testbench.txt": {
+      "line_count": 64,
+      "format": "Q8, 16-bit hex"
+    },
+    "delta_testbench.txt": {
+      "line_count": 512,
+      "format": "Q8, 16-bit hex"
+    },
+    "u_shape_int.txt": {
+      "line_count": 512,
+      "format": "Q8, 16-bit hex"
+    },
+    "y_q16_answer.txt": {
+      "line_count": 512,
+      "format": "Q16, 32-bit hex"
+    },
+    "y_q16_float_answer.txt": {
+      "line_count": 512,
+      "format": "dequantized Python integer model (Q16 / 65536)"
+    },
+    "y_origin_answer.txt": {
+      "line_count": 512,
+      "format": "original float selective_scan reference"
+    }
+  },
+  "merged_hardware_input": {
+    "filename": "test_in_0.txt",
+    "order": [
+      "A_testbench.txt",
+      "B_testbench.txt",
+      "delta_testbench.txt",
+      "u_shape_int.txt",
+      "C_testbench.txt",
+      "D_testbench.txt"
+    ],
+    "line_count": 2368,
+    "sections": [
+      {
+        "source": "A_testbench.txt",
+        "start_line": 1,
+        "end_line": 1024,
+        "line_count": 1024
+      },
+      {
+        "source": "B_testbench.txt",
+        "start_line": 1025,
+        "end_line": 1152,
+        "line_count": 128
+      },
+      {
+        "source": "delta_testbench.txt",
+        "start_line": 1153,
+        "end_line": 1664,
+        "line_count": 512
+      },
+      {
+        "source": "u_shape_int.txt",
+        "start_line": 1665,
+        "end_line": 2176,
+        "line_count": 512
+      },
+      {
+        "source": "C_testbench.txt",
+        "start_line": 2177,
+        "end_line": 2304,
+        "line_count": 128
+      },
+      {
+        "source": "D_testbench.txt",
+        "start_line": 2305,
+        "end_line": 2368,
+        "line_count": 64
+      }
+    ]
+  },
+  "notes": [
+    "N is the same parameter as d_state.",
+    "d_inner equals d_model multiplied by expand.",
+    "Random model weights and token IDs are reproducible with the same seed.",
+    "A and D retain the initialization defined by the current model.py.",
+    "y_q16_float_answer.txt is the dequantized Python integer approximation.",
+    "y_origin_answer.txt is the original float reference for hardware error analysis."
+  ]
+}
