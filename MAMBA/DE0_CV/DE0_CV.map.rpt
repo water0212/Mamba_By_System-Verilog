@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE0_CV
-Wed Aug 19 22:28:10 2026
+Wed Aug 26 13:14:18 2026
 Quartus Prime Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
 
 
@@ -58,7 +58,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Wed Aug 19 22:28:10 2026       ;
+; Analysis & Elaboration Status ; Successful - Wed Aug 26 13:14:18 2026       ;
 ; Quartus Prime Version         ; 19.1.0 Build 670 09/22/2019 SJ Lite Edition ;
 ; Revision Name                 ; DE0_CV                                      ;
 ; Top-level Entity Name         ; Discretization                              ;
@@ -100,8 +100,8 @@ https://fpgasoftware.intel.com/eula.
 ; U_size          ; 16    ; Signed Integer                                       ;
 ; C_size          ; 16    ; Signed Integer                                       ;
 ; D_size          ; 16    ; Signed Integer                                       ;
-; L               ; 4     ; Signed Integer                                       ;
-; D_IN            ; 32    ; Signed Integer                                       ;
+; L               ; 8     ; Signed Integer                                       ;
+; D_IN            ; 16    ; Signed Integer                                       ;
 ; N               ; 16    ; Signed Integer                                       ;
 ; A_FRAC_BITS     ; 0     ; Signed Integer                                       ;
 ; B_FRAC_BITS     ; 8     ; Signed Integer                                       ;
@@ -124,8 +124,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; U_SIZE         ; 16    ; Signed Integer                          ;
 ; C_SIZE         ; 16    ; Signed Integer                          ;
 ; D_SIZE         ; 16    ; Signed Integer                          ;
-; L              ; 4     ; Signed Integer                          ;
-; D_IN           ; 32    ; Signed Integer                          ;
+; L              ; 8     ; Signed Integer                          ;
+; D_IN           ; 16    ; Signed Integer                          ;
 ; N              ; 16    ; Signed Integer                          ;
 +----------------+-------+-----------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -141,8 +141,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; DELTA_SIZE      ; 16    ; Signed Integer                                       ;
 ; U_SIZE          ; 16    ; Signed Integer                                       ;
 ; STATE_SIZE      ; 32    ; Signed Integer                                       ;
-; L               ; 4     ; Signed Integer                                       ;
-; D_IN            ; 32    ; Signed Integer                                       ;
+; L               ; 8     ; Signed Integer                                       ;
+; D_IN            ; 16    ; Signed Integer                                       ;
 ; N               ; 16    ; Signed Integer                                       ;
 ; C_SIZE          ; 16    ; Signed Integer                                       ;
 ; D_SIZE          ; 16    ; Signed Integer                                       ;
@@ -165,11 +165,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+--------------------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                                 ;
 +----------------+-------+--------------------------------------------------------------------------------------+
-; L              ; 4     ; Signed Integer                                                                       ;
-; D_IN           ; 32    ; Signed Integer                                                                       ;
+; L              ; 8     ; Signed Integer                                                                       ;
+; D_IN           ; 16    ; Signed Integer                                                                       ;
 ; N              ; 16    ; Signed Integer                                                                       ;
-; L_W            ; 2     ; Signed Integer                                                                       ;
-; D_W            ; 5     ; Signed Integer                                                                       ;
+; L_W            ; 3     ; Signed Integer                                                                       ;
+; D_W            ; 4     ; Signed Integer                                                                       ;
 ; N_W            ; 4     ; Signed Integer                                                                       ;
 +----------------+-------+--------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -183,8 +183,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; A_SIZE         ; 16    ; Signed Integer                                                                        ;
 ; DELTA_SIZE     ; 16    ; Signed Integer                                                                        ;
 ; OUT_SIZE       ; 32    ; Signed Integer                                                                        ;
-; L_W            ; 2     ; Signed Integer                                                                        ;
-; D_W            ; 5     ; Signed Integer                                                                        ;
+; L_W            ; 3     ; Signed Integer                                                                        ;
+; D_W            ; 4     ; Signed Integer                                                                        ;
 ; N_W            ; 4     ; Signed Integer                                                                        ;
 +----------------+-------+---------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -198,8 +198,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; SIZE           ; 32    ; Signed Integer                                                                       ;
 ; IN_FRAC_BITS   ; 8     ; Signed Integer                                                                       ;
 ; OUT_FRAC_BITS  ; 8     ; Signed Integer                                                                       ;
-; L_W            ; 2     ; Signed Integer                                                                       ;
-; D_W            ; 5     ; Signed Integer                                                                       ;
+; L_W            ; 3     ; Signed Integer                                                                       ;
+; D_W            ; 4     ; Signed Integer                                                                       ;
 ; N_W            ; 4     ; Signed Integer                                                                       ;
 +----------------+-------+--------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -210,10 +210,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+-----------------------------------------------------------------------------+
 ; Parameter Name ; Value ; Type                                                                        ;
 +----------------+-------+-----------------------------------------------------------------------------+
-; D_IN           ; 32    ; Signed Integer                                                              ;
+; D_IN           ; 16    ; Signed Integer                                                              ;
 ; N              ; 16    ; Signed Integer                                                              ;
 ; STATE_SIZE     ; 32    ; Signed Integer                                                              ;
-; D_W            ; 5     ; Signed Integer                                                              ;
+; D_W            ; 4     ; Signed Integer                                                              ;
 ; N_W            ; 4     ; Signed Integer                                                              ;
 +----------------+-------+-----------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -227,8 +227,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; EXP_SIZE       ; 32    ; Signed Integer                                                                        ;
 ; STATE_SIZE     ; 32    ; Signed Integer                                                                        ;
 ; EXP_FRAC_BITS  ; 8     ; Signed Integer                                                                        ;
-; L_W            ; 2     ; Signed Integer                                                                        ;
-; D_W            ; 5     ; Signed Integer                                                                        ;
+; L_W            ; 3     ; Signed Integer                                                                        ;
+; D_W            ; 4     ; Signed Integer                                                                        ;
 ; N_W            ; 4     ; Signed Integer                                                                        ;
 +----------------+-------+---------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -255,8 +255,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; U_SIZE         ; 16    ; Signed Integer                                                                           ;
 ; B_SIZE         ; 16    ; Signed Integer                                                                           ;
 ; OUT_SIZE       ; 32    ; Signed Integer                                                                           ;
-; L_W            ; 2     ; Signed Integer                                                                           ;
-; D_W            ; 5     ; Signed Integer                                                                           ;
+; L_W            ; 3     ; Signed Integer                                                                           ;
+; D_W            ; 4     ; Signed Integer                                                                           ;
 ; N_W            ; 4     ; Signed Integer                                                                           ;
 +----------------+-------+------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -269,8 +269,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+---------------------------------------------------------------------------------+
 ; DATA_WIDTH     ; 32    ; Signed Integer                                                                  ;
 ; LATENCY        ; 3     ; Signed Integer                                                                  ;
-; L_W            ; 2     ; Signed Integer                                                                  ;
-; D_W            ; 5     ; Signed Integer                                                                  ;
+; L_W            ; 3     ; Signed Integer                                                                  ;
+; D_W            ; 4     ; Signed Integer                                                                  ;
 ; N_W            ; 4     ; Signed Integer                                                                  ;
 +----------------+-------+---------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -294,11 +294,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Parameter Name ; Value ; Type                                                                                    ;
 +----------------+-------+-----------------------------------------------------------------------------------------+
 ; STATE_SIZE     ; 32    ; Signed Integer                                                                          ;
-; L              ; 4     ; Signed Integer                                                                          ;
-; D_IN           ; 32    ; Signed Integer                                                                          ;
+; L              ; 8     ; Signed Integer                                                                          ;
+; D_IN           ; 16    ; Signed Integer                                                                          ;
 ; N              ; 16    ; Signed Integer                                                                          ;
-; L_W            ; 2     ; Signed Integer                                                                          ;
-; D_W            ; 5     ; Signed Integer                                                                          ;
+; L_W            ; 3     ; Signed Integer                                                                          ;
+; D_W            ; 4     ; Signed Integer                                                                          ;
 ; N_W            ; 4     ; Signed Integer                                                                          ;
 +----------------+-------+-----------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -314,16 +314,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; U_SIZE          ; 16    ; Signed Integer                                                                 ;
 ; STATE_SIZE      ; 32    ; Signed Integer                                                                 ;
 ; Y_SIZE          ; 32    ; Signed Integer                                                                 ;
-; L               ; 4     ; Signed Integer                                                                 ;
-; D_IN            ; 32    ; Signed Integer                                                                 ;
+; L               ; 8     ; Signed Integer                                                                 ;
+; D_IN            ; 16    ; Signed Integer                                                                 ;
 ; N               ; 16    ; Signed Integer                                                                 ;
 ; C_FRAC_BITS     ; 8     ; Signed Integer                                                                 ;
 ; D_FRAC_BITS     ; 8     ; Signed Integer                                                                 ;
 ; U_FRAC_BITS     ; 8     ; Signed Integer                                                                 ;
 ; STATE_FRAC_BITS ; 16    ; Signed Integer                                                                 ;
 ; Y_FRAC_BITS     ; 16    ; Signed Integer                                                                 ;
-; L_W             ; 2     ; Signed Integer                                                                 ;
-; D_W             ; 5     ; Signed Integer                                                                 ;
+; L_W             ; 3     ; Signed Integer                                                                 ;
+; D_W             ; 4     ; Signed Integer                                                                 ;
 ; N_W             ; 4     ; Signed Integer                                                                 ;
 +-----------------+-------+--------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
@@ -485,7 +485,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 19.1.0 Build 670 09/22/2019 SJ Lite Edition
-    Info: Processing started: Wed Aug 19 22:27:59 2026
+    Info: Processing started: Wed Aug 26 13:14:07 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE0_CV -c DE0_CV --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 10 of the 10 processors detected
@@ -575,8 +575,8 @@ Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(31): tru
 Warning (10230): Verilog HDL assignment warning at fixed_round_shift.sv(36): truncated value with size 54 to match size of target (32) File: C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/design/fixed_round_shift.sv Line: 36
 Info (144001): Generated suppressed messages file C:/mamba/Mamba_By_System-Verilog/MAMBA/DE0_CV/DE0_CV.map.smsg
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 4956 megabytes
-    Info: Processing ended: Wed Aug 19 22:28:10 2026
+    Info: Peak virtual memory: 4947 megabytes
+    Info: Processing ended: Wed Aug 26 13:14:18 2026
     Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:16
 

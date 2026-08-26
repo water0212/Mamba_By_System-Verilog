@@ -75,7 +75,7 @@ module testbench();
 				
 				// 修正漏洞：Python 腳本把負數印成了 2 碼 (如 FF)
 				// A 和 B 總共 576 筆，我們手動將它們做符號擴充 (00FF -> FFFF)
-				if (line_num < 576 && read_data[7] == 1'b1 && read_data[15:8] == 8'h00) begin
+				if (line_num < (L*D_IN+L*N) && read_data[7] == 1'b1 && read_data[15:8] == 8'h00) begin
 					data = {8'hFF, read_data[7:0]};
 				end else begin
 					data = read_data;
