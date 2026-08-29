@@ -1,0 +1,45 @@
+{
+  "case_name": "case_L4_D8_N8_E2_B1_seed4",
+  "rtl_file": "C:\\mamba\\Mamba_By_System-Verilog\\testbench_generator\\generated_cases\\case_L4_D8_N8_E2_B1_seed4\\test_out_0.txt",
+  "reference_file": "C:\\mamba\\Mamba_By_System-Verilog\\testbench_generator\\generated_cases\\case_L4_D8_N8_E2_B1_seed4\\y_origin_answer.txt",
+  "q16_scale": 65536,
+  "parameters": {
+    "batch_size": 1,
+    "L": 4,
+    "d_model": 8,
+    "d_state_N": 8,
+    "expand": 2,
+    "n_layer": 1,
+    "vocab_size_requested": 256,
+    "vocab_size_padded": 256,
+    "dt_rank_requested": "auto",
+    "dt_rank_resolved": 1,
+    "d_conv": 4,
+    "d_inner": 16,
+    "input_ids_shape": [
+      1,
+      4
+    ],
+    "logits_shape": [
+      1,
+      4,
+      256
+    ],
+    "seed": 4
+  },
+  "metrics": {
+    "sample_count": 64,
+    "mae": 0.0009664800872802766,
+    "rmse": 0.0011284701906841583,
+    "median_absolute_error": 0.0009101640624999963,
+    "p95_absolute_error": 0.0018569555175781353,
+    "max_absolute_error": 0.0020338037109374763,
+    "mean_signed_error_bias": 2.5100479125977242e-05,
+    "relative_mae_percent": 0.5177703505739588,
+    "mae_lsb": 63.339239000000205,
+    "max_absolute_error_lsb": 133.28735999999844,
+    "rounded_q16_exact_count": 0,
+    "rounded_q16_exact_percent": 0.0,
+    "rounded_q16_within_1_lsb_percent": 0.0
+  }
+}

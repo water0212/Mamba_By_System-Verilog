@@ -5,9 +5,9 @@ module testbench();
 	parameter A_size     = 16;
 	parameter B_size     = 16;
 	parameter Delta_size = 16;
-	parameter L          = 8;
-	parameter D_IN       = 16;
-	parameter N          = 16;
+	parameter L          = 32;
+	parameter D_IN       = 64;
+	parameter N          = 32;
 	parameter NUM_TESTS  = 1; 
 
 	logic clk;
@@ -74,13 +74,7 @@ module testbench();
 			status = $sscanf(line, "%h", read_data);
 			if (status == 1) begin
 				
-				// 修正漏洞：Python 腳本把負數印成了 2 碼 (如 FF)
-				// A 和 B 總共 576 筆，我們手動將它們做符號擴充 (00FF -> FFFF)
-				if (line_num < (N*D_IN+L*N) && read_data[7] == 1'b1 && read_data[15:8] == 8'h00) begin
-					data = {8'hFF, read_data[7:0]};
-				end else begin
-					data = read_data;
-				end
+				data = read_data;
 				
 				@(negedge clk); 
 			end
@@ -203,13 +197,13 @@ module testbench();
 		out_result_file = 0; all_pass = 1;
 		
 		rst = 1; #100; rst = 0; #100;
-		seed_idx = 3;
+		seed_idx = 1;
 		for (test_idx = 0; test_idx < NUM_TESTS; test_idx = test_idx + 1) begin
 			run_one_test(
 				test_idx,
-				$sformatf("../tb/test_in_7_%0d.txt", seed_idx),       
+				$sformatf("../tb/test_in_12_%0d.txt", seed_idx),       
 				$sformatf("../tb/test_out_0%0d.txt", seed_idx),      
-				$sformatf("../tb/y_q16_answer7_%0d.txt", seed_idx),  
+				$sformatf("../tb/y_q16_answer12_%0d.txt", seed_idx),  
 				test_result
 			);
 			all_pass = all_pass && test_result;
